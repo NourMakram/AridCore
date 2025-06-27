@@ -1,0 +1,186 @@
+<div class="row my-6">
+    <div class="col" style="margin-top: 60px;">
+      <div class="accordion" id="collapsibleSection">
+        <!-- Delivery Address -->
+       <form [formGroup]="AcademicPositionForm">
+
+        <div class="card accordion-item">
+      
+          <div
+            id="collapseDeliveryAddress"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingDeliveryAddress"
+            data-bs-parent="#collapsibleSection">
+            <h6 class="my-3 py-2 me-5 text-center" style="color: white;
+            background-color: #696cff;
+            border-radius: 5px;"> منصب اكاديمى جديد </h6>
+            <div class="accordion-body">
+              <div class="row g-6 text-start">
+                
+                <div class="col-md-6">
+                  <div class="row text-start">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">نوع المنصب</label>
+                    <div class="col-sm-9">
+                      <select id="collapsible-state" formControlName="positionTypeId" class="select2 form-select" data-allow-clear="true">
+                        <option value="" selected disabled>اختر نوع المنصب </option>
+                           <option *ngFor="let positionType of positionTypes" [value]="positionType.id">{{positionType.arPositionName}}</option>
+                       </select>
+                      <div *ngIf="AcademicPositionForm.controls['positionTypeId'].invalid && AcademicPositionForm.controls['positionTypeId'].touched">
+                        <small *ngIf="AcademicPositionForm.controls['positionTypeId'].errors?.['required']" class="text-danger">اختر نوع المنصب</small>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row text-start">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الجامعة</label>
+                    <div class="col-sm-9">
+                      <select id="collapsible-state" formControlName="universityId"  class="select2 form-select" data-allow-clear="true">
+                        <option value="" selected disabled>اختر الجامعة</option>
+                        <option *ngFor="let university of Universities" [value]="university.id">{{university.arUniversityName}}</option>
+                      </select>
+                      <div *ngIf="AcademicPositionForm.controls['universityId'].invalid && AcademicPositionForm.controls['universityId'].touched">
+                        <small *ngIf="AcademicPositionForm.controls['universityId'].errors?.['required']" class="text-danger">اختر الجامعة</small>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row text-start">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الكلية</label>
+                      <div class="col-sm-9">
+                        <select id="collapsible-state" formControlName="facultyId"  class="select2 form-select" data-allow-clear="true">
+                          <option value="" selected disabled>اختر الكلية</option>
+                          <option *ngFor="let faculty of Faculties" [value]="faculty.id">{{faculty.arFacultyName}}</option>
+                        </select>
+                        <div *ngIf="AcademicPositionForm.controls['facultyId'].invalid && AcademicPositionForm.controls['facultyId'].touched">
+                          <small *ngIf="AcademicPositionForm.controls['facultyId'].errors?.['required']" class="text-danger">اختر الكلية</small>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6">
+                  <div class="row text-start">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الدولة</label>
+                    <div class="col-sm-9">
+                      <select id="collapsible-state" formControlName="countryId" class="select2 form-select" data-allow-clear="true">
+                        <option  value="" seleted disabled>اختر الدولة</option>
+                        <option *ngFor="let country of Countries" [value]="country.id">{{country.arName}}</option>
+                   
+                      </select>
+                      <div *ngIf="AcademicPositionForm.get('countryId')?.invalid &&  AcademicPositionForm.get('countryId')?.touched"
+                      class="error mt-2">
+                   <small *ngIf="AcademicPositionForm.get('countryId')?.errors?.['required']" class="text-danger">
+                     اختر الدولة
+                   </small>
+                 </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row text-start">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">المدينة</label>
+                    <div class="col-sm-9">
+                      <select id="collapsible-state" class="select2 form-select" data-allow-clear="true" formControlName="cityId">
+                        <option value="" seleted disabled>اختر المدينة</option>
+                        <option *ngFor="let city of Citites" [value]="city.id">{{city.arCityName}}</option>
+                      </select>
+                      <div *ngIf="AcademicPositionForm.controls['cityId'].invalid && AcademicPositionForm.controls['cityId'].touched">
+                        <small *ngIf="AcademicPositionForm.controls['cityId'].errors?.['required']" class="text-danger">اختر المدينة</small>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row text-start">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">من</label>
+                      <div class="col-sm-9">
+                    <input type="date" class="form-control"  formControlName="fromYear">
+                        <div *ngIf="AcademicPositionForm.get('fromYear')?.invalid &&  AcademicPositionForm.get('fromYear')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="AcademicPositionForm.get('fromYear')?.errors?.['required']" class="text-danger">
+                       اختر بداية الفترة
+                     </small>
+                   </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row text-start" >
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الى</label>
+                      <div class="col-sm-9">
+                        <input type="date" class="form-control"  formControlName="toYear">
+                        <div *ngIf="AcademicPositionForm.get('toYear')?.invalid &&  AcademicPositionForm.get('toYear')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="AcademicPositionForm.get('toYear')?.errors?.['required']" class="text-danger">
+                       اختر نهاية الفترة
+                     </small>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <div class="row text-start">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                        > الوصف بالعربى</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          id="collapsible-pincode"
+                          class="form-control"
+                          formControlName="arDescription"
+                            />
+                            <div *ngIf="AcademicPositionForm.controls['arDescription'].invalid && AcademicPositionForm.controls['arDescription'].touched">
+                              <small *ngIf="AcademicPositionForm.controls['arDescription'].errors?.['required']" class="text-danger">وصف المنصب مطلوب</small>
+                              <small *ngIf="AcademicPositionForm.controls['arDescription'].errors?.['pattern']" class="text-danger">وصف المنصب باللغة العربية  </small>
+
+                            </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <div class="row text-start">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                        > الوصف بالأنجليزية</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          id="collapsible-pincode"
+                          class="form-control"
+                          formControlName="enDescription"
+                            />
+                            <div *ngIf="AcademicPositionForm.controls['enDescription'].invalid && AcademicPositionForm.controls['enDescription'].touched">
+                              <small *ngIf="AcademicPositionForm.controls['enDescription'].errors?.['required']" class="text-danger">وصف المنصب  مطلوب</small>
+                              <small *ngIf="AcademicPositionForm.controls['enDescription'].errors?.['pattern']" class="text-danger">وصف المنصب باللغة الأنجليزية  </small>
+
+                            </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="row justify-content-end text-center">
+                  <div class="col-sm-10">
+                    <button type="submit" (click)="Submit()" class="btn btn-primary">اضافة</button>
+                    <a routerLink="/clientPage/AcademicPosition" class="btn btn-secondary mx-2">الرجوع الى القائمة</a>
+    
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+       </form>
+        
+
+        </div>
+        </div>
+        </div>
+        

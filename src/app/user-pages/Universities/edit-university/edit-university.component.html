@@ -1,0 +1,175 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+  <div class="row" dir="rtl">
+    <!-- Basic Layout -->
+    <div class="col-xxl">
+      <div class="card mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <h5 class="mb-0">تعديل جامعة</h5>
+        </div>
+        <!-- {{AddForm.value|json}} -->
+        <div class="card-body">
+          <form [formGroup]="AddForm">
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-name">اسم الجامعة باللغة العربية </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="arUniversityName" id="basic-default-name" placeholder="ادخل اسم الجامعة باللغة العربية " />
+
+                <div *ngIf="AddForm.controls['arUniversityName'].invalid && AddForm.controls['arUniversityName'].touched">
+                  <small *ngIf="AddForm.controls['arUniversityName'].errors?.['required']" class="text-danger">اسم الجامعة بالعربية مطلوب</small>
+                  <small *ngIf="AddForm.controls['arUniversityName'].errors?.['pattern']" class="text-danger">يجب إدخال اسم الجامعة باللغة العربية فقط</small>
+                </div>
+              </div>
+
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-company">اسم الجامعة باالغة الأنجليزية</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="enUniversityName" id="basic-default-name" placeholder="ادخل اسم الجامعة باللغة الأنجليزية " />
+                <div *ngIf="AddForm.controls['enUniversityName'].invalid && AddForm.controls['enUniversityName'].touched">
+                  <small *ngIf="AddForm.controls['enUniversityName'].errors?.['required']" class="text-danger">اسم الجامعة بالإنجليزية مطلوب</small>
+                  <small *ngIf="AddForm.controls['enUniversityName'].errors?.['pattern']" class="text-danger">يجب إدخال اسم الجامعة باللغة الإنجليزية فقط</small>
+                </div>
+
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-email">سنة تأسيس الجامعة</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" formControlName="yearofEstablishment" id="basic-default-name" placeholder="ادخل سنة التأسيس" />
+                <div *ngIf="AddForm.get('yearofEstablishment')?.invalid && AddForm.get('yearofEstablishment')?.touched"
+                     class="error mt-2">
+                  <small *ngIf="AddForm.get('yearofEstablishment')?.errors?.['required']" class="text-danger">
+                    يرجى ادخال سنة التأسيس
+                  </small>
+
+                </div>
+
+              </div>
+
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-phone">الموقع الالكتروني</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="website" id="basic-default-name" placeholder="ادخل رابط الموقع الالكتروني " />
+                <div *ngIf="AddForm.get('website')?.invalid && AddForm.get('website')?.touched"
+                     class="error mt-2">
+                  <small *ngIf="AddForm.get('website')?.errors?.['required']" class="text-danger">
+                    يرجى ادخال رابط الموقع الالكتروني
+                  </small>
+                  <small class="text-danger" *ngIf="AddForm.get('website')?.errors?.['pattern']">
+                    الرجاء إدخال رابط صالح مثل: https://example.com
+                  </small>
+                </div>
+
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-phone">عدد الموظفين</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" formControlName="studentNo" id="basic-default-name" placeholder="ادخل عدد الموظفين " />
+                <div *ngIf="AddForm.get('studentNo')?.invalid && AddForm.get('studentNo')?.touched"
+                     class="error mt-2">
+                  <small *ngIf="AddForm.get('studentNo')?.errors?.['required']" class="text-danger">
+                    يرجى ادخال  عدد الموظفين
+                  </small>
+                </div>
+
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-phone">عدد الطلاب</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" formControlName="staffNo" id="basic-default-name" placeholder="ادخل عدد الطلاب " />
+                <div *ngIf="AddForm.get('staffNo')?.invalid && AddForm.get('staffNo')?.touched"
+                     class="error mt-2">
+                  <small *ngIf="AddForm.get('staffNo')?.errors?.['required']" class="text-danger">
+                    يرجى ادخال  عدد الطلاب
+                  </small>
+                </div>
+
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-phone"> نوع الجامعة </label>
+              <div class="col-sm-10">
+                <div class="row d-flex justify-content-between">
+                  <div class="col-4 d-flex">
+                    <input type="checkbox" formControlName="governmental" class="form-check" /><span class="px-2 py-3">حكومية</span>
+
+                  </div>
+                  <div class="col-4 d-flex">
+                    <input type="checkbox" formControlName="private" class="form-check" /><span class="px-2 py-3">خاصة</span>
+
+                  </div>
+                  <div class="col-4 d-flex">
+                    <input type="checkbox" formControlName="semiPrivate" class="form-check" /><span class="px-2 py-3">شبه خاصة</span>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-phone">  </label>
+              <div class="col-sm-10">
+                <div class="row d-flex justify-content-between">
+                  <div class="col-6 d-flex">
+                    <input type="checkbox" formControlName="isIndexed" class="form-check" /><span class="px-2 py-3">قبول</span>
+
+                  </div>
+                  
+                  <div class="col-6 d-flex">
+                    <input type="checkbox" formControlName="isVisible" class="form-check" /><span class="px-2 py-3">امكانية العرض للمستخدمين</span>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-phone"> الدولة</label>
+              <div class="col-sm-10">
+                <select class="form-control" formControlName="countryId">
+                  <option seleted disabled>اختر الدولة</option>
+                  <option *ngFor="let country of Countries" [value]="country.id">{{country.arName}}</option>
+                </select>
+                <div *ngIf="AddForm.get('countryId')?.invalid &&  AddForm.get('countryId')?.touched"
+                     class="error mt-2">
+                  <small *ngIf="AddForm.get('countryId')?.errors?.['required']" class="text-danger">
+                    يرجى ادخال اسم  الدولة
+                  </small>
+                </div>
+
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-phone">شعار الجامعة </label>
+              <div class="col-sm-10">
+                <input type="file" class="form-control" formControlName="logoPath" (change)="OnchangeFile($event)" id="basic-default-name"
+                       placeholder="صورة العلم " />
+                <div *ngIf="AddForm.get('logoPath')?.invalid && AddForm.get('logoPath')?.touched"
+                     class="error mt-2">
+                  <small *ngIf="AddForm.get('logoPath')?.errors?.['required']" class="text-danger">
+                    يرجى ارفاق  شعار الجامعة
+                  </small>
+                </div>
+
+              </div>
+            </div>
+            <div class="row justify-content-end">
+              <div class="col-sm-10">
+                <button type="submit" (click)="Submit()" class="btn btn-primary">حفظ</button>
+                <button routerLink="/userPage/universities" class="btn btn-secondary mx-2">الغاء</button>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,75 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="row" dir="rtl">
+       <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">تعديل  طلب تسليف</h5>
+          </div>
+           <div class="card-body">
+            <form [formGroup]="CreditSystemForm">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">اسم المستخدم</label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="applicationUserId">
+                        <option selected value="" disabled>اختر المستخدم</option>
+                        <option *ngFor="let User of Users" [value]="User.id">{{User.name}}</option>
+                      </select>  
+                  <div *ngIf="CreditSystemForm.controls['applicationUserId'].invalid && CreditSystemForm.controls['applicationUserId'].touched">
+                    <small *ngIf="CreditSystemForm.controls['applicationUserId'].errors?.['required']" class="text-danger">اختر المستخدم</small>
+                   </div>
+                </div>
+  
+              </div>
+                 <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">المبلغ</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" formControlName="amount" placeholder="ادخل المبلغ"/>
+                  <div *ngIf="CreditSystemForm.controls['amount'].invalid && CreditSystemForm.controls['amount'].touched">
+                   <small *ngIf="CreditSystemForm.controls['amount'].errors?.['required']" class="text-danger">ادخل المبلغ</small>
+                    <small *ngIf="CreditSystemForm.controls['amount'].errors?.['min']" class="text-danger">المبلغ يجب ان يكون اكبر من الصفر</small>
+
+                </div>
+                </div>
+  
+              </div>
+                 <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">ملاحضات الأدمن</label>
+                <div class="col-sm-10">
+                     <textarea rows="4" class="form-control" formControlName="commentToAdmin" placeholder="ادخل ملاحظاتك حول طلب التسليف"></textarea>
+                  <div *ngIf="CreditSystemForm.controls['commentToAdmin'].invalid && CreditSystemForm.controls['commentToAdmin'].touched">
+                    <small *ngIf="CreditSystemForm.controls['commentToAdmin'].errors?.['required']" class="text-danger">ادخل ملاحظاتك</small>
+                   </div>
+                </div>
+  
+              </div>
+              
+           
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone">  </label>
+                <div class="col-sm-10">
+                  <div class="row d-flex justify-content-between">
+                    <div class="col-6 d-flex">
+                      <input type="checkbox" formControlName="isApproved" class="form-check" /><span class="px-2 py-3">الموافقة على الطلب ؟</span>
+  
+                    </div>
+                  </div>
+  
+                </div>
+              </div>
+              <div class="row justify-content-end">
+                <div class="col-sm-10">
+                  <button type="submit" (click)="Submit()" class="btn btn-primary">تعديل</button>
+                  <button routerLink="/userPage/CreditSystem" class="btn btn-secondary mx-2">الغاء</button>
+  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  

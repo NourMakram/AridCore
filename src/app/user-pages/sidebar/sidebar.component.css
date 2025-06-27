@@ -1,0 +1,285 @@
+/* App Brand
+******************************************************************************* */
+.app-brand {
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  align-items: center;
+}
+.app-brand .app-brand-text {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+.app-brand .layout-menu-toggle {
+  display: block;
+}
+.app-brand .app-brand-img {
+  display: block;
+}
+.app-brand .app-brand-img-collapsed {
+  display: none;
+}
+
+.app-brand-link {
+  display: flex;
+  align-items: center;
+}
+
+/* App brand with vertical menu */
+.menu-horizontal .app-brand,
+.menu-horizontal .app-brand + .menu-divider {
+  display: none !important;
+}
+
+@media (min-width: 1200px) {
+  .layout-menu-collapsed:not(.layout-menu-hover) .layout-menu .app-brand-logo ~ .app-brand-text,
+  .menu-collapsed:not(:hover) .app-brand .app-brand-logo ~ .app-brand-text {
+    opacity: 0;
+  }
+  .layout-menu-collapsed:not(.layout-menu-hover) .layout-menu .app-brand-img,
+  .menu-collapsed:not(:hover) .app-brand .app-brand-img {
+    display: none;
+  }
+  .layout-menu-collapsed:not(.layout-menu-hover) .layout-menu .app-brand-img-collapsed,
+  .menu-collapsed:not(:hover) .app-brand .app-brand-img-collapsed {
+    display: block;
+  }
+}
+/* Within menu */
+:not(.layout-menu) > .menu-vertical.menu-collapsed:not(.layout-menu):not(:hover) .app-brand,
+.layout-menu-collapsed:not(.layout-menu-hover):not(.layout-menu-offcanvas):not(.layout-menu-fixed-offcanvas) .layout-menu .app-brand {
+  inline-size: 5.25rem;
+}
+:not(.layout-menu) > .menu-vertical.menu-collapsed:not(.layout-menu):not(:hover) .app-brand-logo,
+:not(.layout-menu) > .menu-vertical.menu-collapsed:not(.layout-menu):not(:hover) .app-brand-link,
+:not(.layout-menu) > .menu-vertical.menu-collapsed:not(.layout-menu):not(:hover) .app-brand-text,
+.layout-menu-collapsed:not(.layout-menu-hover):not(.layout-menu-offcanvas):not(.layout-menu-fixed-offcanvas) .layout-menu .app-brand-logo,
+.layout-menu-collapsed:not(.layout-menu-hover):not(.layout-menu-offcanvas):not(.layout-menu-fixed-offcanvas) .layout-menu .app-brand-link,
+.layout-menu-collapsed:not(.layout-menu-hover):not(.layout-menu-offcanvas):not(.layout-menu-fixed-offcanvas) .layout-menu .app-brand-text {
+  margin-inline: auto;
+}
+:not(.layout-menu) > .menu-vertical.menu-collapsed:not(.layout-menu):not(:hover) .app-brand-logo ~ .app-brand-text,
+.layout-menu-collapsed:not(.layout-menu-hover):not(.layout-menu-offcanvas):not(.layout-menu-fixed-offcanvas) .layout-menu .app-brand-logo ~ .app-brand-text {
+  overflow: hidden;
+  opacity: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+:not(.layout-menu) > .menu-vertical.menu-collapsed:not(.layout-menu):not(:hover) .app-brand .layout-menu-toggle,
+.layout-menu-collapsed:not(.layout-menu-hover):not(.layout-menu-offcanvas):not(.layout-menu-fixed-offcanvas) .layout-menu .app-brand .layout-menu-toggle {
+  inset-inline-start: calc(5.25rem - 1.5rem);
+  opacity: 0;
+}
+:not(.layout-menu) > .menu-vertical.menu-collapsed:not(.layout-menu):not(:hover) .app-brand-img,
+.layout-menu-collapsed:not(.layout-menu-hover):not(.layout-menu-offcanvas):not(.layout-menu-fixed-offcanvas) .layout-menu .app-brand-img {
+  display: none;
+}
+:not(.layout-menu) > .menu-vertical.menu-collapsed:not(.layout-menu):not(:hover) .app-brand-img-collapsed,
+.layout-menu-collapsed:not(.layout-menu-hover):not(.layout-menu-offcanvas):not(.layout-menu-fixed-offcanvas) .layout-menu .app-brand-img-collapsed {
+  display: block;
+}
+
+/* Custom Options
+******************************************************************************* */
+/* Custom option */
+.custom-option {
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: 0.375rem;
+  padding-inline-start: 0;
+}
+.custom-option:hover {
+  border-color: var(--bs-gray-600);
+}
+.custom-option:not(.custom-option-image) {
+  margin: calc(2px - (var(--bs-border-width)));
+}
+.custom-option.checked {
+  border: 2px solid var(--bs-primary);
+  margin: 0;
+}
+.custom-option.custom-option-image {
+  overflow: hidden;
+  border-width: 2px;
+  margin-block-end: 0;
+}
+.custom-option.custom-option-image .custom-option-body img {
+  block-size: 100%;
+  inline-size: 100%;
+}
+.custom-option.custom-option-image.custom-option-image-radio .form-check-input {
+  display: none;
+}
+.custom-option.custom-option-image.custom-option-image-check .form-check-input {
+  position: absolute;
+  border: 1px solid transparent;
+  margin: 0;
+  inset-block-start: 1rem;
+  inset-inline-end: 1rem;
+}
+.custom-option.custom-option-image.custom-option-image-check:hover .form-check-input {
+  border-width: 1px;
+  border-color: var(--bs-body-color);
+}
+.custom-option.custom-option-image.custom-option-image-check:hover .form-check-input:checked {
+  border-color: var(--bs-primary);
+}
+.custom-option .custom-option-content {
+  inline-size: 100%;
+}
+.custom-option .form-check-input {
+  margin-inline-start: -2.016em;
+}
+.custom-option.custom-option-basic .custom-option-content {
+  padding: 1.065em;
+  padding-inline-start: 3.515em;
+}
+.custom-option.custom-option-basic .custom-option-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block-end: 0.4375rem;
+}
+.custom-option .custom-option-body {
+  color: var(--bs-body-color);
+}
+.custom-option.custom-option-icon {
+  overflow: hidden;
+}
+.custom-option.custom-option-icon.checked .icon-base,
+.custom-option.custom-option-icon.checked svg {
+  color: var(--bs-primary);
+}
+.custom-option.custom-option-icon .icon-base,
+.custom-option.custom-option-icon svg {
+  color: var(--bs-heading-color);
+}
+.custom-option.custom-option-icon .custom-option-content {
+  padding: 1.065em;
+  text-align: center;
+}
+.custom-option.custom-option-icon .custom-option-body {
+  display: block;
+  margin-block-end: 0.5rem;
+}
+.custom-option.custom-option-icon .custom-option-body .icon-base {
+  block-size: 1.75rem;
+  font-size: 1.75rem;
+  inline-size: 1.75rem;
+  display: block;
+  margin-block-end: 0.5rem;
+  margin-inline: auto;
+}
+.custom-option.custom-option-icon .custom-option-body svg {
+  block-size: 2.5rem;
+  inline-size: 2.5rem;
+  margin-block-end: 0.5rem;
+}
+.custom-option.custom-option-icon .custom-option-body .custom-option-title {
+  display: block;
+  color: var(--bs-heading-color);
+  font-weight: 500;
+  margin-block-end: 0.5rem;
+}
+.custom-option.custom-option-icon .form-check-input {
+  margin: 0;
+  float: none;
+}
+.custom-option.custom-option-label.checked {
+  background-color: rgba(var(--bs-primary-rgb), 0.12);
+  color: var(--bs-primary);
+}
+.custom-option.custom-option-label.checked .custom-option-header span,
+.custom-option.custom-option-label.checked .custom-option-title {
+  color: var(--bs-primary);
+}
+
+.switch {
+  --bs-switch-bg: var(--bs-gray-100);
+  --bs-switch-color: rgba(var(--bs-base-color), 0.4);
+  --bs-switch-border-color: var(--bs-gray-100);
+  --bs-switch-box-shadow: 0 0 0.25rem 0 rgba(34, 48, 62, 0.16) inset;
+  --bs-switch-holder-bg: var(--bs-white);
+  --bs-switch-holder-shadow: var(--bs-box-shadow-xs);
+  /* Checked state */
+  position: relative;
+  display: inline-block;
+  border-radius: 30rem;
+  cursor: pointer;
+  margin-inline-end: 0.75rem;
+  vertical-align: middle;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  min-block-size: 1.35rem;
+}
+.switch .switch-input:checked ~ .switch-toggle-slider {
+  --bs-switch-bg: var(--bs-primary);
+  --bs-switch-color: var(--bs-white);
+  --bs-switch-border-color: var(--bs-primary);
+  --bs-switch-box-shadow: 0 .125rem .375rem 0 rgba(var(--bs-primary-rgb), .3);
+}
+.switch[class*=switch-outline-], .switch.switch-outline {
+  --bs-switch-bg: transparent;
+  --bs-switch-box-shadow: none;
+  --bs-switch-holder-bg: var(--bs-gray-100);
+  --bs-switch-holder-shadow: none;
+}
+.switch[class*=switch-outline-] .switch-input:checked ~ .switch-toggle-slider, .switch.switch-outline .switch-input:checked ~ .switch-toggle-slider {
+  --bs-switch-bg: transparent;
+  --bs-switch-box-shadow: none;
+}
+.switch.switch-outline .switch-input:checked ~ .switch-toggle-slider {
+  --bs-switch-color: var(--bs-primary);
+  --bs-switch-border-color: var(--bs-primary);
+  --bs-switch-holder-bg: var(--bs-primary);
+}
+.switch:has(.switch-input:disabled) {
+  cursor: not-allowed;
+}
+.switch .switch-input ~ .switch-label {
+  padding-inline-start: 3rem;
+}
+.switch .switch-toggle-slider {
+  block-size: 1.35rem;
+  inline-size: 2.5rem;
+  line-height: 1.35rem;
+}
+.switch .switch-toggle-slider .icon-base {
+  position: relative;
+  block-size: 0.9375rem;
+  font-size: 0.9375rem;
+  inline-size: 0.9375rem;
+  inset-block-start: -1.9px;
+}
+.switch .switch-label {
+  inset-block-start: 0.01875rem;
+}
+.switch .switch-toggle-slider::after {
+  block-size: 14px;
+  inline-size: 14px;
+}
+.switch .switch-on {
+  padding-inline: 0.125rem 1.1rem;
+}
+.switch .switch-off {
+  padding-inline-start: 1.1rem;
+}
+.switch .switch-input.is-invalid ~ .switch-label, .was-validated .switch .switch-input:invalid ~ .switch-label {
+  color: var(--bs-form-invalid-border-color);
+}
+.switch .switch-input.is-valid ~ .switch-label, .was-validated .switch .switch-input:valid ~ .switch-label {
+  color: var(--bs-form-valid-border-color);
+}
+.switch .switch-input.is-invalid ~ .switch-toggle-slider, .was-validated .switch .switch-input:invalid ~ .switch-toggle-slider {
+  --bs-switch-border-color: var(--bs-form-invalid-border-color);
+}
+.switch .switch-input.is-valid ~ .switch-toggle-slider, .was-validated .switch .switch-input:valid ~ .switch-toggle-slider {
+  --bs-switch-border-color: var(--bs-form-valid-border-color);
+}
+.switch .switch-input.is-invalid:checked ~ .switch-toggle-slider, .was-validated .switch .switch-input:invalid:checked ~ .switch-toggle-slider {
+  --bs-switch-bg: var(--bs-form-invalid-color);
+  --bs-switch-box-shadow: none;
+}
+.switch .switch-input.is-valid:checked ~ .switch-toggle-slider, .was-validated .switch .switch-input:valid:checked ~ .switch-toggle-slider {
+  --bs-switch-bg: var(--bs-form-valid-color);
+  --bs-switch-box-shadow: none;
+}

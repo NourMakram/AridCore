@@ -1,0 +1,162 @@
+<div class="container bg-white">
+    <div class="row p-3">
+        <div class="col">
+            <div class="accordion" id="collapsibleSection">
+                <div mat-dialog-content>
+                    <form [formGroup]="AddressForm">
+                        <h6 class="text-center" >تعديل عنوان  </h6>
+                        <div class="row  text-start">
+
+                              <div class="col-md-6">
+                                <label class=" col-form-label text-sm-end" for="collapsible-state">الاسم المختصر
+                                    للعنوان</label>
+                                <input type="text" minlength="4" maxlength="10" class="form-control"
+                                    formControlName="addressSaveName" placeholder="الأسم المختصر للعنوان">
+                                <div *ngIf="AddressForm.get('addressSaveName')?.invalid &&  AddressForm.get('addressSaveName')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="AddressForm.get('addressSaveName')?.errors?.['required']"
+                                        class="text-danger">
+                                        ادخل الاسم المختصر للعنوان
+                                    </small>
+                                    <small *ngIf="AddressForm.get('addressSaveName')?.errors?.['minlength']"
+                                        class="text-danger">
+                                        عدد الحروف للأسم المختصر من 4 إلى 10
+                                    </small>
+                                    <small *ngIf="AddressForm.get('addressSaveName')?.errors?.['maxlength']"
+                                        class="text-danger">
+                                        عدد الحروف للأسم المختصر من 4 إلى 10
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class=" col-form-label text-sm-end" for="collapsible-state">رقم الهاتف</label>
+                                <input type="text" class="form-control" formControlName="phoneNumber">
+                                <div *ngIf="AddressForm.get('phoneNumber')?.invalid &&  AddressForm.get('phoneNumber')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="AddressForm.get('phoneNumber')?.errors?.['required']"
+                                        class="text-danger">
+                                        ادخل رقم الهاتف
+                                    </small>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class=" col-form-label text-sm-end" for="collapsible-state">الاسم بالعربي</label>
+                                <input type="text" class="form-control" formControlName="arName">
+                                <div *ngIf="AddressForm.get('arName')?.invalid &&  AddressForm.get('arName')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="AddressForm.get('arName')?.errors?.['required']" class="text-danger">
+                                        ادخل الاسم بالعربي
+                                    </small>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class=" col-form-label text-sm-end" for="collapsible-state"> الاسم
+                                    بالانجليزي</label>
+                                <input type="text" class="form-control" formControlName="enName">
+                                <div *ngIf="AddressForm.get('enName')?.invalid &&  AddressForm.get('enName')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="AddressForm.get('enName')?.errors?.['required']" class="text-danger">
+                                        ادخل الاسم بالانجليزي
+                                    </small>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class=" col-form-label text-sm-end" for="collapsible-state">البلد </label>
+                                <select class="form-control form-select" formControlName="countryId">
+                                    <option selected disabled value="">اختر البلد</option>
+                                    <option *ngFor="let country of countries" [value]="country.id">{{country.arName}}
+                                    </option>
+                                </select>
+                                <div *ngIf="AddressForm.get('countryId')?.invalid &&  AddressForm.get('countryId')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="AddressForm.get('countryId')?.errors?.['required']"
+                                        class="text-danger">
+                                        ادخل البلد التابع لها
+                                    </small>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class=" col-form-label text-sm-end" for="collapsible-state">المدينة </label>
+                                <select class="form-control form-select" formControlName="cityId">
+                                    <option selected disabled value="">اختر المدينة</option>
+                                    <option *ngFor="let city of cities" [value]="city.id">{{city.arCityName}}</option>
+                                </select>
+                                <div *ngIf="AddressForm.get('cityId')?.invalid &&  AddressForm.get('cityId')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="AddressForm.get('cityId')?.errors?.['required']" class="text-danger">
+                                        ادخل المدينة
+                                    </small>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <label class=" col-form-label text-sm-end" for="collapsible-state">الجامعة </label>
+                                <select class="form-control form-select" formControlName="universityId">
+                                    <option selected disabled value="">اختر الجامعة</option>
+                                    <option *ngFor="let university of Universities" [value]="university.id">
+                                        {{university.arUniversityName}}</option>
+                                </select>
+                                <div *ngIf="AddressForm.get('universityId')?.invalid &&  AddressForm.get('universityId')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="AddressForm.get('universityId')?.errors?.['required']"
+                                        class="text-danger">
+                                        ادخل الجامعة
+                                    </small>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class=" col-form-label text-sm-end" for="collapsible-state">الكلية </label>
+                                <select class="form-control form-select" formControlName="facultyId">
+                                    <option selected disabled value="">اختر الكلية</option>
+                                    <option *ngFor="let faculty of Faculties" [value]="faculty.id">
+                                        {{faculty.arFacultyName}}</option>
+                                </select>
+                                <div *ngIf="AddressForm.get('facultyId')?.invalid &&  AddressForm.get('facultyId')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="AddressForm.get('facultyId')?.errors?.['required']"
+                                        class="text-danger">
+                                        ادخل الكلية
+                                    </small>
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label class=" col-form-label text-sm-end" for="collapsible-state"> العنوان كاملا متضمنا
+                                    اسم البناية </label>
+                                <textarea rows="2" class="form-control" maxlength="150" formControlName="fullAddress" placeholder="ادخل العنوان كاملا متضمنا اسم البناية"></textarea>
+                                <div *ngIf="AddressForm.get('fullAddress')?.invalid &&  AddressForm.get('fullAddress')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="AddressForm.get('fullAddress')?.errors?.['required']"
+                                        class="text-danger">
+                                        ادخل العنوان كاملا متضمنا اسم البناية
+
+                                    </small>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                        <button mat-button (click)="Submit()" class="btn btn-success me-3 "
+                            cdkFocusInitial>حفظ</button>
+                        <button mat-button class="btn btn-secondary" (click)="GoBack()">الغاء </button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

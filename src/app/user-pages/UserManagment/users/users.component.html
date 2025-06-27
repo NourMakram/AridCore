@@ -1,0 +1,165 @@
+ <!-- Content wrapper -->
+  <div class="container-xxl flex-grow-1 container-p-y">
+   <div class="row g-6 mb-6">
+     <div class="col-sm-6 col-xl-3">
+       <div class="card">
+         <div class="card-body">
+           <div class="d-flex align-items-start justify-content-between">
+             <div class="content-left">
+               <span class="text-heading">المستخدمين</span>
+               <div class="d-flex align-items-center my-1">
+                 <h4 class="mb-0 me-2">21,459</h4>
+                 <p class="text-success mb-0">(+29%)</p>
+               </div>
+               <small class="mb-0">Total Users</small>
+             </div>
+             <div class="avatar">
+               <span class="avatar-initial rounded bg-label-primary">
+                 <i class="icon-base bx bx-group icon-lg"></i>
+               </span>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="col-sm-6 col-xl-3">
+       <div class="card">
+         <div class="card-body">
+           <div class="d-flex align-items-start justify-content-between">
+             <div class="content-left">
+               <span class="text-heading">الأعضاء </span>
+               <div class="d-flex align-items-center my-1">
+                 <h4 class="mb-0 me-2">4,567</h4>
+                 <p class="text-success mb-0">(+18%)</p>
+               </div>
+               <small class="mb-0">Last week analytics </small>
+             </div>
+             <div class="avatar">
+               <span class="avatar-initial rounded bg-label-danger">
+                 <i class="icon-base bx bx-user-plus icon-lg"></i>
+               </span>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="col-sm-6 col-xl-3">
+       <div class="card">
+         <div class="card-body">
+           <div class="d-flex align-items-start justify-content-between">
+             <div class="content-left">
+               <span class="text-heading"> المسئولين </span>
+               <div class="d-flex align-items-center my-1">
+                 <h4 class="mb-0 me-2">19,860</h4>
+                 <p class="text-danger mb-0">(-14%)</p>
+               </div>
+               <small class="mb-0">Last week analytics</small>
+             </div>
+             <div class="avatar">
+               <span class="avatar-initial rounded bg-label-success">
+                 <i class="icon-base bx bx-user-check icon-lg"></i>
+               </span>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="col-sm-6 col-xl-3">
+       <div class="card">
+         <div class="card-body">
+           <div class="d-flex align-items-start justify-content-between">
+             <div class="content-left">
+               <span class="text-heading">العضويات الأحترافية</span>
+               <div class="d-flex align-items-center my-1">
+                 <h4 class="mb-0 me-2">237</h4>
+                 <p class="text-success mb-0">(+42%)</p>
+               </div>
+               <small class="mb-0">Last week analytics</small>
+             </div>
+             <div class="avatar">
+               <span class="avatar-initial rounded bg-label-warning">
+                 <i class="icon-base bx bx-user-voice icon-lg"></i>
+               </span>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+   <div class="card">
+    <!-- <h5 class="card-header">Table Caption</h5> -->
+    <a class="btn btn-primary m-3 text-white" routerLink="/userPage/users/Add" style="width: 200px;">اضافة مستخدم </a>
+
+    <div class="row px-3 mb-3">
+      <div class="col-lg-6 col-12 col-md-6">
+        <input type="text" class="form-control" (input)="FilterByName($event)" placeholder="البحث باسم المستخدم">
+
+      </div>
+      <div class="col-lg-6 col-12 col-md-6">
+        <select class="form-control form-select" (change)="FilterByRole($event)">
+          <option selected disabled>اختر الدور</option>
+          <option *ngFor="let role of Roles" [value]="role.id">{{role.name}}</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>الأسم باللغة العربية</th>
+            <th>الأسم باللغة الأنجليزية</th>
+            <th>البريد الألكترونى</th>
+            <th>الدور</th>
+ 
+            <th>العمليات</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of Users ; let i = index" >
+            <td>
+              <span>{{i+1}}</span>
+            </td>
+            <td>{{user.arName}}</td>
+            <td>{{user.enName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.roleName}}</td>
+
+             <td>
+              <div class="dropdown">
+                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                  <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="javascript:void(0);" 
+                  [routerLink]="['/userPage/users/Edit',user.id]"
+                     ><i class="icon-base bx bx-edit-alt me-1 text-warning"></i> تعديل</a>
+                     
+                  <a class="dropdown-item" (click)="Delete(user.id)" href="javascript:void(0);"
+                    ><i class="icon-base bx bx-trash me-1 text-danger"></i> حذف</a
+                  >
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+       <div class="paginator-container text-center d-flex justify-content-center">
+        <mat-paginator [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5,25,50,100]"
+          (page)="onPageChange($event)">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+ </div>
+ <!-- / Content -->
+
+ <!-- Footer -->
+ 
+ <!-- / Footer -->
+
+ <div class="content-backdrop fade"></div>
+ <!-- Content wrapper -->

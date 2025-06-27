@@ -1,0 +1,68 @@
+
+<div class="container-xxl flex-grow-1 container-p-y justify-content-start">
+
+    <div class="card">
+      <a class="btn btn-primary m-1 text-white my-3" (click)="openAddDialog()"
+      style="width: 200px;" > اضافة اعلان</a>
+  
+  
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>العنوان</th>
+              <th>الرابط</th>
+              <th>الستايل</th>
+              <th> الظهور</th>
+               <th>الموقع</th>
+               <th>المستخدم</th>
+               <th>الترتيب</th>
+              <th>العمليات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let Layout of LayoutAds;let i = index">
+              <td>
+               <span>{{i+1}}</span>
+              </td>
+              <td>{{Layout.title}}</td>
+              <td class="text-wrap">{{Layout.url}}</td>
+              <td>{{Layout.class}}</td>
+              <td>{{Layout.isVisible}}</td>
+              <td>{{Layout.position}}</td>
+              <td>{{Layout.applicationUserName}}</td>
+              <td>{{Layout.indx}}</td>
+            
+                <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" (click)="openEditDialog(Layout.id)"
+                      ><i class="icon-base bx bx-edit-alt me-1 text-warning"></i> تعديل</a
+                    >
+                    <a class="dropdown-item" (click)="Delete(Layout.id)"
+                      ><i class="icon-base bx bx-trash me-1 text-danger"></i> حذف</a
+                    >
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="paginator-container text-center d-flex justify-content-center">
+            <mat-paginator [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5,25,50,100]"
+                (page)="onPageChange($event)">
+            </mat-paginator>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+  <div class="content-backdrop fade"></div>
+   

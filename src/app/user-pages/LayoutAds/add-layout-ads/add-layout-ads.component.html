@@ -1,0 +1,132 @@
+<div class="container">
+    <div class="row p-3">
+        <div class="col">
+            <h4 class="text-center">اضافة اعلان</h4>
+             <div class="accordion" id="collapsibleSection">
+                <div mat-dialog-content>
+                    <form [formGroup]="layoutAdsForm">
+
+                        <div class="row  text-start">
+                            <div class="col-md-6">
+                                <label class="col-form-label text-sm-end" for="collapsible-state">العنوان </label>
+                                <input type="text" class="form-control" formControlName="Title" />
+                                <div *ngIf="layoutAdsForm.get('Title')?.invalid &&  layoutAdsForm.get('Title')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="layoutAdsForm.get('Title')?.errors?.['required']"
+                                        class="text-danger">
+                                        ادخل عنوان الأعلان
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="  col-form-label text-sm-end" for="collapsible-state">الرابط </label>
+                                <input type="text" class="form-control" formControlName="Url" />
+                                <div *ngIf="layoutAdsForm.get('Url')?.invalid &&  layoutAdsForm.get('Url')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="layoutAdsForm.get('Url')?.errors?.['required']"
+                                        class="text-danger">
+                                        ادخل رابط الأعلان
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="  col-form-label text-sm-end" for="collapsible-state">الستايل </label>
+                                <select class="form-control form-select" formControlName="Class">
+                                    <option selected disabled value="">اختر الستايل</option>
+                                    <option value="1">primary</option>
+                                    <option value="2">dark</option>
+                                    <option value="3">danger</option>
+                                    <option value="4">info</option>
+                                    <option value="5">light</option>
+                                    <option value="6">secondary</option>
+                                    <option value="7">success</option>
+                                    <option value="8">warning</option>
+
+
+                                </select>
+                                <div *ngIf="layoutAdsForm.get('Class')?.invalid &&  layoutAdsForm.get('Class')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="layoutAdsForm.get('Class')?.errors?.['required']"
+                                        class="text-danger">
+                                        اختر الستايل
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="  col-form-label text-sm-end" for="collapsible-state">الموقع </label>
+                                <select class="form-control form-select" formControlName="Position">
+                                    <option selected disabled value="">اختر الموقع</option>
+                                    <option value="1">DefaultAds</option>
+                                    <option value="2">Left</option>
+                                    <option value="3">Bottom</option>
+                                    <option value="4">Now</option>
+
+
+                                </select>
+                                <div *ngIf="layoutAdsForm.get('Position')?.invalid &&  layoutAdsForm.get('Position')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="layoutAdsForm.get('Position')?.errors?.['required']"
+                                        class="text-danger">
+                                        اختر الموقع
+                                    </small>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="  col-form-label text-sm-end" for="collapsible-state">صورة الأعلان</label>
+                                <input type="file" class="form-control" accept="image/*" formControlName="image"
+                                    (change)="OnchangeFile($event)">
+                                <div *ngIf="layoutAdsForm.get('image')?.invalid &&  layoutAdsForm.get('image')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="layoutAdsForm.get('image')?.errors?.['required']"
+                                        class="text-danger">
+                                        قم بارفاق صورة الأعلان
+                                    </small>
+                                </div>
+                            </div>
+   <div class="col-md-6">
+                                <label class="  col-form-label text-sm-end" for="collapsible-state">الترتيب </label>
+                                <input type="number" class="form-control" formControlName="Indx" />
+                                <div *ngIf="layoutAdsForm.get('Indx')?.invalid &&  layoutAdsForm.get('Indx')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="layoutAdsForm.get('Indx')?.errors?.['required']"
+                                        class="text-danger">
+                                        ادخل ترتيب الأعلان
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-md-6 "> 
+                  <label class="  col-form-label text-sm-end" for="collapsible-state"></label>
+
+                               <div class="d-flex   mt-1 " style="align-items: center;">
+                                 <input type="checkbox" class="form-check me-3" formControlName="IsVisible"
+                                > 
+                                <p>ظهور</p>
+                               </div>
+
+                            </div>
+
+
+
+                        </div>
+
+                    </form>
+
+                    <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                        <button mat-button (click)="Submit()" class="btn btn-success me-3 "
+                            cdkFocusInitial>تأكيد</button>
+                        <button mat-button class="btn btn-secondary" (click)="onNoClick()">الغاء </button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

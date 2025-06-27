@@ -1,0 +1,127 @@
+ <div class="card-body pt-3">
+  <h6  class="text-left">تعديل المعلومات الشخصية </h6>
+          <form id="formAccountSettings" [formGroup]="UpdateForm" method="POST" onsubmit="return false">
+            <div class="row text-start">
+              <div class="mb-3 col-md-6 col-12 col-lg-6">
+                <label for="firstName" class="form-label">الأسم بااللغة العربية</label>
+                <input class="form-control" formControlName="arName" type="text" id="firstName" name="firstName" value="John"
+                  autofocus />
+
+                  <div *ngIf="UpdateForm.controls['arName'].invalid && UpdateForm.controls['arName'].touched">
+                    <small *ngIf="UpdateForm.controls['arName'].errors?.['required']" class="text-danger">اسم الأسم بالعربية مطلوب</small>
+                    <small *ngIf="UpdateForm.controls['arName'].errors?.['pattern']" class="text-danger">يجب إدخال الأسم  باللغة العربية فقط</small>
+                  </div>
+              </div>
+              <div class="mb-3 col-md-6 col-12 col-lg-6">
+                <label for="lastName" class="form-label">الأسم باالغة الأنجليزية</label>
+                <input class="form-control" type="text" formControlName="enName" name="lastName" id="lastName" value="Doe" />
+                <div *ngIf="UpdateForm.controls['enName'].invalid && UpdateForm.controls['enName'].touched">
+                  <small *ngIf="UpdateForm.controls['enName'].errors?.['required']" class="text-danger">اسم الأسم بالأنجليزية مطلوب</small>
+                  <small *ngIf="UpdateForm.controls['enName'].errors?.['pattern']" class="text-danger">يجب إدخال الأسم  باللغة الأنجليزية فقط</small>
+                </div>
+              
+              </div>
+              <div class="mb-3 col-md-6 col-12 col-lg-6">
+                <label for="address" class="form-label">الأسماء الأخرى</label>
+                <input type="text" class="form-control" formControlName="otherNames" id="address" name="address" placeholder="Address" />
+              
+              
+              </div>
+              <div class="mb-3 col-md-6 col-12 col-lg-6">
+                <label for="address" class="form-label">رقم الهاتف</label>
+                <input type="text" class="form-control" formControlName="phoneNumber" id="address" name="address" placeholder="Address" />
+              </div>
+              <div class="mb-3 col-md-6 col-12 col-lg-6">
+                <label for="organization" class="form-label">البريد الألكترونى الأول</label>
+                <input type="text" class="form-control" formControlName="email" id="organization" name="organization" value="ThemeSelection" />
+                <div *ngIf="UpdateForm.controls['email'].invalid && UpdateForm.controls['email'].touched">
+                  <small *ngIf="UpdateForm.controls['email'].errors?.['required']" class="text-danger">ادخل البريد الألكترونى</small>
+                  <small *ngIf="UpdateForm.controls['email'].errors?.['email']" class="text-danger">البريد الألكترونى غير صحيح</small>
+              </div>
+              </div>
+              <div class="mb-3 col-md-6 col-12 col-lg-6">
+                <label class="form-label" for="phoneNumber">البريد الألكترونى الثانى </label>
+                <div class="input-group input-group-merge">
+                  <input type="text" id="phoneNumber" formControlName="secondEmail" name="phoneNumber" class="form-control"
+                    placeholder="" />
+                    <div *ngIf="UpdateForm.controls['secondEmail'].invalid && UpdateForm.controls['secondEmail'].touched">
+                      <!-- <small *ngIf="UpdateForm.controls['secondEmail'].errors?.['required']" class="text-danger">ادخل البريد الألكترونى</small> -->
+                      <small *ngIf="UpdateForm.controls['secondEmail'].errors?.['email']" class="text-danger">البريد الألكترونى غير صحيح</small>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3 col-md-6 col-12 col-lg-6">
+                <label for="address" class="form-label">تاريخ الميلاد </label>
+                <input type="date" class="form-control" formControlName="dateofBirth" id="address" name="address" placeholder="Address" />
+              </div>
+              <div class="mb-3 col-md-6 col-12 col-lg-6">
+                <label class="form-label" for="country">الجنس</label>
+                <select id="country" class="select2 form-select" formControlName="gender">
+                  <option value="">اختر</option>
+                  <option value="2">انثى</option>
+                  <option value="1">ذكر</option>
+                  <option value="0">غير محدد</option>
+                </select>
+              </div>
+              <div class="mb-3 col-md-6 col-12 col-lg-6">
+                <label class="form-label" for="country">الدولة</label>
+                <select class="form-control text-end" formControlName="countryId">
+                  <option seleted disabled>اختر الدولة</option>
+                  <option *ngFor="let country of Countries" [value]="country.id">{{country.arName}}</option>
+                </select>
+                <div *ngIf="UpdateForm.get('countryId')?.invalid &&  UpdateForm.get('countryId')?.touched"
+                class="error mt-2">
+             <small *ngIf="UpdateForm.get('countryId')?.errors?.['required']" class="text-danger">
+               يرجى ادخال اسم  الدولة
+             </small>
+           </div>
+              </div>
+              <div class="mb-3 col-md-6 col-12 col-lg-6">
+                <label class="form-label" for="country">المدينة</label>
+                <select class="form-control" formControlName="cityId">
+                  <option seleted disabled>اختر المدينة</option>
+                  <option *ngFor="let city of Citites" [value]="city.id">{{city.arCityName}}</option>
+                </select>
+              </div>
+              <div class="mb-3 col-md-6 col-12 col-lg-6">
+                <label for="language" class="form-label">لغة الواجهة</label>
+                <select id="language" class="select2 form-select" formControlName="uiLanguage">
+                  <option value="">اختر اللغة</option>
+                  <option value="en">English</option>
+                  <option value="fr">French</option>
+                  <option value="de">German</option>
+                  <option value="pt" >Portuguese</option>
+                  <option value="ar">Arabic</option>
+
+                </select>
+              </div>
+              <div class="mb-3 col-md-6 col-12 col-lg-6">
+                  <label class="form-label" for="country">الجامعة</label>
+                  <select class="form-control" formControlName="universityId">
+                    <option seleted disabled>اختر الجامعة</option>
+                    <option *ngFor="let university of Universities" [value]="university.id">{{university.arUniversityName}}</option>
+                  </select>
+              </div>  
+              <div class="mb-3 col-md-6 col-12 col-lg-6">  
+                  <label class="form-label" for="country">الكلية</label>
+                  <select id="country" class="select2 form-select" formControlName="facultyId">
+                    <option value="" selected disabled>اختر الكلية</option>
+                    <option *ngFor="let faculty of Faculties" [value]="faculty.id">{{faculty.arFacultyName}}</option>
+                  </select>
+                </div>  
+                <div class="mb-3 col-md-6 col-12 col-lg-6">  
+                  <label class="form-label" for="country">الصورة الشخصية</label>
+                   <input type="file" class="form-control" (change)="OnchangeFile($event)"/>
+                </div>  
+              <div class="mb-3 col-md-6 col-12 col-lg-6  py-4">
+                <input type="checkbox"  id="phoneNumber" formControlName="isNotUniversity" class="mx-2"/>
+
+                  <label class="form-label" for="phoneNumber">أعمل / انتمى لدى موسسة غير جامعية </label>
+                 </div>
+              <div class="mt-2">
+                <button type="submit" class="btn btn-primary mx-2" (click)="Submit()">حفظ التغييرات</button>
+                <button type="reset" class="btn btn-outline-secondary">الغاء</button>
+              </div>
+              </div>
+          </form>
+        </div>

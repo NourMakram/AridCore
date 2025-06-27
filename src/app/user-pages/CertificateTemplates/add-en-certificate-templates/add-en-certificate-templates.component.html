@@ -1,0 +1,234 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="row" dir="rtl">
+       <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">اضافة قالب  جديد بالأنجليزية</h5>
+          </div>
+           <div class="card-body">
+            <form [formGroup]="CertificateForm">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone"> العنوان الرئيسى</label>
+                <div class="col-sm-10 ">
+                     <input type="text"  value=" شَهادةُ مُشارَكة" formControlName="HeaderTitle" class="form-control" />
+                      <div *ngIf="CertificateForm.controls['HeaderTitle'].invalid && CertificateForm.controls['HeaderTitle'].touched">
+                        <small *ngIf="CertificateForm.controls['HeaderTitle'].errors?.['required']" class="text-danger">هذا الحقل مطلوب </small>
+                       </div>
+                    
+               </div>
+               </div>
+                
+              
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone">السطر الأول</label>
+                <div class="col-sm-10">
+                       <input type="text"  value="تم منح هذه الشهادة إلى " formControlName="FirstLine" class="form-control" />
+  
+                   
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone"> الأسم</label>
+                <div class="col-sm-10">
+                   
+                      <input type="text"  value="Researcher Name" readonly class="form-control" />
+  
+                     
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone">السطر الثانى</label>
+                <div class="col-sm-10">
+                       <input type="text"  value="تقديرا للمشاركة في محاضرة علمية بعنوان " formControlName="SecondLine" class="form-control" />
+                      <div *ngIf="CertificateForm.controls['SecondLine'].invalid && CertificateForm.controls['SecondLine'].touched">
+                        <small *ngIf="CertificateForm.controls['SecondLine'].errors?.['required']" class="text-danger">هذا الحقل مطلوب </small>
+                       </div>
+                  
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone"> عنوان الشهادة</label>
+                <div class="col-sm-10">
+                       <input type="text"  formControlName="MainTitle" class="form-control" />
+                      <div *ngIf="CertificateForm.controls['MainTitle'].invalid && CertificateForm.controls['MainTitle'].touched">
+                        <small *ngIf="CertificateForm.controls['MainTitle'].errors?.['required']" class="text-danger">هذا الحقل مطلوب </small>
+                       </div>
+                     
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone">السطر الثالث </label>
+                <div class="col-sm-10">
+                       <input type="text" value="والتي نظمتها منصة أُريد العلمية للعلماء والخبراء والباحثين الناطقين بالعربية " formControlName="ThirdLine" class="form-control" />
+
+  
+                </div>
+              </div>
+             
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company">مجلد الشهادة </label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="CertificateTemplateFolder">
+                        <option selected value="" disabled>اختر  مجلد الشهادة</option>
+                        <option *ngFor="let CertificateTemplateFolder of CertificateTemplateFolders" [value]="CertificateTemplateFolder.id">{{CertificateTemplateFolder.name}}</option>
+                      </select>  
+                  <div *ngIf="CertificateForm.controls['CertificateTemplateFolder'].invalid && CertificateForm.controls['CertificateTemplateFolder'].touched">
+                    <small *ngIf="CertificateForm.controls['CertificateTemplateFolder'].errors?.['required']" class="text-danger">اختر  مجلد الشهادة</small>
+                   </div>
+  
+                </div>
+              </div>
+              
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company"> اللغة </label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="Language">
+                        <option selected value="" disabled>اختر اللغة  </option>
+                        <option [value]="0">اللغة العربية</option>
+                        <option [value]="1">اللغة الأنجليزية</option>
+
+                      </select>  
+                  <div *ngIf="CertificateForm.controls['Language'].invalid && CertificateForm.controls['Language'].touched">
+                    <small *ngIf="CertificateForm.controls['Language'].errors?.['required']" class="text-danger">اختر اللغة </small>
+                   </div>
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company"> خلفية الشهادة </label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="CertificateBackground">
+                        <option selected value="" disabled>اختر خلفية الشهادة  </option>
+                        <option [value]="0">WhilteYellow2020</option>
+                        <option [value]="1">NaviBlue2021</option>
+
+                      </select>  
+                  <div *ngIf="CertificateForm.controls['CertificateBackground'].invalid && CertificateForm.controls['CertificateBackground'].touched">
+                    <small *ngIf="CertificateForm.controls['CertificateBackground'].errors?.['required']" class="text-danger">اختر خلفية الشهادة </small>
+                   </div>
+  
+                </div>
+              </div>
+              
+              
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone"> PdfFees </label>
+                <div class="col-sm-10">
+                   
+                      <input type="number" value="5"  formControlName="PdfFees" class="form-control" />
+                     
+                  
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone"> PaperBasedFees </label>
+                <div class="col-sm-10">
+                 
+                      <input type="number" value="30"  formControlName="PaperBasedFees" class="form-control" />
+                     
+                    
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone">  الصورة</label>
+                <div class="col-sm-10">
+               
+                      <input type="file" formControlName="image" accept=".png,.jpg,.jpeg,.gif,.tif" (change)="OnchangeFile($event)" class="form-control" />
+                      <div *ngIf="CertificateForm.controls['image'].invalid && CertificateForm.controls['image'].touched">
+                        <small *ngIf="CertificateForm.controls['image'].errors?.['required']" class="text-danger"> هذا الحقل مطلوب </small>
+                       </div>
+                    
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone">  </label>
+                <div class="col-sm-10">
+                  <div class="row d-flex justify-content-between">
+                    <div class="col-6 d-flex">
+                      <input type="checkbox" formControlName="IsPdf" class="form-check" />  IsPdf
+  </div>
+  </div>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone">  </label>
+                <div class="col-sm-10">
+                  <div class="row d-flex justify-content-between">
+                    <div class="col-6 d-flex">
+                      <input type="checkbox" formControlName="IsActive" class="form-check" /> متاح
+  </div>
+  </div>
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone">  </label>
+                <div class="col-sm-10">
+                  <div class="row d-flex justify-content-between">
+                    <div class="col-6 d-flex">
+                      <input type="checkbox" formControlName="IsRequiredUserEntry" class="form-check" />  متطلب معلومات من المستخدم
+</div>
+</div>
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone">  </label>
+                <div class="col-sm-10">
+                  <div class="row d-flex justify-content-between">
+                    <div class="col-6 d-flex">
+                      <input type="checkbox" formControlName="IsCanBeShipped" class="form-check" /> IsCanBeShipped
+</div>
+</div>
+  
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone">  </label>
+                <div class="col-sm-10">
+                  <div class="row d-flex justify-content-between">
+                    <div class="col-6 d-flex">
+                      <input type="checkbox" formControlName="IsDetailsCoursePageVisible" class="form-check" /><span class="px-2 py-3">  الظهور الاني في الواجهة                      </span>
+</div>
+</div>
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone">  </label>
+                <div class="col-sm-10">
+                  <div class="row d-flex justify-content-between">
+                    <div class="col-6 d-flex">
+                      <input type="checkbox" formControlName="IsBadgeRequired" class="form-check" /> متطلب وسام
+                    </div>
+                  </div>
+  
+                </div>
+              </div>
+             
+              <div class="row justify-content-end">
+                <div class="col-sm-10">
+                  <button type="submit" (click)="Submit()" class="btn btn-primary">اضافة</button>
+                  <button routerLink="/userPage/CertificateTemplates" class="btn btn-secondary mx-2">الغاء</button>
+  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  

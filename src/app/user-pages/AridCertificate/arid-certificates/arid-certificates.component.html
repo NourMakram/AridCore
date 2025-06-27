@@ -1,0 +1,90 @@
+<div class="container-xxl flex-grow-1 container-p-y justify-content-start" style="margin-top: 60px;">
+
+  <div class="card">
+    <h5 class="card-header">الشهادات الخاصة بالاعضاء </h5>
+
+
+    <!-- <button class="btn btn-primary" (click)="OpenAddDialog()">اصدار شهادة</button> -->
+    <div class="table-responsive text-nowrap">
+      <table class="table">
+        <!-- <caption class="ms-6">
+            قائمة   والصلاحيات
+          </caption> -->
+        <thead>
+          <tr>
+            <th>رقم الشهادة</th>
+            <th>  العضو</th>
+            <th>الشهادة</th>
+            <th>الأسم فى الشهادة </th>
+            <th>تاريخ الأصدار</th>
+            <th>اللغة</th>
+            <th> رسوم الشهادة</th>
+            <th>العمليات</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Certificate of Certificates;let i = index">
+
+            <td>arid-{{Certificate.id}}</td>
+            <td>{{Certificate.username}}</td>
+
+            <td>{{Certificate.mainTitle}}</td>
+            <td>{{Certificate.certificateName}}</td>
+            <td>{{Certificate.issuseDate}}</td>
+
+            <td>{{Certificate.language}}</td>
+            <td>
+              <div [hidden]="Certificate.isPaid == false">
+                <span style="color:green" class="fa fa-check">تم الدفع</span>
+              </div>
+
+              <div [hidden]="Certificate.bdfFees == 0">
+                <span style="color:green">مجانية</span>
+              </div>
+              <div [hidden]="Certificate.bdfFees != 0">
+                <span style="color:red">لم يسدد</span>
+              </div>
+
+            </td>
+            <td>
+              <div class="dropdown">
+                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                  <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                </button>
+                <div class="dropdown-menu">
+
+                  <!-- <div >
+                    <a class="dropdown-item" (click)="OpenEditDialog(Certificate.id, Certificate.language)">
+                      <i class="icon-base bx bx-edit-alt me-1 text-warning"></i> تعديل الاسم
+                    </a>
+                  </div> -->
+                  <!-- <div >
+                    <a class="dropdown-item"  [routerLink]="['/clientPage/Certificates/Details',Certificate.id]">
+                      <i class="icon-base  fa fa-eye me-1 text-primery"></i> تفاصيل
+                    </a>
+                  </div> -->
+                  <div >
+                    <a class="dropdown-item"  (click)="Delete(Certificate.id)">
+                      <i class="icon-base fa fa-trash me-1 text-danger"></i> حذف
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+       <div class="paginator-container text-center d-flex justify-content-center">
+            <mat-paginator [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5,25,50,100]"
+                (page)="onPageChange($event)">
+            </mat-paginator>
+        </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="content-backdrop fade"></div>
+<!-- Content wrapper -->

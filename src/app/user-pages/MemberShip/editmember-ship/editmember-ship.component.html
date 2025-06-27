@@ -1,0 +1,75 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="row" dir="rtl">
+       <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">تعديل بيانات عضوية مميزة</h5>
+          </div>
+           <div class="card-body">
+            <form [formGroup]="MemberShipForm">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">اسم المستخدم</label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="applicationUserId">
+                        <option seleted disabled>اختر المستخدم</option>
+                        <option *ngFor="let User of Users" [value]="User.id">{{User.name}}</option>
+                      </select>  
+                  <div *ngIf="MemberShipForm.controls['applicationUserId'].invalid && MemberShipForm.controls['applicationUserId'].touched">
+                    <small *ngIf="MemberShipForm.controls['applicationUserId'].errors?.['required']" class="text-danger">اختر المستخدم</small>
+                   </div>
+                </div>
+  
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company">نوع الأشتراك </label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="membershipType">
+                        <option seleted disabled>اختر نوع الأشتراك</option>
+                        <option *ngFor="let MemberShipType of MemberShipTypes" [value]="MemberShipType.id">{{MemberShipType.name}}</option>
+                      </select>  
+                  <div *ngIf="MemberShipForm.controls['membershipType'].invalid && MemberShipForm.controls['membershipType'].touched">
+                    <small *ngIf="MemberShipForm.controls['membershipType'].errors?.['required']" class="text-danger">اختر نوع الأشتراك</small>
+                   </div>
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company">تاريخ الأنتهاء </label>
+                <div class="col-sm-10">
+                   <input type="datetime" class="form-control"  formControlName="dueDate"  >
+                  <div *ngIf="MemberShipForm.controls['dueDate'].invalid && MemberShipForm.controls['dueDate'].touched">
+                    <small *ngIf="MemberShipForm.controls['dueDate'].errors?.['required']" class="text-danger">ادخل تاريخ الأنتهاء</small>
+                   </div>
+  
+                </div>
+              </div>
+           
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone">  </label>
+                <div class="col-sm-10">
+                  <div class="row d-flex justify-content-between">
+                    <div class="col-6 d-flex">
+                      <input type="checkbox" formControlName="status" class="form-check" /><span class="px-2 py-3">متاح </span>
+  
+                    </div>
+                  </div>
+  
+                </div>
+              </div>
+              <div class="row justify-content-end">
+                <div class="col-sm-10">
+                  <button type="submit" (click)="Submit()" class="btn btn-primary">حفظ</button>
+                  <button routerLink="/userPage/MemberShips" class="btn btn-secondary mx-2">الغاء</button>
+  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  

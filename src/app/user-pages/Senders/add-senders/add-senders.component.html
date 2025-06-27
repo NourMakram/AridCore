@@ -1,0 +1,61 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="row" dir="rtl">
+      <!-- Basic Layout -->
+      <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">اضافة مرسل</h5>
+          </div>
+          <!--{{SenderForm.value|json}}-->
+          <div class="card-body">
+            <form [formGroup]="SenderForm">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name"> البريد الألكترونى </label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" formControlName="email" id="basic-default-name" placeholder="ادخل البريد الألكترونى" />
+  
+                  <div *ngIf="SenderForm.controls['email'].invalid && SenderForm.controls['email'].touched">
+                    <small *ngIf="SenderForm.controls['email'].errors?.['required']" class="text-danger">ادخل البريد الألكترونى</small>
+                  </div>
+                </div>
+  
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name"> الوصف العربى </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" formControlName="arDescription" id="basic-default-name" placeholder="ادخل الوصف باللغة العربية" />
+  
+                  <div *ngIf="SenderForm.controls['arDescription'].invalid && SenderForm.controls['arDescription'].touched">
+                    <small *ngIf="SenderForm.controls['arDescription'].errors?.['required']" class="text-danger">ادخل الوصف باللغة العربية</small>
+                  </div>
+                </div>
+  
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name"> الوصف الأنجليزي </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" formControlName="enDescription" id="basic-default-name" placeholder="ادخل الوصف باللغة الأنجليزية" />
+  
+                  <div *ngIf="SenderForm.controls['enDescription'].invalid && SenderForm.controls['enDescription'].touched">
+                    <small *ngIf="SenderForm.controls['enDescription'].errors?.['required']" class="text-danger">ادخل الوصف باللغة الأنجليزية</small>
+                  </div>
+                </div>
+  
+              </div>
+              <div class="row justify-content-end">
+                <div class="col-sm-10">
+                  <button type="submit" (click)="Submit()" class="btn btn-primary">اضافة</button>
+                  <button routerLink="/userPage/Senders" class="btn btn-secondary mx-2">الغاء</button>
+  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  

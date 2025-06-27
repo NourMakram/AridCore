@@ -1,0 +1,89 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="row" dir="rtl">
+       <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-header">
+  <h3 class="text-center">نظام شركاء الحوالات المالية لاعضاء منصة اريد العلمية</h3>
+        <p class="text-center">لو كانت لديكم الرغبة بخدمة اعضاء منصة اريد الدولية والانضمام الى قائمة شركاء اريد فيمكن التفضل باكمال الاستمارة ادناه والتي تشترط وجود رصيد في حسابكم وسيخضع الطلب للتدقيق من قبل اللجنة المعنية. </p>
+       
+         </div>
+           <div class="card-body">
+            <form [formGroup]="PartnerForm">
+              <!-- <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">اسم المستخدم</label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="applicationUserId">
+                        <option selected value="" disabled>اختر المستخدم</option>
+                        <option *ngFor="let User of Users" [value]="User.id">{{User.name}}</option>
+                      </select>  
+                  <div *ngIf="PartnerForm.controls['applicationUserId'].invalid && PartnerForm.controls['applicationUserId'].touched">
+                    <small *ngIf="PartnerForm.controls['applicationUserId'].errors?.['required']" class="text-danger">اختر المستخدم</small>
+                   </div>
+                </div>
+  
+              </div> -->
+                <div class="row mb-3 text-start">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">الأسم الظاهر</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="name" placeholder="ادخل الأسم"/>
+                  <div *ngIf="PartnerForm.controls['name'].invalid && PartnerForm.controls['name'].touched">
+                   <small *ngIf="PartnerForm.controls['name'].errors?.['required']" class="text-danger">ادخل الأسم </small>
+                </div>
+                </div>
+  
+              </div>
+               <div class="row mb-3 text-start">
+                <label class="col-sm-2 col-form-label " for="basic-default-name">البريد الألكترونى</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" formControlName="email" placeholder="ادخل البريد الألكترونى"/>
+                  <div *ngIf="PartnerForm.controls['email'].invalid && PartnerForm.controls['email'].touched">
+                   <small *ngIf="PartnerForm.controls['email'].errors?.['required']" class="text-danger">ادخل البريد الألكترونى </small>
+                  <small *ngIf="PartnerForm.controls['email'].errors?.['email']" class="text-danger">ادخل بريد الكترونى صالح  </small>
+
+                </div>
+                </div>
+  
+              </div>
+               <div class="row mb-3 text-start">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">رقم الهاتف</label>
+                <div class="col-sm-10">
+                    <input type="tel" class="form-control" formControlName="mobile" placeholder="ادخل رقم الهاتف"/>
+                  <div *ngIf="PartnerForm.controls['mobile'].invalid && PartnerForm.controls['mobile'].touched">
+                   <small *ngIf="PartnerForm.controls['mobile'].errors?.['required']" class="text-danger">ادخل رقم الهاتف </small>
+                <small *ngIf="PartnerForm.controls['mobile'].errors?.['pattern']" class="text-danger">
+                يرجى إدخال رقم هاتف صالح (يمكن أن يبدأ بـ +، ويحتوي على أرقام، مسافات أو شرطات)
+                </small>
+                </div>
+                </div>
+  
+              </div>
+                 <div class="row mb-3 text-start">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">تفاصيل</label>
+                <div class="col-sm-10">
+                     <textarea rows="4" maxlength="200" class="form-control" formControlName="details" placeholder="هل لديك ملاحظات ؟ "></textarea>
+                  <div *ngIf="PartnerForm.controls['details'].invalid && PartnerForm.controls['details'].touched">
+                    <small *ngIf="PartnerForm.controls['details'].errors?.['required']" class="text-danger">ادخل ملاحظاتك</small>
+                   </div>
+                </div>
+  
+              </div>
+              
+           
+              
+              <div class="row justify-content-end">
+                <div class="col-sm-10">
+                  <button type="submit" (click)="CheckBalance()" class="btn btn-primary">تعديل</button>
+                  <button (click)="GoBack()" class="btn btn-secondary mx-2">الغاء</button>
+  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  

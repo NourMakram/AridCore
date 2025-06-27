@@ -1,0 +1,138 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+       <div class="col">
+         <div class="card mb-6">
+           <div class="card-header p-0 nav-align-top">
+             <!-- <h6 class="mt-4 text-start">اضافة مستخدم</h6> -->
+              <ul class="nav nav-tabs" role="tablist">
+               <li class="nav-item">
+                 <button
+                   class="nav-link active"
+                   data-bs-toggle="tab"
+                   data-bs-target="#form-tabs-personal"
+                   role="tab"
+                   aria-selected="true">
+                   تعديل مستخدم
+                 </button>
+               </li>
+               <!-- <li class="nav-item">
+                 <button
+                   class="nav-link"
+                   data-bs-toggle="tab"
+                   data-bs-target="#form-tabs-account"
+                   role="tab"
+                   aria-selected="false">
+                   Account Details
+                 </button>
+               </li>
+               <li class="nav-item">
+                 <button
+                   class="nav-link"
+                   data-bs-toggle="tab"
+                   data-bs-target="#form-tabs-social"
+                   role="tab"
+                   aria-selected="false">
+                   Social Links
+                 </button>
+               </li> -->
+             </ul>  
+           </div>
+   <!-- {{AddUserForm.value|json}} -->
+           <div class="tab-content">
+             <div class="tab-pane fade active show" id="form-tabs-personal" role="tabpanel">
+               <form [formGroup]="AddUserForm">
+                 <div class="row g-6">
+                   <div class="col-md-6 text-start">
+                     <label class="form-label" for="formtabs-first-name">الأسم باللغة العربية</label>
+                     <input type="text" id="formtabs-first-name"  formControlName="arName" class="form-control" placeholder="John" />
+                     <div *ngIf="AddUserForm.controls['arName'].invalid && AddUserForm.controls['arName'].touched">
+                       <small *ngIf="AddUserForm.controls['arName'].errors?.['required']" class="text-danger">ادخل الأسم بالعربية مطلوب</small>
+                       <small *ngIf="AddUserForm.controls['arName'].errors?.['pattern']" class="text-danger">يجب إدخال الأسم  باللغة العربية فقط</small>
+                     </div>
+                   </div>
+                   <div class="col-md-6 text-start">
+                     <label class="form-label" for="formtabs-last-name">الأسم باللغة الأنجليزية</label>
+                     <input type="text" id="formtabs-last-name" formControlName="enName" class="form-control" placeholder="Doe" />
+   <div *ngIf="AddUserForm.controls['enName'].invalid && AddUserForm.controls['enName'].touched">
+                                 <small *ngIf="AddUserForm.controls['enName'].errors?.['required']" class="text-danger">ادخل الأسم بالأنجليزية مطلوب</small>
+                                 <small *ngIf="AddUserForm.controls['enName'].errors?.['pattern']" class="text-danger">يجب إدخال الأسم  باللغة الأنجليزية فقط</small>
+                               </div>
+                   </div>
+                   <div class="col-md-6 text-start">
+                     <label class="form-label" for="formtabs-email">البريد الألكترونى</label>
+                     <div class="input-group input-group-merge">
+                       <input
+                         type="text"
+                         id="formtabs-email"
+                         class="form-control"
+                         placeholder="john.doe"
+                         formControlName="email"
+                         aria-label="john.doe"
+                         aria-describedby="formtabs-email2" />
+                       <span class="input-group-text" id="formtabs-email2">example.com</span>
+                     </div>
+                     <div *ngIf="AddUserForm.controls['email'].invalid && AddUserForm.controls['email'].touched">
+                       <small *ngIf="AddUserForm.controls['email'].errors?.['required']" class="text-danger">ادخل البريد الألكترونى</small>
+                       <small *ngIf="AddUserForm.controls['email'].errors?.['email']" class="text-danger">البريد الألكترونى غير صحيح</small>
+                   </div>
+                   </div>
+                   <div class="col-md-6 text-start">
+                     <div class="form-password-toggle">
+                       <label class="form-label" for="formtabs-password">كلمة المرور</label>
+                       <div class="input-group input-group-merge">
+                         <input
+                           type="password"
+                           formControlName="password"
+                           id="formtabs-password"
+                           class="form-control"
+                           placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                           aria-describedby="formtabs-password2" />
+                         <span class="input-group-text cursor-pointer" id="formtabs-password2"
+                           ><i class="icon-base bx bx-hide"></i
+                         ></span>
+                       </div>
+                       <div *ngIf="AddUserForm.controls['password'].invalid && AddUserForm.controls['password'].touched">
+                          <small *ngIf="AddUserForm.controls['password'].errors?.['min']" class="text-danger">كلمة المرور يجب ان لا تقل عن 6 احرف </small>
+                     </div>
+                     </div>
+                   </div>
+                   <div class="col-md-6 text-start">
+                     <label class="form-label" for="formtabs-country">الدولة</label>
+                     <select  id="formtabs-country"class="select2 form-select" formControlName="countryId">
+                       <option seleted disabled>اختر الدولة</option>
+                       <option *ngFor="let country of Countries" [value]="country.id">{{country.arName}}</option>
+                     </select>
+                     <div *ngIf="AddUserForm.get('countryId')?.invalid &&  AddUserForm.get('countryId')?.touched"
+                          class="error mt-2">
+                       <small *ngIf="AddUserForm.get('countryId')?.errors?.['required']" class="text-danger">
+                         يرجى ادخال اسم  الدولة
+                       </small>
+                     </div>
+                   </div>
+                   <div class="col-md-6 select2-primary text-start">
+                     <label class="form-label" for="formtabs-language">الدور</label>
+                     <select id="formtabs-language" class="select2 form-select" formControlName="roleName">
+                       <option selected disabled>اختر الدور</option>
+                       <option *ngFor="let role of Roles" [value]="role.name">{{role.name}}</option>
+                     </select>
+                     <div *ngIf="AddUserForm.get('roleName')?.invalid &&  AddUserForm.get('roleName')?.touched"
+                          class="error mt-2">
+                       <small *ngIf="AddUserForm.get('roleName')?.errors?.['required']" class="text-danger">
+                         يرجى  اختيار دور مستخدم
+                       </small>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="pt-6">
+                   <button type="submit" (click)="Submit()" class="btn btn-primary me-4">حفظ</button>
+                   <button routerLink="/userPage/users" class="btn btn-label-secondary">الغاء</button>
+                 </div>
+               </form>
+             </div>
+             
+           </div>
+         </div>
+       </div>
+     </div>
+   
+     </div>

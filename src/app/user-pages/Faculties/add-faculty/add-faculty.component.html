@@ -1,0 +1,115 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+  <div class="row" dir="rtl">
+    <!-- Basic Layout -->
+    <div class="col-xxl">
+      <div class="card mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <h5 class="mb-0">اضافة كلية</h5>
+        </div>
+        <!-- {{AddForm.value|json}} -->
+        <div class="card-body">
+          <form [formGroup]="AddForm">
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-name">اسم الكلية باللغة العربية </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="arFacultyName" id="basic-default-name" placeholder="ادخل اسم   الكلية  باللغة العربية " />
+
+                <div *ngIf="AddForm.controls['arFacultyName'].invalid && AddForm.controls['arFacultyName'].touched">
+                  <small *ngIf="AddForm.controls['arFacultyName'].errors?.['required']" class="text-danger">اسم   الكلية  بالعربية مطلوب</small>
+                  <small *ngIf="AddForm.controls['arFacultyName'].errors?.['pattern']" class="text-danger">يجب إدخال اسم   الكلية  باللغة العربية فقط</small>
+                </div>
+              </div>
+
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-company">اسم الكلية بااللغة الأنجليزية</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="enFacultyName" id="basic-default-name" placeholder="ادخل اسم الكليةباللغة الأنجليزية " />
+                <div *ngIf="AddForm.controls['enFacultyName'].invalid && AddForm.controls['enFacultyName'].touched">
+                  <small *ngIf="AddForm.controls['enFacultyName'].errors?.['required']" class="text-danger">اسم   الكلية  بالإنجليزية مطلوب</small>
+                  <small *ngIf="AddForm.controls['enFacultyName'].errors?.['pattern']" class="text-danger">يجب إدخال اسم   الكلية  باللغة الإنجليزية فقط</small>
+                </div>
+
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-phone"> المدينة</label>
+              <div class="col-sm-10">
+                <select class="form-control" formControlName="cityId">
+                  <option seleted disabled>اختر المدينة</option>
+                  <option *ngFor="let city of Citites" [value]="city.id">{{city.arCityName}}</option>
+                </select>
+                <div *ngIf="AddForm.get('cityId')?.invalid &&  AddForm.get('cityId')?.touched"
+                     class="error mt-2">
+                  <small *ngIf="AddForm.get('cityId')?.errors?.['required']" class="text-danger">
+                    يرجى ادخال اسم  المدينة
+                  </small>
+                </div>
+
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-phone"> الجامعة</label>
+              <div class="col-sm-10">
+                <select class="form-control" formControlName="universityId">
+                  <option seleted disabled>اختر الجامعة</option>
+                  <option *ngFor="let university of Universities" [value]="university.id">{{university.arUniversityName}}</option>
+                </select>
+                <div *ngIf="AddForm.get('universityId')?.invalid &&  AddForm.get('universityId')?.touched"
+                     class="error mt-2">
+                  <small *ngIf="AddForm.get('universityId')?.errors?.['required']" class="text-danger">
+                    يرجى ادخال اسم  الجامعة
+                  </small>
+                </div>
+
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-phone"> التخصص</label>
+              <div class="col-sm-10">
+                <select class="form-control" formControlName="specialityId">
+                  <option seleted disabled>اختر التخصص</option>
+                  <option *ngFor="let speciality of specitites" [value]="speciality.id">{{speciality.name}}</option>
+                </select>
+                <div *ngIf="AddForm.get('specialityId')?.invalid &&  AddForm.get('specialityId')?.touched"
+                     class="error mt-2">
+                  <small *ngIf="AddForm.get('specialityId')?.errors?.['required']" class="text-danger">
+                    يرجى ادخال اسم  التخصص
+                  </small>
+                </div>
+
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-phone">  </label>
+              <div class="col-sm-10">
+                <div class="row d-flex justify-content-between">
+                  <div class="col-6 d-flex">
+                    <input type="checkbox" formControlName="isIndexed" class="form-check" /><span class="px-2 py-3">قبول</span>
+
+                  </div>
+
+                  <div class="col-6 d-flex">
+                    <input type="checkbox" formControlName="hasPostGraduation" class="form-check" /><span class="px-2 py-3">تمنح دراسات عليا؟	  </span>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="row justify-content-end">
+              <div class="col-sm-10">
+                <button type="submit" (click)="Submit()" class="btn btn-primary">اضافة</button>
+                <button routerLink="/userPage/faculties" class="btn btn-secondary mx-2">الغاء</button>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,27 @@
+<section class="section-py bg-body first-section-pt">
+    <div class="container bg-white">
+        <div class="card px-3 shadow-none border-0">
+            <div class="row">
+                <div class="col-lg-7 card-body border-end p-md-8">
+                     <h3 class="mb-2 text-success text-center">شكراً لك! تم تعبئة الرصيد  بنجاح.</h3>
+                    <h4 class="text-left">تفاصيل الدفع</h4>
+
+                    <p><strong>رقم الفاتورة:</strong> {{ paymentDetails.id }}</p>
+                    <p><strong>المبلغ المدفوع:</strong> {{ paymentDetails.amount }} {{ paymentDetails.currency |
+                        uppercase }}</p>
+                    <p><strong>طريقة الدفع:</strong> {{ paymentDetails.paymentMethod }}</p>
+                    <p><strong>حالة الدفع:</strong> {{ paymentDetails.status }}</p>
+                    <p><strong>تاريخ الدفع:</strong> {{ paymentDetails.created | date }}</p>
+                    
+                    
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-primary w-50 text-center"
+                            routerLink="/clientPage/Pages/PaymentMethod">طرق تعبئة
+                            الرصيد الأخرى</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

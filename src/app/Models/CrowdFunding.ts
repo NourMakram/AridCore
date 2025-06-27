@@ -1,0 +1,20 @@
+export interface CrowdFunding {
+    id: number,
+    applicationUserName: string,
+    applicationUserImage:string,
+    title: string,
+    purpose: string,
+    details: string,
+    adminComment: string,
+    status: string,
+    startingDate: string,
+    closingDate: string,
+    budget: number,
+    duration: number,
+    video: string,
+    imageUrl: string,
+    fileUrl: string,
+    stopAcceptPayments: boolean,
+    crowdFundingPaymentAmount:number,
+    recordDate:string
+}

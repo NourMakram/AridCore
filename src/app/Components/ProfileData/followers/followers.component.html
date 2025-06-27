@@ -1,0 +1,44 @@
+ <div class="card card-action ">
+                        <div class="card-header align-items-center">
+                          <h5 class="card-action-title mb-0" [hidden]="Data.type == 2">المتابعين</h5>
+                          <h5 class="card-action-title mb-0" [hidden]="Data.type == 1">الذين تتابعهم</h5>
+
+                        </div>
+                         <div class="card-body" style="max-height: 300px; overflow-y:scroll;">
+                          <ul class="list-unstyled mb-0">
+                            <li class="mb-4" *ngFor="let user of Users" >
+                              <div class="d-flex align-items-center">
+                                <div class="d-flex align-items-center">
+                                  <div class="avatar me-2">
+                                    <a [routerLink]="['/clientPage/Profile/',user.id]">
+                                    <img [src]="user.image" alt="Avatar" class="rounded-circle" />
+
+                                    </a>
+                                  </div>
+                                  <div class="me-2">
+                                    <a [routerLink]="['/clientPage/Profile/',user.id]">
+
+                                    <h6 class="mb-0">{{user.name}}</h6>
+                                    </a>
+                                    <!-- <small>45 Connections</small> -->
+                                  </div>
+                                </div>
+                               
+                              </div>
+                            </li>
+                            <li class="mb-4" [hidden]="Users.length > 0">
+                              <p>لا يوجد بيانات</p>
+                            </li>
+                            
+
+                            <li class="text-center" [hidden]="total <= count">
+                              <a href="javascript:;" (click)="GetMore()">عرض المزيد</a>
+                            </li>
+                          </ul>
+                          <div class="m-auto text-center">
+                            <button type="button" (click)="Close()" class="btn btn-label-primary" >اغلاق</button>
+
+                          </div>
+
+                        </div>
+                      </div>

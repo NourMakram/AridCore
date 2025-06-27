@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row p-3">
+        <div class="col">
+            <div class="accordion" id="collapsibleSection">
+                <div mat-dialog-content>
+                    <h5>تفاصيل النشاط الأكاديمى</h5>
+                    <div class="row  text-start">
+                        <div class="col-4">
+                            <h6>نوع النشاط :</h6>
+                            <h6> العنوان بالعربى:</h6>
+                            <h6> العنوان بالأنجليزية :</h6>
+                            <h6> الدولة :</h6>
+
+                            <h6> بتاريخ :</h6>
+                            <h6> الوصف :</h6>
+
+
+                        </div>
+                        <div class="col-8">
+                            <p>{{AcadmicActivity.activityType}}</p>
+                            <p>{{AcadmicActivity.arTitle}}</p>
+                            <p>{{AcadmicActivity.enTitle}}</p>
+                            <p>{{AcadmicActivity.country}} </p>
+
+                            <p>{{AcadmicActivity.activityDate}} </p>
+                            <p class="text-wrap">{{AcadmicActivity.arDescription}}</p>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                        <button mat-button class="btn btn-secondary" (click)="onNoClick()">اغلاق </button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

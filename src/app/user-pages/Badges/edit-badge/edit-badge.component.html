@@ -1,0 +1,154 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="row" dir="rtl">
+       <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">تعديل وسام </h5>
+          </div>
+           <div class="card-body">
+            <form [formGroup]="BadgeForm">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone"> الإسم العربي</label>
+                <div class="col-sm-10 ">
+                     <input type="text"  placeholder="ادخل الأسم  باللغة العربية" formControlName="ArBadgeName" class="form-control" />
+                      <div *ngIf="BadgeForm.controls['ArBadgeName'].invalid && BadgeForm.controls['ArBadgeName'].touched">
+                        <small *ngIf="BadgeForm.controls['ArBadgeName'].errors?.['required']" class="text-danger">هذا الحقل مطلوب </small>
+                        <small *ngIf="BadgeForm.controls['ArBadgeName'].errors?.['pattern']" class="text-danger">ادخل الأسم باللغة العربية </small>
+
+                    </div>
+                    
+               </div>
+               </div>
+               <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone"> الإسم الإنجليزي</label>
+                <div class="col-sm-10 ">
+                    <input type="text"  placeholder="ادخل الأسم  باللغة الأنجليزية" formControlName="EnBadgeName" class="form-control" />
+                    <div *ngIf="BadgeForm.controls['EnBadgeName'].invalid && BadgeForm.controls['EnBadgeName'].touched">
+                      <small *ngIf="BadgeForm.controls['EnBadgeName'].errors?.['required']" class="text-danger">هذا الحقل مطلوب </small>
+                      <small *ngIf="BadgeForm.controls['EnBadgeName'].errors?.['pattern']" class="text-danger">ادخل الأسم باللغة الأنجليزية </small>
+
+                  </div>
+                    
+               </div>
+               </div>
+               <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name"> الوصف العربى   </label>
+                <div class="col-sm-10">
+                  <textarea type="text" rows="8" class="form-control" formControlName="ArBadgeDesc" id="basic-default-name" placeholder="ادخل الوصف العربى  " ></textarea>
+                  <div *ngIf="BadgeForm.controls['ArBadgeDesc'].invalid && BadgeForm.controls['ArBadgeDesc'].touched">
+                    <small *ngIf="BadgeForm.controls['ArBadgeDesc'].errors?.['required']" class="text-danger">هذا  الحقل مطلوب </small>
+                  </div>
+                </div>
+  
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name"> الوصف الأنجليزي   </label>
+                <div class="col-sm-10">
+                    <textarea type="text" rows="8" class="form-control" formControlName="EnBadgeDesc"
+                     id="basic-default-name" placeholder="ادخل الوصف الأنجليزي" ></textarea>
+                    <div *ngIf="BadgeForm.controls['EnBadgeDesc'].invalid && BadgeForm.controls['EnBadgeDesc'].touched">
+                      <small *ngIf="BadgeForm.controls['EnBadgeDesc'].errors?.['required']" class="text-danger">هذا  الحقل مطلوب </small>
+                    </div>
+                  </div>
+    
+              </div>
+               <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company"> محتوى رسالة اريد </label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="EmailContentId">
+                        <option selected value="" disabled>اختر محتوى الرسالة  </option>
+                        <option *ngFor="let EmailContent of EmailContents" [value]="EmailContent.id">{{EmailContent.arSubject}}</option>
+
+                      </select>  
+                  <div *ngIf="BadgeForm.controls['EmailContentId'].invalid && BadgeForm.controls['EmailContentId'].touched">
+                    <small *ngIf="BadgeForm.controls['EmailContentId'].errors?.['required']" class="text-danger">اختر محتوى الرسالة </small>
+                   </div>
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone">الشعار</label>
+                <div class="col-sm-10">
+               
+                      <input type="file" formControlName="imageFile" accept=".png,.jpg,.jpeg,.gif,.tif" (change)="OnchangeFile($event)" class="form-control" />
+                      <div *ngIf="BadgeForm.controls['imageFile'].invalid && BadgeForm.controls['imageFile'].touched">
+                        <small *ngIf="BadgeForm.controls['imageFile'].errors?.['required']" class="text-danger"> هذا الحقل مطلوب </small>
+                       </div>
+                    
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company"> قالب الشهادة بالانجليزي </label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="CertificateTemplateId">
+                        <option selected value="" disabled>اختر قالب الشهادة بالانجليزي</option>
+                        <option *ngFor="let certificateTemplate of certificateTemplates" [value]="certificateTemplate.id">{{certificateTemplate.mainTitle}}</option>
+
+                      </select>  
+                  <div *ngIf="BadgeForm.controls['CertificateTemplateId'].invalid && BadgeForm.controls['CertificateTemplateId'].touched">
+                    <small *ngIf="BadgeForm.controls['CertificateTemplateId'].errors?.['required']" class="text-danger">اختر  قالب الشهادة بالانجليزى </small>
+                   </div>
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company">  قالب الشهادة بالعربي </label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="AraCertificateTemplateId">
+                        <option selected value="" disabled>اختر قالب الشهادة بالعربي   </option>
+                        <option *ngFor="let certificateTemplate of certificateTemplates" [value]="certificateTemplate.id">{{certificateTemplate.mainTitle}}</option>
+
+                      </select>  
+                  <div *ngIf="BadgeForm.controls['AraCertificateTemplateId'].invalid && BadgeForm.controls['AraCertificateTemplateId'].touched">
+                    <small *ngIf="BadgeForm.controls['AraCertificateTemplateId'].errors?.['required']" class="text-danger">اختر قالب الشهادة بالعربي  </small>
+                   </div>
+  
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company">قالب الخطاب بالعربي </label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="AraLetterTemplateId">
+                        <option selected value="" disabled>اختر  قالب الخطاب بالعربي  </option>
+                        <option *ngFor="let certificateTemplate of certificateTemplates" [value]="certificateTemplate.id">{{certificateTemplate.mainTitle}}</option>
+
+                      </select>  
+                  <div *ngIf="BadgeForm.controls['AraLetterTemplateId'].invalid && BadgeForm.controls['AraLetterTemplateId'].touched">
+                    <small *ngIf="BadgeForm.controls['AraLetterTemplateId'].errors?.['required']" class="text-danger">اختر قالب الشهادة بالعربي  </small>
+                   </div>
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company">  قالب الخطاب بالانجليزي </label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="EnLetterTemplateId">
+                        <option selected value="" disabled>اختر قالب الخطاب بالانجليزي  </option>
+                        <option *ngFor="let certificateTemplate of certificateTemplates" [value]="certificateTemplate.id">{{certificateTemplate.mainTitle}}</option>
+
+                      </select>  
+                  <div *ngIf="BadgeForm.controls['EnLetterTemplateId'].invalid && BadgeForm.controls['EnLetterTemplateId'].touched">
+                    <small *ngIf="BadgeForm.controls['EnLetterTemplateId'].errors?.['required']" class="text-danger">اختر  قالب الخطاب بالانجليزي </small>
+                   </div>
+  
+                </div>
+              </div>
+              <div class="row justify-content-end">
+                <div class="col-sm-10">
+                  <button type="submit" (click)="Submit()" class="btn btn-primary">حفظ</button>
+                  <button routerLink="/userPage/Badges" class="btn btn-secondary mx-2">الغاء</button>
+  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  

@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row p-3">
+    <div class="col">
+      <!-- <h4 class="text-center">اضافة اسهام جديد</h4> -->
+      <div class="accordion" id="collapsibleSection">
+               <div mat-dialog-content>
+              <form [formGroup]="CrowdFundingMilestoneForm">
+
+                <div class="row  text-start">
+
+                 <div class="col-md-12">
+                      <label class=" col-form-label text-sm-end" for="collapsible-state">المبلغ($)</label>
+                    <input type="number" class="form-control"  formControlName="amount">
+                        <div *ngIf="CrowdFundingMilestoneForm.get('amount')?.invalid &&  CrowdFundingMilestoneForm.get('amount')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="CrowdFundingMilestoneForm.get('amount')?.errors?.['required']" class="text-danger">
+                       ادخل المبلغ  المطلوب  
+                     </small>
+                      <small *ngIf="CrowdFundingMilestoneForm.get('amount')?.errors?.['min']" class="text-danger">
+                       المبلغ يجب ان يكون اكبر من الصفر
+                     </small>
+                    </div>
+                </div>
+                  
+                
+              
+                <div class="col-md-12">
+                      <label class=" col-form-label text-sm-end" for="collapsible-pincode"
+                        > سبب الطلب</label>
+                        <textarea rows="3" maxlength="200" class="form-control " formControlName="requestedPurpose"></textarea>
+                         <div *ngIf="CrowdFundingMilestoneForm.get('requestedPurpose')?.invalid &&  CrowdFundingMilestoneForm.get('requestedPurpose')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="CrowdFundingMilestoneForm.get('requestedPurpose')?.errors?.['required']" class="text-danger">
+                       ادخل  سبب الطلب  
+                     </small>
+                      
+                    </div>  
+                             
+                </div>
+                
+ 
+               </div>
+               
+              </form>
+                              
+                   <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                    <button mat-button (click)="Submit()" class="btn btn-success me-3 " cdkFocusInitial>تأكيد</button>
+                    <button mat-button class="btn btn-secondary" (click)="onNoClick()">الغاء </button>
+                   </div>
+
+                
+            </div>
+            </div>
+            </div>
+            </div>
+            
+
+           
+</div>

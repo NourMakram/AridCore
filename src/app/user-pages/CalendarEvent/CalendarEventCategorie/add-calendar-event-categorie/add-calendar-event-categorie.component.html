@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row p-3">
+    <div class="col">
+       <div class="accordion" id="collapsibleSection">
+               <div mat-dialog-content>
+              <form [formGroup]="CalendarEventCategorieForm">
+
+                <!-- {{CalendarEventCategorieForm.value|json}} -->
+                <div class="row  text-start">
+
+                 <div class="col-md-12">
+                      <label class=" col-form-label text-sm-end" for="collapsible-state">اسم التصنيف</label>
+                    <input type="text" class="form-control"  formControlName="name"  placeholder="اسم التصنيف">
+                        <div *ngIf="CalendarEventCategorieForm.get('name')?.invalid &&  CalendarEventCategorieForm.get('name')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="CalendarEventCategorieForm.get('name')?.errors?.['required']" class="text-danger">
+                     ادخل اسم التصنيف
+                    </small>
+                      
+                    </div>
+                </div>
+                  
+                
+              
+                <div class="col-md-12">
+                      <label class=" col-form-label text-sm-end" for="collapsible-pincode"
+                        > اللون</label>
+                        <input type="color" class="form-control"  formControlName="color">
+
+                          <div *ngIf="CalendarEventCategorieForm.get('color')?.invalid &&  CalendarEventCategorieForm.get('color')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="CalendarEventCategorieForm.get('color')?.errors?.['required']" class="text-danger">
+                      اختر لون التصنيف
+                     </small>
+                      
+                    </div>  
+                             
+                </div>
+                
+ 
+               </div>
+               
+              </form>
+                              
+                   <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                    <button mat-button (click)="Submit()" class="btn btn-success me-3 " cdkFocusInitial>تأكيد</button>
+                    <button mat-button class="btn btn-secondary" (click)="onNoClick()">الغاء </button>
+                   </div>
+
+                
+            </div>
+            </div>
+            </div>
+            </div>
+            
+
+           
+</div>

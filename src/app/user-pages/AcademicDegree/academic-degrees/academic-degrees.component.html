@@ -1,0 +1,56 @@
+
+<div class="container-xxl flex-grow-1 container-p-y justify-content-start">
+
+    <div class="card">
+      <!-- <h5 class="card-header">Table Caption</h5> -->
+      <a class="btn btn-primary m-3 text-white" routerLink="/userPage/AcademicDegrees/Add" style="width: 200px;">اضافة درجة اكاديمية  </a>
+  
+  
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+          
+          <thead>
+            <tr>
+              <th>#</th>
+              <th> الدرجة باللغة العربية</th>
+              <th> الدرجة باللغة الأنجليزية</th>
+              <th>العمليات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let AcademicDegree of AcademicDegrees;let i = index">
+              <td>
+                <i class="icon-base fab fa-angular icon-md text-danger me-4"></i> <span>{{i+1}}</span>
+              </td>
+              <td>{{AcademicDegree.arDegreeName}}</td>
+              <td>{{AcademicDegree.enDegreeName}}</td>
+   
+               
+              <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" [routerLink]="['/userPage/AcademicDegrees/Edit',AcademicDegree.id]"
+                      ><i class="icon-base bx bx-edit-alt me-1 text-warning"></i> تعديل</a
+                    >
+                    <a class="dropdown-item" (click)="Delete(AcademicDegree.id)"
+                      ><i class="icon-base bx bx-trash me-1 text-danger"></i> حذف</a
+                    >
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+  <div class="content-backdrop fade"></div>
+  <!-- Content wrapper -->
+  
+  

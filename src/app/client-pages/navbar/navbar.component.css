@@ -1,0 +1,118 @@
+.layout-wrapper:not(.layout-horizontal) .layout-navbar .dropdown-menu[data-bs-popper] {
+  inset-block-start: 144%;
+}
+@media (max-width: 767.98px) {
+  .layout-wrapper:not(.layout-horizontal) .layout-navbar .dropdown-menu[data-bs-popper] {
+    inset-block-start: 110%;
+  }
+}
+.layout-navbar .navbar-dropdown .badge-notifications {
+  inset-block-start: 3px;
+  inset-inline-end: -2px;
+}
+.layout-navbar .navbar-dropdown .dropdown-menu {
+  overflow: hidden;
+  min-inline-size: 22rem;
+}
+.layout-navbar .navbar-dropdown .dropdown-menu .dropdown-item {
+  min-block-size: 2.375rem;
+}
+.layout-navbar .navbar-dropdown .dropdown-menu .last-login {
+  white-space: normal;
+}
+.layout-navbar .navbar-dropdown.dropdown-notifications .dropdown-notifications-list {
+  max-block-size: 30rem;
+}
+.layout-navbar .navbar-dropdown.dropdown-notifications .dropdown-notifications-list .dropdown-notifications-item {
+  cursor: pointer;
+  padding-block: 0.75rem;
+  padding-inline: 1rem;
+}
+.layout-navbar .navbar-dropdown.dropdown-notifications .dropdown-notifications-list .dropdown-notifications-item .dropdown-notifications-actions {
+  text-align: center;
+}
+.layout-navbar .navbar-dropdown.dropdown-notifications .dropdown-notifications-list .dropdown-notifications-item .dropdown-notifications-actions > a {
+  display: block;
+}
+.layout-navbar .navbar-dropdown.dropdown-notifications .dropdown-notifications-list .dropdown-notifications-item .dropdown-notifications-archive i,
+.layout-navbar .navbar-dropdown.dropdown-notifications .dropdown-notifications-list .dropdown-notifications-item .dropdown-notifications-archive span {
+  color: var(--bs-heading-color);
+}
+.layout-navbar .navbar-dropdown.dropdown-notifications .dropdown-notifications-list .dropdown-notifications-item.marked-as-read .dropdown-notifications-read,
+.layout-navbar .navbar-dropdown.dropdown-notifications .dropdown-notifications-list .dropdown-notifications-item.marked-as-read .dropdown-notifications-archive {
+  visibility: hidden;
+}
+.layout-navbar .navbar-dropdown.dropdown-notifications .dropdown-notifications-list .dropdown-notifications-item.marked-as-read .dropdown-notifications-read span {
+  background-color: var(--bs-secondary);
+}
+.layout-navbar .navbar-dropdown.dropdown-notifications .dropdown-notifications-list .dropdown-notifications-item:not(.marked-as-read) .dropdown-notifications-archive {
+  visibility: hidden;
+}
+.layout-navbar .navbar-dropdown.dropdown-notifications .dropdown-notifications-list .dropdown-notifications-item:hover.marked-as-read .dropdown-notifications-read,
+.layout-navbar .navbar-dropdown.dropdown-notifications .dropdown-notifications-list .dropdown-notifications-item:hover.marked-as-read .dropdown-notifications-archive {
+  visibility: visible;
+}
+.layout-navbar .navbar-dropdown.dropdown-notifications .dropdown-notifications-list .dropdown-notifications-item:hover:not(.marked-as-read) .dropdown-notifications-archive {
+  visibility: visible;
+}
+.layout-navbar .navbar-dropdown.dropdown-shortcuts .dropdown-shortcuts-list {
+  max-block-size: 30rem;
+}
+.layout-navbar .navbar-dropdown.dropdown-shortcuts .dropdown-shortcuts-item {
+  padding: 1.5rem;
+  text-align: center;
+}
+.layout-navbar .navbar-dropdown.dropdown-shortcuts .dropdown-shortcuts-item:hover {
+  background-color: var(--bs-gray-60);
+}
+.layout-navbar .navbar-dropdown.dropdown-shortcuts .dropdown-shortcuts-item .dropdown-shortcuts-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bs-gray-80);
+  block-size: 3.125rem;
+  color: var(--bs-heading-color);
+  inline-size: 3.125rem;
+  margin-inline: auto;
+}
+.layout-navbar .navbar-dropdown.dropdown-shortcuts .dropdown-shortcuts-item a,
+.layout-navbar .navbar-dropdown.dropdown-shortcuts .dropdown-shortcuts-item a:hover {
+  display: block;
+  color: var(--bs-heading-color) !important;
+  font-weight: 500;
+  margin-block-end: 0;
+}
+.layout-navbar .navbar-dropdown.dropdown-user .dropdown-menu {
+  min-inline-size: 14rem;
+}
+.layout-navbar[class*=bg-]:not(.bg-navbar-theme) .nav-item .input-group-text,
+.layout-navbar[class*=bg-]:not(.bg-navbar-theme) .nav-item .dropdown-toggle {
+  color: var(--bs-white);
+}
+@media (max-width: 1199.98px) {
+  .layout-navbar .navbar-nav .nav-item.dropdown .dropdown-menu {
+    position: absolute;
+  }
+  .layout-navbar .navbar-nav .nav-item.dropdown .dropdown-menu .last-login {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 767.98px) {
+  .layout-navbar .navbar-nav .nav-item.dropdown {
+    position: static;
+    float: inline-start;
+  }
+  .layout-navbar .navbar-nav .nav-item.dropdown .dropdown-menu {
+    position: absolute;
+    inline-size: 92%;
+    inset-inline-start: 0.9rem;
+    min-inline-size: auto;
+  }
+}
+
+/* Navbar require high z-index as we use z-index for menu slide-out for below large screen */
+@media (max-width: 1199.98px) {
+  .layout-navbar {
+    z-index: 1080;
+  }
+}

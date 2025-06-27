@@ -1,0 +1,71 @@
+ 
+<div class="container-xxl flex-grow-1 container-p-y justify-content-start" style="margin-top: 60px;">
+
+    <div class="card">
+      <!-- <h5 class="card-header">Table Caption</h5> -->
+      <a class="btn btn-primary m-3 text-white" routerLink="/clientPage/Project/Add" 
+      style="width: 200px;" > اضافة مشروع جديد  </a>
+  
+  
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>حالة المشروع	</th>
+              <th>اسم المشروع بالعربي</th>
+              <th>اسم المشروع بالإنجليزي</th>
+               <th>الوصف العربي</th>
+              <th>الوصف الإنجليزي</th>
+              <th>التفاصيل بالعربي</th>
+              <th>التفاصيل بالإنجليزي</th>
+              <th> من تاريخ	</th>
+               <th> إلى تاريخ </th>
+              <th>الدولة</th>
+              <th>العمليات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let Project of Projects;let i = index">
+              <td>
+                <i class="icon-base fab fa-angular icon-md text-danger me-4"></i> <span>{{i+1}}</span>
+              </td>
+              <td>{{Project.projectState}}</td>
+              <td>{{Project.arProjectName}}</td>
+              <td>{{Project.enProjectName}}</td>
+              <td>{{Project.arDescription}}</td>
+              <td>{{Project.enDescription}}</td>
+              <td>{{Project.arDetails}}</td>
+              <td>{{Project.enDetails}}</td>
+              <td>{{Project.fromYear}}</td>
+              <td>{{Project.toYear}}</td>
+              <td>{{Project.countryName}}</td>
+
+                <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" [routerLink]="['/clientPage/Project/Edit',Project.id]"
+                      ><i class="icon-base bx bx-edit-alt me-1 text-warning"></i> تعديل</a
+                    >
+                    <a class="dropdown-item" (click)="Delete(Project.id)"
+                      ><i class="icon-base bx bx-trash me-1 text-danger"></i> حذف</a
+                    >
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+  <div class="content-backdrop fade"></div>
+  <!-- Content wrapper -->
+  
+  

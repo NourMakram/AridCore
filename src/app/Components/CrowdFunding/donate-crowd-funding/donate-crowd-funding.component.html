@@ -1,0 +1,58 @@
+<div class="container">
+
+
+<div class="row p-3">
+    <div class="col">
+      <h4 class="text-center">اضافة تبرع</h4>
+      <div class="accordion" id="collapsibleSection">
+               <div mat-dialog-content>
+              <form [formGroup]="DonateForm">
+
+                <div class="row  text-start">
+
+                 <div class="col-md-12">
+                      <label class=" col-form-label text-sm-end" for="collapsible-state">المبلغ </label>
+                    <input type="number" class="form-control"  formControlName="amount">
+                        <div *ngIf="DonateForm.get('amount')?.invalid &&  DonateForm.get('amount')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="DonateForm.get('amount')?.errors?.['required']" class="text-danger">
+                       ادخل المبلغ  المطلوب للتبرع 
+                     </small>
+                      <small *ngIf="DonateForm.get('amount')?.errors?.['min']" class="text-danger">
+                       المبلغ يجب ان يكون اكبر من الصفر
+                     </small>
+                    </div>
+                </div>
+                  
+                
+              
+                <div class="col-md-12">
+                      <label class=" col-form-label text-sm-end" for="collapsible-pincode"
+                        > ملاحظات</label>
+                        <textarea rows="3" maxlength="200" class="form-control " formControlName="comment"></textarea>
+                          
+                             
+                </div>
+                 <div class="col-md-12 d-flex mt-2">
+                     <input type="checkbox" class="form-check" formControlName="isVisible" /><span class="ms-2">  اخفاء تفاصيلى كمتبرع للمشروع
+</span>
+                                        
+                </div>
+ 
+               </div>
+               
+              </form>
+                              
+                   <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                    <button mat-button (click)="Submit()" class="btn btn-success me-3 " cdkFocusInitial>تأكيد</button>
+                    <button mat-button class="btn btn-secondary" (click)="onNoClick()">الغاء </button>
+                   </div>
+
+                
+            </div>
+            </div>
+            </div>
+            </div>
+            
+
+           </div>

@@ -1,0 +1,64 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="row" dir="rtl">
+      <!-- Basic Layout -->
+      <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">اضافة محتوى بريد الكترونى</h5>
+          </div>
+          <!-- {{EmailContentForm.value|json}} -->
+          <div class="card-body">
+            <form [formGroup]="EmailContentForm">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">الموضوع  </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" formControlName="arSubject" id="basic-default-name" placeholder="ادخل موضوع البريد الألكترونى" />
+  
+                  <div *ngIf="EmailContentForm.controls['arSubject'].invalid && EmailContentForm.controls['arSubject'].touched">
+                    <small *ngIf="EmailContentForm.controls['arSubject'].errors?.['required']" class="text-danger">ادخل موضوع البريد الألكترونى</small>
+                  </div>
+                </div>
+  
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name"> المحتوى   </label>
+                <div class="col-sm-10">
+                  <textarea type="text" rows="8" class="form-control" formControlName="arContent" id="basic-default-name" placeholder="ادخل محتوى البريد الألكترونى  " >
+                    </textarea>
+                  <div *ngIf="EmailContentForm.controls['arContent'].invalid && EmailContentForm.controls['arContent'].touched">
+                    <small *ngIf="EmailContentForm.controls['arContent'].errors?.['required']" class="text-danger">ادخل محتوى البريد الألكترونى </small>
+                  </div>
+                </div>
+  
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">  المرسل </label>
+                <div class="col-sm-10">
+                  <select class="form-control" formControlName="senderId">
+                        <option selected disabled value="" >اختر المرسل</option>
+                        <option *ngFor="let sender of Senders" [value]="sender.id"> {{sender.email}} </option>
+                    </select>
+  
+                  <div *ngIf="EmailContentForm.controls['senderId'].invalid && EmailContentForm.controls['senderId'].touched">
+                    <small *ngIf="EmailContentForm.controls['senderId'].errors?.['required']" class="text-danger">اختر المرسل</small>
+                  </div>
+                </div>
+  
+              </div>
+              <div class="row justify-content-end">
+                <div class="col-sm-10">
+                  <button type="submit" (click)="Submit()" class="btn btn-primary">اضافة</button>
+                  <button routerLink="/userPage/EmailContents" class="btn btn-secondary mx-2">الغاء</button>
+  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  

@@ -1,0 +1,68 @@
+ 
+  
+
+
+
+
+  <div class="container-xxl flex-grow-1 container-p-y justify-content-start">
+
+    <div class="card">
+      <!-- <h5 class="card-header">Table Caption</h5> -->
+      <a class="btn btn-primary m-3 text-white" routerLink="/userPage/faculties/Add" style="width: 200px;">اضافة كلية </a>
+  
+  
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+          <!-- <caption class="ms-6">
+            قائمة   والصلاحيات
+          </caption> -->
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>اسم الكلية بالعربي	</th>
+              <th>اسم الكلية بالانجليزي	</th>
+              <th>تمنح دراسات عليا؟	</th>
+              <th>التخصص</th>
+              <th>الجامعة</th>
+              <th>العمليات</th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr *ngFor="let faculty of faculitites;let i= index">
+              <td>
+                <i class="icon-base fab fa-angular icon-md text-danger me-4"></i> <span>{{i+1}}</span>
+              </td>
+              
+              <td>{{faculty.arFacultyName}}</td>
+              <td>{{faculty.enFacultyName}}</td>
+              <td>{{faculty.hasPostGraduation}}</td>
+
+              <td>{{faculty.specialityName}}</td>
+              <td>{{faculty.universityName}}</td>
+              <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" [routerLink]="['/userPage/faculties/Edit',faculty.id]"
+                      ><i class="icon-base bx bx-edit-alt me-1 text-warning"></i> تعديل</a
+                    >
+                    <a class="dropdown-item" (click)="Delete(faculty.id)"
+                      ><i class="icon-base bx bx-trash me-1 text-danger"></i> حذف</a
+                    >
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+  <div class="content-backdrop fade"></div>
+  <!-- Content wrapper -->
+  

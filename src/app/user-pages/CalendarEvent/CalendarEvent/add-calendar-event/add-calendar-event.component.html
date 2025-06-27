@@ -1,0 +1,102 @@
+<div class="container">
+  <div class="row p-3">
+    <div class="col">
+       <div class="accordion" id="collapsibleSection">
+               <div mat-dialog-content>
+              <form [formGroup]="CalendarEventForm">
+
+                <!-- {{CalendarEventForm.value|json}} -->
+                <div class="row  text-start">
+
+                 <div class="col-md-12">
+                      <label class=" col-form-label text-sm-end" for="collapsible-state"> عنوان الحدث</label>
+                    <input type="text" class="form-control"  formControlName="name"  placeholder="عنوان الحدث">
+                        <div *ngIf="CalendarEventForm.get('name')?.invalid &&  CalendarEventForm.get('name')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="CalendarEventForm.get('name')?.errors?.['required']" class="text-danger">
+                     ادخل عنوان الحدث
+                    </small>
+                      
+                    </div>
+                </div>
+                 <div class="col-md-12">
+                       <label class=" col-form-label text-sm-end" for="collapsible-state">  تصنيف الحدث</label>
+                        <select class="form-control form-select" formControlName="calendarEventCategoryId">
+                            <option selected disabled >اختر تصنيف الحدث</option>
+                            <option *ngFor="let CalendarEventCategorie of CalendarEventCategories" [value]="CalendarEventCategorie.id">{{CalendarEventCategorie.name}}</option>
+                        </select>
+                      <div *ngIf="CalendarEventForm.get('calendarEventCategoryId')?.invalid &&  CalendarEventForm.get('calendarEventCategoryId')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="CalendarEventForm.get('calendarEventCategoryId')?.errors?.['required']" class="text-danger">
+                    اختر تصنيف الحدث
+                    </small>
+                      
+                    </div>
+                </div> 
+                 <div class="col-md-12">
+                      <label class=" col-form-label text-sm-end" for="collapsible-state">بداية الحدث</label>
+                    <input type="datetime-local" class="form-control"  formControlName="startingDate">
+                        <div *ngIf="CalendarEventForm.get('startingDate')?.invalid &&  CalendarEventForm.get('startingDate')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="CalendarEventForm.get('startingDate')?.errors?.['required']" class="text-danger">
+                    اختر تاريخ بداية الحدث
+                    </small>
+                      
+                    </div>
+                </div> 
+                 <div class="col-md-12">
+                      <label class=" col-form-label text-sm-end" for="collapsible-state">نهاية الحدث </label>
+                    <input type="datetime-local" class="form-control"  formControlName="endingDate">
+                        <div *ngIf="CalendarEventForm.get('endingDate')?.invalid &&  CalendarEventForm.get('endingDate')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="CalendarEventForm.get('endingDate')?.errors?.['required']" class="text-danger">
+                   ادخل تاريخ نهاية الحدث
+                    </small>
+                      
+                    </div>
+                </div> 
+ 
+                <div class="col-md-12">
+                      <label class=" col-form-label text-sm-end" for="collapsible-state">الرابط</label>
+                    <input type="url" class="form-control"  formControlName="url"  placeholder="رابط الحدث">
+                        <div *ngIf="CalendarEventForm.get('url')?.invalid &&  CalendarEventForm.get('url')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="CalendarEventForm.get('url')?.errors?.['required']" class="text-danger">
+                   ادخل رابط الحدث
+                    </small>
+                      
+                    </div>
+                </div> 
+ 
+              
+               <div class="col-md-12">
+                      <label class=" col-form-label text-sm-end" for="collapsible-state">الوصف</label>
+                     <textarea class="form-control" rows="2" formControlName="description" placeholder="وصف الحدث"></textarea>
+                        <div *ngIf="CalendarEventForm.get('description')?.invalid &&  CalendarEventForm.get('description')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="CalendarEventForm.get('description')?.errors?.['required']" class="text-danger">
+                  ادخل وصف مختصر عن الحدث
+                    </small>
+                      
+                    </div>
+                </div> 
+                
+ 
+               </div>
+               
+              </form>
+                              
+                   <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                    <button mat-button (click)="Submit()" class="btn btn-success me-3 " cdkFocusInitial>تأكيد</button>
+                    <button mat-button class="btn btn-secondary" (click)="onNoClick()">الغاء </button>
+                   </div>
+
+                
+            </div>
+            </div>
+            </div>
+            </div>
+            
+
+           
+</div>

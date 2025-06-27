@@ -1,0 +1,71 @@
+<div class="container-xxl flex-grow-1 container-p-y justify-content-start">
+
+    <div class="card">
+      <!-- <h5 class="card-header">Table Caption</h5> -->
+  
+  
+      <div class="row px-2 justify-content-between" >
+        <div class="col-12 col-md-5 col-lg-5 d-flex">
+          <a class="btn btn-primary m-3 text-white" routerLink="/userPage/MemberShips/Add" style="width: 200px;">اضافة عضو جديد </a>
+
+        </div>
+        <div class="col-12 col-md-5 col-lg-5 my-2 px-2">
+          <input type="text" (input)="OnSerach($event)" class="form-control" placeholder="البحث بأسم المستخدم"/>
+
+        </div>
+
+      </div>
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+          <!-- <caption class="ms-6">
+            قائمة   والصلاحيات
+          </caption> -->
+          <thead>
+            <tr>
+              <th>#</th>
+              <th> الأسم باللغة العربية</th>
+              <th>نوع الإشتراك </th>
+              <th>تاريخ الإشتراك</th>
+              <th>تاريخ الأنتهاء</th>
+              <th>الحالة</th>
+              <th>العمليات</th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr *ngFor="let Member of Members;let i= index">
+              <td>
+                <i class="icon-base fab fa-angular icon-md text-danger me-4"></i> <span>{{i+1}}</span>
+              </td>
+              
+              <td>{{Member.applicationUserName}}</td>
+              <td>{{Member.membershipType}}</td>
+              <td>{{Member.creationDate}}</td>
+
+              <td>{{Member.dueDate}}</td>
+              <td>{{Member.status}}</td>
+              <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" [routerLink]="['/userPage/MemberShips/Edit',Member.id]"
+                      ><i class="icon-base bx bx-edit-alt me-1 text-warning"></i> تعديل</a
+                    >
+                    <a class="dropdown-item" (click)="Delete(Member.id)"
+                      ><i class="icon-base bx bx-trash me-1 text-danger"></i> حذف</a
+                    >
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+  <div class="content-backdrop fade"></div>
+  <!-- Content wrapper -->

@@ -1,0 +1,56 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="row" dir="rtl">
+       <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">اضافة سجل جديد</h5>
+          </div>
+            <div class="card-body">
+            <form [formGroup]="EmailSendingLogForm">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone"> البريد الألكترونى</label>
+                <div class="col-sm-10 ">
+                     <input type="email"  placeholder="ادخل البريد الألكترونى" formControlName="email" class="form-control" />
+                      <div *ngIf="EmailSendingLogForm.controls['email'].invalid && EmailSendingLogForm.controls['email'].touched">
+                        <small *ngIf="EmailSendingLogForm.controls['email'].errors?.['required']" class="text-danger">هذا الحقل مطلوب </small>
+                        <small *ngIf="EmailSendingLogForm.controls['email'].errors?.['email']" class="text-danger">ادخل بريد الكترونى صحيح</small>
+
+                    </div>
+                    
+               </div>
+               </div>
+             
+               <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company"> محتوى رسالة اريد </label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="emailContentId">
+                        <option selected value="" disabled>اختر محتوى الرسالة  </option>
+                        <option *ngFor="let EmailContent of EmailContents" [value]="EmailContent.id">{{EmailContent.arSubject}}</option>
+
+                      </select>  
+                  <div *ngIf="EmailSendingLogForm.controls['emailContentId'].invalid && EmailSendingLogForm.controls['emailContentId'].touched">
+                    <small *ngIf="EmailSendingLogForm.controls['emailContentId'].errors?.['required']" class="text-danger">اختر محتوى الرسالة </small>
+                   </div>
+  
+                </div>
+              </div>
+              
+
+             
+              <div class="row justify-content-end">
+                <div class="col-sm-10">
+                  <button type="submit" (click)="Submit()" class="btn btn-primary">حفظ</button>
+                  <button routerLink="/userPage/EmailSendingLogs" class="btn btn-secondary mx-2">الغاء</button>
+  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  

@@ -1,0 +1,245 @@
+<div class="row my-6">
+    <div class="col" style="margin-top: 60px;">
+      <div class="accordion" id="collapsibleSection">
+        <!-- Delivery Address -->
+         <!-- {{AcadmicActivityForm.value|json}} -->
+       <form [formGroup]="AcadmicActivityForm">
+
+        <div class="card accordion-item">
+      
+          <div
+            id="collapseDeliveryAddress"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingDeliveryAddress"
+            data-bs-parent="#collapsibleSection">
+            <h6 class="my-3 py-2 me-5 text-center" style="color: white;
+            background-color: #696cff;
+            border-radius: 5px;">تعديل نشاط  أكاديمي  </h6>
+            <div class="accordion-body">
+              <div class="row g-6 text-start">
+                <div class="col-md-6">
+                  <div class="row">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-fullname"
+                      >العنوان بالعربى</label
+                    >
+                    <div class="col-sm-9">
+                      <input
+                        type="text"
+                        id="collapsible-fullname"
+                        class="form-control"
+                        formControlName="arTitle"
+                        placeholder="ادخل عنوان النشاط باللغة العربية" />
+
+                        <div *ngIf="AcadmicActivityForm.controls['arTitle'].invalid && AcadmicActivityForm.controls['arTitle'].touched">
+                          <small *ngIf="AcadmicActivityForm.controls['arTitle'].errors?.['required']" class="text-danger"> عنوان النشاط بالعربية مطلوب</small>
+                          <small *ngIf="AcadmicActivityForm.controls['arTitle'].errors?.['pattern']" class="text-danger">يجب إدخال عنوان النشاط باللغة العربية فقط</small>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-phone"
+                      >العنوان بالأنجليزية  </label
+                    >
+                    <div class="col-sm-9">
+                      <input
+                        type="text"
+                        id="collapsible-phone"
+                        class="form-control phone-mask"
+                        formControlName="enTitle"
+                        placeholder="ادخل عنوان النشاط باللغة الأنجليزية"  
+                
+                         aria-label="658 799 8941" />
+                         <div *ngIf="AcadmicActivityForm.controls['enTitle'].invalid && AcadmicActivityForm.controls['enTitle'].touched">
+                          <small *ngIf="AcadmicActivityForm.controls['enTitle'].errors?.['required']" class="text-danger"> عنوان النشاط بالأنجليزية مطلوب</small>
+                          <small *ngIf="AcadmicActivityForm.controls['enTitle'].errors?.['pattern']" class="text-danger">يجب إدخال عنوان النشاط باللغة الأنجليزية فقط</small>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                        >تاريخ النشاط</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="datetime-local"
+                          id="collapsible-pincode"
+                          class="form-control"
+                          formControlName="activityDate"
+                            />
+
+                            <div *ngIf="AcadmicActivityForm.controls['activityDate'].invalid && AcadmicActivityForm.controls['activityDate'].touched">
+                              <small *ngIf="AcadmicActivityForm.controls['activityDate'].errors?.['required']" class="text-danger"> تاريخ النشاط  مطلوب</small>
+                             </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">علاقتك بالنشاط</label>
+                    <div class="col-sm-9">
+                      <select id="collapsible-state" formControlName="relationType" class="select2 form-select" data-allow-clear="true">
+                        <option value="" selected disabled>نوع العلاقة</option>
+                        <option value="0">بمفردى</option>
+                        <option value="1">عضو فى مجموعة</option>
+                        <option value="2">رئيس مجموعة</option>
+                      </select>
+                      <div *ngIf="AcadmicActivityForm.controls['relationType'].invalid && AcadmicActivityForm.controls['relationType'].touched">
+                        <small *ngIf="AcadmicActivityForm.controls['relationType'].errors?.['required']" class="text-danger"> نوع العلاقة بالنشاط  مطلوب</small>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">نوع النشاط</label>
+                    <div class="col-sm-9">
+                      <select id="collapsible-state" formControlName="activityType"  class="select2 form-select" data-allow-clear="true">
+                        <option value="" selected disabled>اختر نوع النشاط</option>
+                        <option *ngFor="let activityType of ActivityTypes" [value]="activityType.id">{{activityType.name}}</option>
+                      </select>
+                      <div *ngIf="AcadmicActivityForm.controls['activityType'].invalid && AcadmicActivityForm.controls['activityType'].touched">
+                        <small *ngIf="AcadmicActivityForm.controls['activityType'].errors?.['required']" class="text-danger"> نوع النشاط  مطلوب</small>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الدولة</label>
+                    <div class="col-sm-9">
+                      <select id="collapsible-state" formControlName="countryId" class="select2 form-select" data-allow-clear="true">
+                        <option seleted disabled>اختر الدولة</option>
+                        <option *ngFor="let country of Countries" [value]="country.id">{{country.arName}}</option>
+                   
+                      </select>
+                      <div *ngIf="AcadmicActivityForm.get('countryId')?.invalid &&  AcadmicActivityForm.get('countryId')?.touched"
+                      class="error mt-2">
+                   <small *ngIf="AcadmicActivityForm.get('countryId')?.errors?.['required']" class="text-danger">
+                     يرجى ادخال اسم  الدولة
+                   </small>
+                 </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">اللغة المستخدمة</label>
+                    <div class="col-sm-9">
+                      <select id="collapsible-state" formControlName="language"  class="select2 form-select" data-allow-clear="true">
+                        <option value="" selected disabled>اختر نوع النشاط</option>
+                        <option *ngFor="let Language of Languages" [value]="Language.id">{{Language.name}}</option>
+                      </select>
+                      <div *ngIf="AcadmicActivityForm.controls['language'].invalid && AcadmicActivityForm.controls['language'].touched">
+                        <small *ngIf="AcadmicActivityForm.controls['language'].errors?.['required']" class="text-danger"> نوع اللغة  مطلوب</small>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                        > رابط النشاط</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="url"
+                          id="collapsible-pincode"
+                          class="form-control"
+                          formControlName="activityURL"
+                            />
+                            <div *ngIf="AcadmicActivityForm.controls['activityURL'].invalid && AcadmicActivityForm.controls['activityURL'].touched">
+                              <small *ngIf="AcadmicActivityForm.controls['activityURL'].errors?.['required']" class="text-danger">رابط النشاط  مطلوب</small>
+                              <small class="text-danger" *ngIf="AcadmicActivityForm.controls['activityURL'].errors?.['pattern']">
+                                الرجاء إدخال رابط صالح مثل: https://example.com
+                              </small>
+                            </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                        >  صورة النشاط</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="file"
+                          id="collapsible-pincode"
+                          class="form-control"
+                          (change)="OnchangeFile($event)"
+                            />
+                            <!-- <div *ngIf="AcadmicActivityForm.controls['photo'].invalid && AcadmicActivityForm.controls['photo'].touched">
+                              <small *ngIf="AcadmicActivityForm.controls['photo'].errors?.['required']" class="text-danger">صورة النشاط  مطلوب</small>
+                             </div> -->
+                      </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                        > الوصف بالعربى</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          id="collapsible-pincode"
+                          class="form-control"
+                          formControlName="arDescription"
+                            />
+                            <div *ngIf="AcadmicActivityForm.controls['arDescription'].invalid && AcadmicActivityForm.controls['arDescription'].touched">
+                              <small *ngIf="AcadmicActivityForm.controls['arDescription'].errors?.['required']" class="text-danger">وصف النشاط  مطلوب</small>
+                             </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                        > الوصف بالأنجليزية</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          id="collapsible-pincode"
+                          class="form-control"
+                          formControlName="enDescription"
+                            />
+                            <div *ngIf="AcadmicActivityForm.controls['enDescription'].invalid && AcadmicActivityForm.controls['enDescription'].touched">
+                              <small *ngIf="AcadmicActivityForm.controls['enDescription'].errors?.['required']" class="text-danger">وصف النشاط  مطلوب</small>
+                             </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="row justify-content-end mt-3 text-center">
+                  <div class="col-sm-10">
+                    <button type="submit" (click)="Submit()" class="btn btn-primary">حفظ</button>
+                    <a routerLink="/clientPage/AcadmicActivites" class="btn btn-secondary mx-2">الرجوع الى القائمة</a>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       </form>
+        
+
+        </div>
+        </div>
+        </div>
+        

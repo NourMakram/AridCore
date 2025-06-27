@@ -1,0 +1,70 @@
+ .dropdown-menu[data-bs-popper] {
+  inset-block-start: 144%;
+}
+@media (max-width: 767.98px) {
+  .dropdown-menu[data-bs-popper] {
+    inset-block-start: 110%;
+  }
+}
+.layout-navbar .navbar-dropdown .badge-notifications {
+  inset-block-start: 3px;
+  inset-inline-end: -2px;
+}
+.dropdown-menu {
+  overflow: hidden;
+  min-inline-size: 22rem;
+}
+.dropdown-menu .dropdown-item {
+  min-block-size: 2.375rem;
+}
+.dropdown-menu .last-login {
+  white-space: normal;
+}
+.dropdown-menu {
+  min-inline-size: 14rem;
+}
+.layout-navbar[class*=bg-]:not(.bg-navbar-theme) .nav-item .input-group-text,
+.layout-navbar[class*=bg-]:not(.bg-navbar-theme) .nav-item .dropdown-toggle {
+  color: var(--bs-white);
+}
+@media (max-width: 1199.98px) {
+   .dropdown-menu {
+    position: absolute;
+  }
+   .dropdown-menu .last-login {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 767.98px) {
+  .layout-navbar .navbar-nav .nav-item.dropdown {
+    position: static;
+    float: inline-start;
+  }
+   .dropdown-menu {
+    position: absolute;
+    inline-size: 92%;
+    inset-inline-start: 0.9rem;
+    min-inline-size: auto;
+  }
+}
+.marked-as-read{
+background-color: #eeeeee85;;
+}
+
+.dropdown-notifications-item.marked-as-read .dropdown-notifications-read,
+.dropdown-notifications-item.marked-as-read .dropdown-notifications-archive {
+  visibility: hidden;
+}
+.dropdown-notifications-item.marked-as-read .dropdown-notifications-read span {
+  background-color: var(--bs-secondary);
+}
+ .dropdown-notifications-item:not(.marked-as-read) .dropdown-notifications-archive {
+  visibility: hidden;
+}
+ .dropdown-notifications-item:hover.marked-as-read .dropdown-notifications-read,
+.dropdown-notifications-item:hover.marked-as-read .dropdown-notifications-archive {
+  visibility: visible;
+}
+.dropdown-notifications-item:hover:not(.marked-as-read) .dropdown-notifications-archive {
+  visibility: visible;
+}

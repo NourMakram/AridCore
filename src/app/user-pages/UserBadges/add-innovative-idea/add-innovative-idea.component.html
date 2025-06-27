@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row ">
+    <div class="col">
+      <div class="accordion" id="collapsibleSection">
+       <form [formGroup]="InnovativeIdeaForm">
+         <div class="card accordion-item shadow-none">
+      
+          <div
+            id="collapseDeliveryAddress"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingDeliveryAddress"
+            data-bs-parent="#collapsibleSection">
+            <h6 class="my-3 py-2 me-5 text-center" > تقديم فكرة ابداعية لتطوير المنصة</h6>
+            <div class="accordion-body">
+              <div class="row g-6 text-start">
+                <div class="col-md-12 col-12 col-lg-12">
+                  <div class="mb-4">
+                       <label class="col-form-label text-sm-end" for="collapsible-pincode"
+                        > تفاصيل </label
+                      >
+                          <textarea rows="8" class="form-control" formControlName="details" placeholder="اكتب فكرتك التى ترغب فى تقديمها " ></textarea>
+                            <div *ngIf="InnovativeIdeaForm.controls['details'].invalid && InnovativeIdeaForm.controls['details'].touched">
+                              <small *ngIf="InnovativeIdeaForm.controls['details'].errors?.['required']" class="text-danger">ادخل تفاصيل الفكرة التى ترغب فى تقديمها</small>
+                              <small *ngIf="InnovativeIdeaForm.controls['details'].errors?.['maxLength']" class="text-danger">الحد الأقصى لحجم النص هو 250 حرفا</small>
+
+                            </div>
+                 </div>
+                 
+                </div>
+
+                <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                    <button mat-button (click)="Submit()" class="btn btn-success me-3 " cdkFocusInitial>تأكيد</button>
+                    <button mat-button class="btn btn-secondary" (click)="onNoClick()">الغاء </button>
+                   </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+       </form>
+        
+
+        </div>
+        </div>
+        </div>
+        
+</div>

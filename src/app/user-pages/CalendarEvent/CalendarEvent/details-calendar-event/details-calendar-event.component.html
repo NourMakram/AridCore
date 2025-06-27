@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row p-3">
+        <div class="col">
+            <div class="accordion" id="collapsibleSection">
+                <div mat-dialog-content>
+                    <h5>تفاصيل الحدث</h5>
+                     <div class="row  text-start">
+                        <div class="col-3">
+                            <h6>عنوان الحدث :</h6>
+                            <h6>تصنيف الحدث :</h6>
+                            <h6>بداية الحدث :</h6>
+                            <h6>نهاية الحدث :</h6>
+                            <h6>رابط الحدث :</h6>
+                            <h6>تفاصيل الحدث :</h6>
+
+                        </div>
+                        <div class="col-8">
+                            <p>{{CalendarEvent.name}}</p>
+                            <p>{{CalendarEvent.calenderEventCategoryNAme}}</p>
+                            <p>{{CalendarEvent.startingDate}}</p>
+                            <p>{{CalendarEvent.endingDate}}</p>
+                            <p><a [href]="CalendarEvent.url">{{CalendarEvent.url}}</a></p>
+                            <p class="text-wrap">{{CalendarEvent.description}}</p>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                        <button mat-button class="btn btn-secondary" (click)="onNoClick()">اغلاق </button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

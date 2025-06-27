@@ -1,0 +1,266 @@
+<div class="row g-6" style="margin-top: 80px;">
+  <div class="col-12 col-xl-3 col-md-6">
+    <div class="card">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <h5 class="card-title m-0 me-2">اخر احداث المنصة</h5>
+        <!-- <div class="dropdown">
+           
+          <button class="btn text-body-secondary p-0" type="button" id="topCourses" data-bs-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="icon-base bx bx-dots-vertical-rounded icon-lg"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="topCourses">
+            <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
+            <a class="dropdown-item" href="javascript:void(0);">Download</a>
+            <a class="dropdown-item" href="javascript:void(0);">View All</a>
+          </div>
+        </div> -->
+      </div>
+      <div class="card-body">
+        <ul class="list-unstyled mb-0">
+           <li class="d-flex mb-6 align-items-center" *ngFor="let Event of Events">
+             <div class="avatar flex-shrink-0 me-4">
+                          <span class="avatar-initial rounded bg-label-danger" >
+                            <i class="icon-base bx bx-video icon-lg"></i></span>
+                        </div>
+            <div class="row w-100 align-items-center">
+              <div class="col-sm-12 col-md-12 col-xxl-12 mb-1 mb-sm-0 mb-md-1 mb-xxl-0">
+                            <a [href]="Event.url">
+
+                <h6 class="mb-0">{{Event.name}}</h6>
+                <small class="fs-small">{{Event.endingDate}} - {{Event.startingDate}}</small>
+                </a>
+              </div>
+              
+            </div>
+          </li>
+         
+           
+           
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-6 col-lg-6 col-md-6 ">
+    <div class="card mb-3 p-4 shadow-sm tweet-composer">
+
+      <form [formGroup]="ScientificTweetForm">
+
+        <div class="d-flex">
+          <div class="avatar ms-3">
+            <img src="https://portal.arid.my/images/default_small.png" alt="Avatar" class="rounded-circle" width="48"
+              height="48" />
+          </div>
+          <textarea class="form-control flex-grow-1 border-0 shadow-none" rows="3" maxlength="280" minlength="50"
+            formControlName="Content"
+            placeholder=" تفضل بأضافة تغريدة علمية نافعة لتثبت على صفحة التغريدات العلمية (اقل عدد حروف 50)"></textarea>
+
+
+        </div>
+
+      </form>
+
+      <div class="mt-3 position-relative" *ngIf="imagePreview">
+        <img [src]="imagePreview" class="img-fluid rounded" style="max-height: 200px;" />
+        <button type="button" (click)="removeImage()"
+          class="btn btn-sm btn-danger position-absolute top-0 end-0 m-2 rounded-circle" title="حذف الصورة"
+          style="width: 30px; height: 30px; line-height: 10px;">
+          &times;
+        </button>
+      </div>
+
+
+      <!-- رفع الصورة + زر النشر -->
+      <div class="d-flex justify-content-between align-items-center mt-2">
+        <div>
+          <input type="file" id="tweetImage" (change)="onImageSelected($event)" accept="image/*" class="d-none">
+          <label for="tweetImage" class="btn btn-light btn-sm rounded-circle p-2 mb-0" title="إرفاق صورة"
+            style="cursor:pointer;">
+            <i class="bx bx-image icon-md"></i>
+          </label>
+        </div>
+        <button [disabled]="ScientificTweetForm.invalid" (click)="Submit()" style="width:100px"
+          class="btn btn-primary px-4 rounded-pill">
+          نشر
+        </button>
+      </div>
+    </div>
+
+    <!-- ---------------------        post start -------------------------------------------------- -->
+    <div class="card mb-2" *ngFor="let tweet of Tweets">
+      <div class="card-header pb-4">
+        <div class="d-flex align-items-start justify-content-between">
+          <div class="d-flex align-items-center">
+            <div class="avatar ">
+              <img [src]="tweet.userimage" alt="Avatar" class="rounded-circle" />
+            </div>
+            <div class="me-2">
+              <h5 class="mb-0">
+                <a [routerLink]="['/clientPage/Profile/',tweet.userId]" class="stretched-link text-heading">{{tweet.usernameAr}}</a>
+              </h5>
+              <div class="client-info text-body">
+                <span class="fw-small"><small>{{tweet.usernameEn}}</small></span>
+              </div>
+            </div>
+          </div>
+          <div class=" ">
+            <small class="text-muted mt-2">{{getTimeAgo(tweet.tweetDate)}}</small>
+
+            <!-- <div class="dropdown z-2">
+              <button type="button" class="btn btn-icon btn-text-secondary rounded-pill dropdown-toggle hide-arrow p-0"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="icon-base bx bx-dots-vertical-rounded icon-md text-body-secondary"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="javascript:void(0);">Rename project</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);">View details</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);">Add to favorites</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item text-danger" href="javascript:void(0);">Leave Project</a></li>
+              </ul>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="card-body" style="z-index: 100;">
+        <p class="mb-0"> {{tweet.content}}</p>
+        <div class="post-image-wrapper text-center mt-3" [hidden]="tweet.imageUrl == null">
+          <img [src]="tweet.imageUrl" style="width:100%" class="post-image text-center img-fluid" alt="Post Image">
+        </div>
+
+      </div>
+      <div class="card-body border-top z-index" style="z-index: 100;">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="me-auto">
+            <!-- <a (click)="AddLike(tweet.id)" class="text-body-secondary d-flex align-items-center">
+              <i class="icon-base bx bx-heart me-1 "></i> {{tweet.tweetLiksCount}}
+            </a> -->
+            <a (click)="ToggleLike(tweet.id,tweet.isLike)" class="text-body-secondary d-flex align-items-center">
+              <i class="fa fa-heart me-1 " [class.text-primary]="tweet.isLike"></i> {{tweet.tweetLiksCount}}
+            </a>
+            <!-- <i class="icon-base bx bx-heart me-1 "></i> -->
+
+          </div>
+          <div class="m-auto">
+            <a (click)="openCommentDialog(tweet.id)" class="text-body-secondary d-flex align-items-center"><i
+                class="icon-base bx bx-chat me-1 "></i> {{tweet.tweetReplyCount}}</a>
+          </div>
+          <div class="ms-auto">
+            <a href="javascript:void(0);" class="text-body-secondary d-flex align-items-center"><i
+                class="icon-base bx bx-share me-1"></i> 120</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- ---------------------        post end -------------------------------------------------- -->
+    <nav aria-label="Page navigation " class="d-flex align-items-center justify-content-center mt-3">
+      <ul class="pagination mb-0 pagination-rounded">
+        <li class="page-item first ">
+          <a class="page-link" (click)="GetByPage(1)" href="javascript:void(0);"><i
+              class="icon-base bx bx-chevrons-left icon-sm scaleX-n1-rtl"></i></a>
+        </li>
+        <li class="page-item prev " [class.disabled]="!hasPrev">
+          <a class="page-link" (click)="GetPrev()" href="javascript:void(0);" [attr.aria-disabled]="!hasPrev"><i
+              class="icon-base bx bx-chevron-left icon-sm scaleX-n1-rtl"></i></a>
+        </li>
+        <li class="page-item" *ngFor="let pageNumber of GetPagesArray" [class.active]="pageNumber === page">
+          <a class="page-link" (click)="GetByPage(pageNumber)" href="javascript:void(0);">{{pageNumber}}</a>
+        </li>
+        <li class="page-item next" [class.disabled]="!hasnext">
+          <a class="page-link" href="javascript:void(0);" (click)="GetNext()" [attr.aria-disabled]="!hasnext">
+            <i class="icon-base bx bx-chevron-right icon-sm scaleX-n1-rtl"></i>
+          </a>
+        </li>
+        <li class="page-item last" [class.disabled]="PageCounts <= 1">
+          <a class="page-link" [attr.aria-disabled]="PageCounts <= 1" (click)="GetByPage((PageCounts - 1 ))"
+            href="javascript:void(0);"><i class="icon-base bx bx-chevrons-right icon-sm scaleX-n1-rtl"></i></a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <div class="col-lg-3 col-12">
+    <div class="col-12">
+      <div class="card">
+        <div class="bg-primary" style="height: 100px;">
+          <div class="mx-auto my-6  text-center">
+                      <a [routerLink]="['/clientPage/Profile/',User.id]">
+
+            <img [src]="User.profileImage" alt="Avatar Image" class="rounded-circle w-px-100 h-px-100" />
+            </a>
+          </div>
+        </div>
+        <div class="card-body text-center">
+
+
+          <a [routerLink]="['/clientPage/Profile/',User.id]">
+                      <h5 class="mb-0 card-title mt-5">{{User.arName}}</h5>
+
+          </a>
+
+          <div class="d-flex align-items-center justify-content-around mb-8 mt-5">
+            <div>
+              <span>{{User.email}}</span>
+              <!-- <h5 class="mb-0">18</h5>
+              <span>Projects</span>
+            </div>
+            <div>
+              <h5 class="mb-0">834</h5>
+              <span>Tasks</span>
+            </div>
+            <div>
+              <h5 class="mb-0">129</h5>
+              <span>Connections</span>
+            </div> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-12 mt-2">
+        <div class="card h-100">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="card-title m-0 me-2"> اعلانات المنصة</h5>
+            
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled mb-0">
+              <li class="d-flex mb-6 align-items-center" *ngFor="let ads of LayoutAds">
+                <div class="avatar flex-shrink-0 me-4">
+
+                  <a [href]="ads.url">
+
+                    <img [src]="ads.image" class="img-fluid rounded-circle" />
+                  </a>
+                </div>
+                <div class="row w-100 align-items-center">
+                  <div class="col-sm-12 col-md-12 col-xxl-12 mb-1 mb-sm-0 mb-md-1 mb-xxl-0">
+                    <a [href]="ads.url">
+
+                      <h6 class="mb-0">{{ads.title}}</h6>
+                    </a>
+                  </div>
+                </div>
+
+                 
+              </li>
+              
+            
+            
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+
+  </div>

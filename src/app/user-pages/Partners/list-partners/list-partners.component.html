@@ -1,0 +1,60 @@
+
+<div class="container-xxl flex-grow-1 container-p-y justify-content-start p-0">
+
+    <div class="card shadow-none">
+        <h3 class="text-center">قائمة شركاء الحوالات المالية</h3> 
+        <p class="text-center">تشكر منصة اريد الاعضاء الذين يقدمون مساعدة لبقية اعضاء المنصة لغرض تسهيل تعبئة الرصيد </p>
+
+      <a class="btn btn-primary m-1 text-white" routerLink="/clientPage/Pages/Partner/Add" 
+      style="width: 200px;" >تقديم طلب</a>
+  
+  
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>تاريخ الأضافة</th>
+              <th>الأسم الظاهر</th>
+              <th>البريد الألكترونى</th>
+              <th>رقم الهاتف</th>
+               <th>المستخدم</th>
+              <th>الرصيد($)</th>
+               <th>الدولة</th>
+               <th>الجامعة</th>
+               <th>التفاصيل</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let Partner of Partners;let i = index">
+              <td>
+                 <span>{{i+1}}</span>
+              </td>
+              <td>{{Partner.dateofRecord}}</td>
+              <td>{{Partner.name}}</td>
+              <td>{{Partner.email}}</td>
+              <td>{{Partner.mobile}}</td>
+              <td>{{Partner.arName}}</td>
+              <td>{{Partner.amount}}</td>
+              <td>{{Partner.country}}</td>
+              <td>{{Partner.university}}</td>
+              <td class="text-wrap">{{Partner.details}}</td>
+           
+               
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="paginator-container text-center d-flex justify-content-center">
+            <mat-paginator [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5,25,50,100]"
+                (page)="onPageChange($event)">
+            </mat-paginator>
+        </div>
+
+    </div>
+    
+  </div>
+  
+  
+  <div class="content-backdrop fade"></div>
+   

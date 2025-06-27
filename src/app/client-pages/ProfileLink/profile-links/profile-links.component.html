@@ -1,0 +1,56 @@
+  
+<div class="container-xxl flex-grow-1 container-p-y justify-content-start" style="margin-top: 60px;">
+
+    <div class="card">
+      <!-- <h5 class="card-header">Table Caption</h5> -->
+      <a class="btn btn-primary m-3 text-white" (click)="OpenAddDialog()" 
+      style="width: 200px;" > اضافة ملف سيرة ذاتية خارجي   </a>
+  
+  
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>نوع ملف السيرة الذاتية</th>
+              <th>رابط ملف السيرة الذاتية</th>
+              <th>الظهور</th>
+              <th>العمليات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ProfileLink of ProfileLinks;let i = index">
+              <td>
+                <span>{{i+1}}</span>
+              </td>
+              <td>{{ProfileLink.profileType}}</td>
+              <td>{{ProfileLink.profileUrl}}</td>
+              <td>{{ProfileLink.accessType}}</td>
+            <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" (click)="openEditDialog(ProfileLink.id)"
+                      ><i class="icon-base bx bx-edit-alt me-1 text-warning"></i> تعديل</a
+                    >
+                    <a class="dropdown-item" (click)="Delete(ProfileLink.id)"
+                      ><i class="icon-base bx bx-trash me-1 text-danger"></i> حذف</a
+                    >
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+  <div class="content-backdrop fade"></div>
+  <!-- Content wrapper -->
+  
+  

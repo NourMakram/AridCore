@@ -1,0 +1,139 @@
+<div class="app-academy" style="margin-top: 80px;">
+  <div class="card p-0 mb-6">
+    <div class="card-body d-flex flex-column flex-md-row justify-content-between p-0 pt-6">
+      <div class="app-academy-md-25 card-body py-0 pt-6 ps-12">
+        <img src="../../assets/img/illustrations/bulb-light.png" class="img-fluid app-academy-img-height scaleX-n1-rtl"
+          alt="Bulb in hand" data-app-light-img="illustrations/bulb-light.png"
+          data-app-dark-img="illustrations/bulb-dark.png" height="90" />
+      </div>
+      <div class="app-academy-md-50 card-body d-flex align-items-md-center flex-column text-md-center mb-6 py-6">
+        <span class="card-title mb-4 px-md-12 h4">
+          مشاريع التمويل الجماعي
+          <!-- <span class="text-primary text-nowrap">All in one place</span>. -->
+        </span>
+        <p class="mb-4">
+          هل لديك مشروع ذو قيمة وتحتاج إلى دعم؟ قدّم فكرتك هنا وكن جزءاً من شبكةٍ من الداعمين لتحقيق رؤيتك. </p>
+        <div class="d-flex align-items-center justify-content-between app-academy-md-80">
+          <!-- <input type="search" placeholder="Find your course" class="form-control me-4" />
+                        <button type="submit" class="btn btn-primary btn-icon">
+                          <i class="icon-base bx bx-search icon-md"></i>
+                        </button> -->
+          <button class="btn btn-primary" routerLink="/clientPage/CrowdFunding/Add">اضافة مشروع</button>
+        </div>
+      </div>
+      <div class="app-academy-md-25 d-flex align-items-end justify-content-end">
+        <img src="../../assets/img/illustrations/pencil-rocket.png" alt="pencil rocket" height="180"
+          class="scaleX-n1-rtl" />
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-6">
+    <div class="card-header d-flex flex-wrap justify-content-between gap-4">
+      <div class="card-title mb-0 me-1">
+        <h5 class="mb-0">المشاريع المتاحة</h5>
+        <!-- <p class="mb-0">Total 6 course you have purchased</p> -->
+      </div>
+      <div
+        class="d-flex justify-content-md-end align-items-sm-center align-items-start column-gap-6 flex-sm-row flex-column row-gap-4">
+        <select class="form-select form-control" (change)="FilterByProjectStuats($event)">
+          <option value="0">الجميع </option>
+          <option value="2">المكتملة</option>
+          <option value="4">الغير مكتملة</option>
+        </select>
+
+
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row gy-6 mb-6">
+        <div class="col-sm-6 col-lg-4" *ngFor="let CrowdFunding of CrowdFundingList">
+          <div class="card p-2 h-100 shadow-none border">
+            <div class="rounded-2 text-center mb-4">
+              <a [routerLink]="['/clientPage/CrowdFunding/Details',CrowdFunding.id]"><img class="img-fluid" [src]="CrowdFunding.imageUrl" style="width: 382px;height:236px;"
+                  alt="tutor image 1" /></a>
+            </div>
+            <div class="card-body p-4 pt-2">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <span class="badge bg-label-warning"
+                  *ngIf="CrowdFunding.status == 'InitialApplication'">مفتوح</span>
+                  <span class="badge bg-label-warning"
+                  *ngIf="CrowdFunding.status == 'Progressing'">مفتوح</span>
+                <span class="badge bg-label-success" *ngIf="CrowdFunding.status == 'Approved'">مكتمل</span>
+                <p class="d-flex align-items-center justify-content-center fw-medium gap-1 mb-0">
+                  <span class="text-warning"><i class="fa-solid fa-sack-dollar"></i></span><span
+                    class="fw-normal">{{CrowdFunding.budget}} دولار</span>
+                </p>
+              </div>
+              <a [routerLink]="['/clientPage/CrowdFunding/Details',CrowdFunding.id]" class="h5">{{CrowdFunding.title}}</a>
+              <p class="mt-1">{{ CrowdFunding.details?.substring(0, 100) }}{{ CrowdFunding.details.length > 100 ? '...'
+                : '' }}</p>
+              <p class="d-flex align-items-center mb-1">
+                <i class="icon-base bx bx-time-five me-1"></i>
+                <span *ngIf="CrowdFunding.budget >= CrowdFunding.crowdFundingPaymentAmount">{{ (CrowdFunding.crowdFundingPaymentAmount / CrowdFunding.budget) * 100 | number:'1.0-2' }} % المعدل</span>
+                <span *ngIf="CrowdFunding.budget < CrowdFunding.crowdFundingPaymentAmount">{{ 1 * 100 | number:'1.0-2' }} % المعدل</span>
+
+                المنجز
+              </p>
+              <div class="progress mb-4" style="height: 8px">
+                <div class="progress-bar" role="progressbar"
+                  [title]="(CrowdFunding.crowdFundingPaymentAmount / CrowdFunding.budget) * 100 | number:'1.0-2'"
+                  [style.width.%]="(CrowdFunding.crowdFundingPaymentAmount / CrowdFunding.budget) * 100"
+                  [attr.aria-valuenow]="(CrowdFunding.crowdFundingPaymentAmount / CrowdFunding.budget) * 100"
+                  aria-valuemin="0" aria-valuemax="100">
+                </div>
+              </div>
+              <div
+                class="d-flex flex-column flex-md-row gap-4 text-nowrap flex-wrap flex-md-nowrap flex-lg-wrap flex-xxl-nowrap">
+                <!-- <a class="w-100 btn btn-label-secondary d-flex align-items-center"
+                  href="app-academy-course-details.html">
+                  <i class="icon-base bx bx-rotate-right icon-sm align-middle scaleX-n1-rtl me-2"></i><span>Start
+                    Over</span>
+                </a> -->
+                <a class="w-100 btn btn-label-primary d-flex align-items-center"  
+                [routerLink]="['/clientPage/CrowdFunding/Details',CrowdFunding.id]">
+                  <span class="me-2">تفاصيل أكثر</span><i
+                    class="icon-base bx bx-chevron-right icon-sm lh-1 scaleX-n1-rtl"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+      <nav aria-label="Page navigation" class="d-flex align-items-center justify-content-center">
+        <ul class="pagination mb-0 pagination-rounded">
+          <li class="page-item first ">
+            <a class="page-link" (click)="GetByPage(1)" href="javascript:void(0);"><i
+                class="icon-base bx bx-chevrons-left icon-sm scaleX-n1-rtl"></i></a>
+          </li>
+          <li class="page-item prev " [class.disabled]="!hasPrev">
+            <a class="page-link" (click)="GetPrev()"
+             href="javascript:void(0);"
+              [attr.aria-disabled]="!hasPrev"><i
+                class="icon-base bx bx-chevron-left icon-sm scaleX-n1-rtl"></i></a>
+          </li>
+          <li class="page-item" *ngFor="let pageNumber of GetPagesArray" [class.active]="pageNumber === page">
+            <a class="page-link" (click)="GetByPage(pageNumber)" href="javascript:void(0);">{{pageNumber}}</a>
+          </li>
+          <li class="page-item next" [class.disabled]="!hasnext">
+            <a class="page-link" href="javascript:void(0);" (click)="GetNext()"
+             [attr.aria-disabled]="!hasnext">
+              <i class="icon-base bx bx-chevron-right icon-sm scaleX-n1-rtl"></i>
+            </a>
+          </li>
+          <li class="page-item last" [class.disabled]="PageCounts <= 1">
+            <a class="page-link" 
+            [attr.aria-disabled]="PageCounts <= 1"
+            (click)="GetByPage((PageCounts - 1 ))" href="javascript:void(0);"><i
+                class="icon-base bx bx-chevrons-right icon-sm scaleX-n1-rtl"></i></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+
+
+
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row p-3">
+  <div class="col">
+    <h4 class="text-center">تعديل دور</h4>
+    <div class="accordion" id="collapsibleSection">
+      <div mat-dialog-content>
+        <form [formGroup]="roleForm">
+          <div class="row mb-3">
+            <div class="col-12">
+              <input type="text" class="form-control" formControlName="role" id="basic-default-name"
+                placeholder="ادخل اسم الدور" />
+
+              <div *ngIf="roleForm.controls['role'].invalid && roleForm.controls['role'].touched">
+                <small *ngIf="roleForm.controls['role'].errors?.['required']" class="text-danger">اسم الدور
+                  مطلوب</small>
+              </div>
+
+            </div>
+
+
+
+          </div>
+        </form>
+
+        <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+          <button mat-button (click)="Submit()" class="btn btn-success me-3 " cdkFocusInitial>تأكيد</button>
+          <button mat-button class="btn btn-secondary" (click)="onNoClick()">الغاء </button>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

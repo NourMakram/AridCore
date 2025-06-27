@@ -1,0 +1,58 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="row" dir="rtl">
+      <!-- Basic Layout -->
+      <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">اضافة خبرة اكاديمى   </h5>
+          </div>
+          <!-- {{ExpertisesForm.value|json}} -->
+          <div class="card-body">
+            <form [formGroup]="ExpertisesForm">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name"> الخبرة باللغة العربية </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" formControlName="name" id="basic-default-name" placeholder="ادخل الخبرة باللغة العربية" />
+  
+                  <div *ngIf="ExpertisesForm.controls['name'].invalid && ExpertisesForm.controls['name'].touched">
+                    <small *ngIf="ExpertisesForm.controls['name'].errors?.['required']" class="text-danger"> الخبرة بالعربية مطلوب</small>
+                    <small *ngIf="ExpertisesForm.controls['name'].errors?.['pattern']" class="text-danger">يجب إدخال الخبرة باللغة العربية فقط</small>
+                  </div>
+                </div>
+  
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone"> التخصص</label>
+                <div class="col-sm-10">
+                  <select class="form-control" formControlName="specialityId">
+                    <option seleted disabled>اختر التخصص</option>
+                    <option *ngFor="let Specialite of Specialites" [value]="Specialite.id">{{Specialite.name}}</option>
+                  </select>
+                   <div *ngIf="ExpertisesForm.get('specialityId')?.invalid &&  ExpertisesForm.get('specialityId')?.touched"
+                       class="error mt-2">
+                    <small *ngIf="ExpertisesForm.get('specialityId')?.errors?.['required']" class="text-danger">
+                       يرجى اختيار  التخصص   
+                    </small>
+                  </div>
+  
+                </div>
+              </div>
+               
+               
+              <div class="row justify-content-end">
+                <div class="col-sm-10">
+                  <button type="submit" (click)="Submit()" class="btn btn-primary">اضافة</button>
+                  <button routerLink="/userPage/Expertises" class="btn btn-secondary mx-2">الغاء</button>
+  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  

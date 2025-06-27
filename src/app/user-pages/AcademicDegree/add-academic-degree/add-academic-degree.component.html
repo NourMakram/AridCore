@@ -1,0 +1,54 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="row" dir="rtl">
+      <!-- Basic Layout -->
+      <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-header d-flex align-items-center justify-content-between">
+          </div>
+          <!-- {{AcademicDegreeForm.value|json}} -->
+          <div class="card-body">
+            <h5 class="mb-2">اضافة درجة اكاديمية</h5>
+
+            <form [formGroup]="AcademicDegreeForm">
+              <div class="row mb-3 text-start">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">  الدرجة باللغة العربية </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" formControlName="arDegreeName" id="basic-default-name" placeholder="ادخل الدرجة باللغة العربية" />
+  
+                  <div *ngIf="AcademicDegreeForm.controls['arDegreeName'].invalid && AcademicDegreeForm.controls['arDegreeName'].touched">
+                    <small *ngIf="AcademicDegreeForm.controls['arDegreeName'].errors?.['required']" class="text-danger"> الدرجة بالعربية مطلوب</small>
+                    <small *ngIf="AcademicDegreeForm.controls['arDegreeName'].errors?.['pattern']" class="text-danger">يجب إدخال الدرجة باللغة العربية فقط</small>
+                  </div>
+                </div>
+  
+              </div>
+              <div class="row mb-3 text-start">
+                <label class="col-sm-2 col-form-label" for="basic-default-company"> الدرجة باالغة الأنجليزية</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" formControlName="enDegreeName" id="basic-default-name" placeholder="ادخل الدرجة باللغة الأنجليزية" />
+                  <div *ngIf="AcademicDegreeForm.controls['enDegreeName'].invalid && AcademicDegreeForm.controls['enDegreeName'].touched">
+                    <small *ngIf="AcademicDegreeForm.controls['enDegreeName'].errors?.['required']" class="text-danger">الدرجة بالإنجليزية مطلوب</small>
+                    <small *ngIf="AcademicDegreeForm.controls['enDegreeName'].errors?.['pattern']" class="text-danger">يجب إدخال الدرجة باللغة الإنجليزية فقط</small>
+                  </div>
+  
+                </div>
+              </div>
+               
+               
+              <div class="row justify-content-end">
+                <div class="col-sm-10">
+                  <button type="submit" (click)="Submit()" class="btn btn-primary">اضافة</button>
+                  <a routerLink="/userPage/AcademicDegrees"  class="btn btn-secondary mx-2">الغاء</a>
+  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  

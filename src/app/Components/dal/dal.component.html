@@ -1,0 +1,50 @@
+<div class="container-xxl">
+   <div class="row justify-content-center">
+    <div class="col-12 col-lg-5 col-md-5">
+      <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner py-4">
+          <!-- Forgot Password -->
+          <div class="card">
+            <div class="card-body">
+              <!-- Logo -->
+              <div class="app-brand justify-content-center">
+                <img src="https://arid.my/images/logo.png" class="img-fluid">
+                
+              </div>
+              <!-- /Logo -->
+              <h4 class="mb-2" >رابط الدخول المباشر</h4>
+              <p class="mb-4">ادخل البريد الألكترونى المسجل وسيتم ارسال رابط الدخول المباشر</p>
+              <form id="formAuthentication" [formGroup]="DALForm" class="mb-3"   method="POST">
+                <div class="mb-3 text-start">
+                  <label for="email" class="form-label">البريد الألكترونى</label>
+                  <input
+                    type="text"
+                    class="form-control "
+                    id="email"
+                    formControlName="email"
+                    name="email"
+                    placeholder="ادخل البريد الألكترونى"
+                    autofocus
+                  />
+                  <div *ngIf="DALForm.controls['email'].invalid && DALForm.controls['email'].touched">
+                    <small *ngIf="DALForm.controls['email'].errors?.['required']" class="text-danger">ادخل البريد الألكترونى</small>
+                    <small *ngIf="DALForm.controls['email'].errors?.['email']" class="text-danger">البريد الألكترونى غير صحيح</small>
+                </div>
+                </div>
+               
+                <button class="btn btn-primary d-grid w-100" type="submit" (click)="Submit()">ارسال الرابط</button>
+              </form>
+              <div class="text-center">
+                <a routerLink="/Login" class="d-flex align-items-center justify-content-center">
+                  <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
+                  تسجيل دخول
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- /Forgot Password -->
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>

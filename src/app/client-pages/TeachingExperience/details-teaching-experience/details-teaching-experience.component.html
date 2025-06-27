@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row p-3">
+        <div class="col">
+            <div class="accordion" id="collapsibleSection">
+                <div mat-dialog-content>
+                    <!-- {{TeachingExperience|json}} -->
+                    <h5>تفاصيل الخبرة التدريسية</h5>
+                    <div class="row  text-start">
+                        <div class="col-4">
+                            <h6> العتوان بالعربى:</h6>
+                            <h6> العنوان بالأنجليزية :</h6>
+                            <h6> المدة:</h6>
+                            <h6> الوصف :</h6>
+
+
+                        </div>  
+                        <div class="col-8">
+                            <p>{{TeachingExperience.arTitle}}</p>
+                            <p>{{TeachingExperience.enTitle}}</p>
+                               <p>{{TeachingExperience.fromYear}} <span [hidden]="TeachingExperience.isCurrent == false"> - حاليا</span> <span [hidden]="TeachingExperience.toYear == null"> - {{TeachingExperience.toYear}}</span></p>
+
+                            <p class="text-wrap">{{TeachingExperience.arDescription}}</p>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                        <button mat-button class="btn btn-secondary" (click)="onNoClick()">اغلاق </button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

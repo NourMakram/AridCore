@@ -1,0 +1,73 @@
+export interface UserModel{
+ referredById: string,
+  referredBy: string,
+  arName: string,
+  enName: string,
+  otherNames: string,
+  dateofBirth: string,
+  gender: number,
+  secondEmail: string,
+  regDate: string,
+  arid:number,
+  aridDate: string,
+  status: number,
+  uiLanguage: string,
+  profileImage:string,
+  featuredImage: string,
+  cvurl: string,
+  summary: string,
+  contactMeDetail: string,
+  countryId: number,
+   cityId: string,
+   universityId: string,
+   facultyId: string,
+  visitors: string,
+  balance: number,
+  holdingBalance: number,
+  creditBalance: number,
+  dal: string,
+   isCVHidden: boolean,
+  lastLogin: string,
+  isFreelancer: boolean,
+  isNotUniversity: boolean,
+  firmName: string,
+    id: string,
+    email : string,
+    phoneNumber : string,
+ }
+
+ export interface userModel2{
+id :string,
+roleName:string,
+ arName:string,
+ enName:string,
+ email :string,
+ phoneNumber:string,
+ countryName:string,
+ facultyName :string,
+ cityName:string,
+ universityName:string,
+ profileImage:string,
+ summary:string,
+ dateofBirth:string,
+ regDate:string,
+ cVURL:string,
+ uILanguage:string,
+ visitors:number,
+ balance :number,
+ creditBalance:number,
+ followers :number,
+ following:number,
+ dal:string,
+ badges:number
+ }
+
+ export interface UserInfo{
+  id:string,
+  name:string,
+  image:string,
+  enName:string
+
+ }
+
+ 

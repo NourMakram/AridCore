@@ -1,0 +1,54 @@
+<div class="container-xxl">
+  <div class="row justify-content-center">
+   <div class="col-12 col-lg-5 col-md-5">
+     <div class="authentication-wrapper authentication-basic container-p-y">
+       <div class="authentication-inner py-4">
+         <!-- Forgot Password -->
+         <div class="card">
+           <div class="card-body">
+             <!-- Logo -->
+             <div class="app-brand justify-content-center">
+               <img src="https://arid.my/images/logo.png" class="img-fluid">
+               
+             </div>
+             <!-- /Logo -->
+              <!-- {{ForgetPasswordForm.value|json}} -->
+             <h4 class="mb-2" >تفعيل البريد الألكترونى</h4>
+             <p class="mb-4"> ادخل الكود المكون من 6 الأرقام الذى تم ارساله الى بريدك الألكترونى {{Email}}</p>
+             <form id="formAuthentication" [formGroup]="ForgetPasswordForm" class="mb-3"   method="POST">
+               <div class="mb-3 text-start">
+                 <label for="code" class="form-label">الكود</label>
+                 <input
+                   type="text"
+                   class="form-control "
+                   id="code"
+                   name="code"
+                   formControlName="code"
+                   placeholder="ادخل الكود المرسل"
+                   minlength="6"
+                   maxlength="6"
+                   autofocus
+                 />
+                 <div *ngIf="ForgetPasswordForm.controls['code'].invalid && ForgetPasswordForm.controls['code'].touched">
+                   <small *ngIf="ForgetPasswordForm.controls['code'].errors?.['required']" class="text-danger">ادخل كود التفعيل </small>
+                   <small *ngIf="ForgetPasswordForm.get('code')?.errors?.['minlength']">كود التفعيل يتكون من 6 ارقام فقط </small>
+                   <small *ngIf="ForgetPasswordForm.get('code')?.errors?.['maxlength']">كود التفعيل يتكون من 6 ارقام فقط </small>
+                  </div>
+               </div>
+              
+               <button class="btn btn-primary d-grid w-100" type="submit" (click)="Submit()">ارسال</button>
+             </form>
+             <div class="text-center">
+               <a routerLink="/Login" class="d-flex align-items-center justify-content-center">
+                 <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
+                 تسجيل دخول
+               </a>
+             </div>
+           </div>
+         </div>
+         <!-- /Forgot Password -->
+       </div>
+     </div>
+   </div>
+  </div>
+ </div>

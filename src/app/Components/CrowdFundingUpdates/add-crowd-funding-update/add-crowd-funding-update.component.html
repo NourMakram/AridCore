@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row p-3">
+    <div class="col">
+      <!-- <h4 class="text-center">اضافة اسهام جديد</h4> -->
+      <div class="accordion" id="collapsibleSection">
+        <div mat-dialog-content>
+          <form [formGroup]="CrowdFundingUpdateForm">
+
+            <div class="row  text-start">
+
+              <div class="col-md-12">
+                <label class=" col-form-label text-sm-end" for="collapsible-state">اسم المرحلة</label>
+                <input type="text" class="form-control" formControlName="phaseName">
+                <div
+                  *ngIf="CrowdFundingUpdateForm.get('phaseName')?.invalid &&  CrowdFundingUpdateForm.get('phaseName')?.touched"
+                  class="error mt-2">
+                  <small *ngIf="CrowdFundingUpdateForm.get('phaseName')?.errors?.['required']" class="text-danger">
+                    ادخل اسم المرحلة
+                  </small>
+
+                </div>
+              </div>
+              <div class="col-md-12">
+                   <label class=" col-form-label text-sm-end" for="collapsible-state"> صورة</label>
+                     <input type="file" class="form-control" accept="image/*" formControlName="imageUrlFile"
+                      (change)="OnchangeImage($event)">
+                    <div
+                      *ngIf="CrowdFundingUpdateForm.get('imageUrlFile')?.invalid &&  CrowdFundingUpdateForm.get('imageUrlFile')?.touched"
+                      class="error mt-2">
+                      <small *ngIf="CrowdFundingUpdateForm.get('imageUrlFile')?.errors?.['required']" class="text-danger">
+                        قم بارفاق صورة عن المرحلة المقدمة
+                      </small>
+                    </div>
+                </div>
+              <div class="col-md-12">
+                   <label class=" col-form-label text-sm-end" for="collapsible-state"> ملف <span
+                      class="required"></span></label>
+                     <input type="file" class="form-control"
+                      accept=".pdf,application/pdf, .doc, .docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                      formControlName="fileUrl" (change)="OnchangeFile($event)">
+                    <div *ngIf="CrowdFundingUpdateForm.get('fileUrl')?.invalid &&  CrowdFundingUpdateForm.get('fileUrl')?.touched"
+                      class="error mt-2">
+                      <small *ngIf="CrowdFundingUpdateForm.get('fileUrl')?.errors?.['required']" class="text-danger">
+                        قم بارفاق ملف تفصيلى عن المرحلة المقدمة
+                      </small>
+                    </div>
+                 </div>
+               <div class="col-md-12">
+                <label class=" col-form-label text-sm-end" for="collapsible-pincode"> التفاصيل</label>
+                <textarea rows="2" maxlength="200" class="form-control " formControlName="details"></textarea>
+                <div
+                  *ngIf="CrowdFundingUpdateForm.get('details')?.invalid &&  CrowdFundingUpdateForm.get('details')?.touched"
+                  class="error mt-2">
+
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+          </form>
+
+          <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+            <button mat-button (click)="Submit()" class="btn btn-success me-3 " cdkFocusInitial>تأكيد</button>
+            <button mat-button class="btn btn-secondary" (click)="onNoClick()">الغاء </button>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

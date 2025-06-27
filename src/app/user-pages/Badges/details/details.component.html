@@ -1,0 +1,135 @@
+<div class="container-xxl flex-grow-1 container-p-y" style="margin-top: 60px;">
+  <div class="row g-6">
+    <div class="col-lg-8 m-auto">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center flex-wrap mb-6 gap-2">
+            <div class="me-1">
+              <h5 class="mb-0">{{Badge.arBadgeName}}</h5>
+            </div>
+           
+          </div>
+          <div class="card academy-content shadow-none border">
+            <div class="p-2">
+              <div class="cursor-pointer text-center">
+                <img [src]="Badge.badgeLogo" class="img-fluid" />
+              </div>
+            </div>
+            <div class="card-body pt-4">
+              <hr class="my-6" />
+
+              <h5>الوصف بالعربية</h5>
+              <p class="mb-0 lh-base">
+                {{Badge.arBadgeDesc}}
+              </p>
+
+             
+              <hr class="my-6" />
+              
+<!-- -----------------------------------------------isGranted === true----------------------------------->
+              <div *ngIf="userBadge?.isGranted==true">
+                <h5> وثائقُ تأييدِ الحصولِ على الوسام </h5>
+                <p class="mb-6  ">يمكنُ اختيارُ واحدةٍ، أو أكثر من الوثائقِ التي تناسبكم لتأييدِ الحصولِ على هذا الوسام،
+                  علمًا بأنه توجدُ رسوم رمزية لإصدارِ بعض الشهادات والوثائق. وهذه الرُّسومُ لدَعمِ استدامةِ مِنصةِ
+                  "أُريد".</p>
+
+                <div class="mb-3 text-start">
+                  <h6 class="text-left">اللغة العربية</h6>
+                  <a class="btn btn-success ms-2 mb-2 text-white"  (click)="RedirectToCertificate(Badge.araCertificateTemplateId,Badge.language)">شهادة الوسام</a>
+                  <a class="btn btn-secondary ms-2 mb-2 text-white"  (click)="RedirectToCertificate(Badge.araLetterTemplateId,Badge.language)" >خطاب تأييد الوسام</a>
+
+                </div>
+
+                 
+                <div class="mb-3 text-start">
+                  <h6 class="text-left">اللغة الانجليزية</h6>
+                  <a class="btn btn-success ms-2 mb-2 text-white" (click)="RedirectToCertificate(Badge.certificateTemplateId,Badge.language)"   >Badge Certificate</a>
+                  <a class="btn btn-secondary ms-2 mb-2 text-white" (click)="RedirectToCertificate(Badge.enLetterTemplateId,Badge.language)"  >Acknowledgement Letter</a>
+
+                </div>
+              </div>
+
+<!-- -----------------------------------------------isGranted === true----------------------------------->
+
+
+<!-- -----------------------------------------------isRejected === true----------------------------------->
+
+              <div *ngIf="userBadge?.isRejected == true">
+                <p class="text-danger fw-bold">لم يتم منح الوسام سبب الرفض   '{{userBadge.rejectReason }}'</p>
+                <div *ngIf="Badge.id == 27 || Badge.id == 28 || Badge.id == 11 || Badge.id == 13 ">
+                  <a class="btn btn-success text-white" (click)="Apply()">تقديم طلب الحصول على الوسام</a>
+                  <div class="col-12" *ngIf="Conditions!=null && Conditions.length > 0">
+                    <div class="card shadow-none bg-label-danger">
+                      <div class="card-body">
+                        <h5 class="card-title text-danger">للاسف لايمكن تقديم الحصول على الوسام الا بعد اكمال الشروط أدناه</h5>
+                        <p class="card-text" *ngFor="let conditon of Conditions;let i=index"> {{conditon}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngIf="Badge.id == 3 ">
+                  <a  class="btn btn-success" (click)="OpenIninvteDialog(Badge.id)"
+                    >تقديم فكرة لتطوير المنصة</a>
+
+                </div>
+              </div>
+<!-- -----------------------------------------------isRejected === true----------------------------------->
+
+<!-- -----------------------------------------------isRejected === false && isGranted ===false ----------------------------------->
+
+<div *ngIf="userBadge?.isGranted==false && userBadge?.isRejected == false">
+  <p class="mb-6  text-success fw-bold">تم تقديم  طلب الحصول على الوسام من قبل  انتظر حتى يتم معالجة الطلب</p>
+
+</div>
+<!-- -----------------------------------------------isRejected === false && isGranted ===false ----------------------------------->
+
+
+<!-- -----------------------------------------------userBadge == null ----------------------------------->
+
+              <div *ngIf="userBadge == null">
+                <div>
+                  <div *ngIf="Badge.id == 2 || Badge.id == 4">
+                    <h6>رابط الدعوة الخاص بكم لدعوة الاعضاء للتسجيل في المنصة</h6>
+                    <a [href]="InvitationLink" class="text-center">{{InvitationLink}}</a>
+
+                  </div>
+                 
+                  <div *ngIf="Badge.id == 27 || Badge.id == 28 || Badge.id == 11 || Badge.id == 13 ">
+                    <a class="btn btn-success text-white" (click)="Apply()">تقديم طلب الحصول على الوسام</a>
+                    <div class="col-12" *ngIf="Conditions!=null && Conditions.length > 0">
+                      <div class="card shadow-none bg-label-danger mt-1">
+                        <div class="card-body">
+                          <h5 class="card-title text-danger">للاسف لايمكن تقديم الحصول على الوسام الا بعد اكمال الشروط أدناه :</h5>
+                          <!-- <p class="card-text" *ngFor="let conditon of Conditions;let i=index"> {{conditon}}</p> -->
+                          <div class="card-text" *ngFor="let condition of Conditions" [innerHTML]="condition"></div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div *ngIf="Badge.id == 3 ">
+                    <a  class="btn btn-success" (click)="OpenIninvteDialog(Badge.id)"
+                      >تقديم فكرة لتطوير المنصة</a>
+
+                  </div>
+
+                  <div class="mt-3" *ngIf="Badge.id != 13 && Badge.id != 27 && Badge.id != 11 && Badge.id != 28 &&  Badge.id != 3">
+                    <p class="mb-6 text-info fw-bold">هذا الوسام يمنح مباشرة من قبل الامانة العامة عند تحقق شروطه</p>
+
+                  </div>
+
+                </div>
+
+              </div> 
+<!-- -----------------------------------------------userBadge == null ----------------------------------->
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

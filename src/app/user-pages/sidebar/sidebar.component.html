@@ -1,0 +1,258 @@
+<aside id="layout-menu" class="layout-menu menu-vertical menu" style="overflow-y: scroll;overflow-x: hidden;">
+  <div class="app-brand demo">
+    <a routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }" class="app-brand-link">
+      
+      <img src="https://arid.my/images/logo.png" class="img-fluid">
+    </a>
+
+    <a  class="layout-menu-toggle menu-link text-large ms-auto">
+      <i class="icon-base bx bx-chevron-left"></i>
+    </a>
+  </div>
+
+  <div class="menu-inner-shadow"></div>
+<ul class="menu-inner py-1">
+  <!-- Dashboards -->
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a  routerLinkActive="active" routerLink="/userPage/ControlPanel" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-home-smile"></i>
+      <div data-i18n="Dashboard">لوحة التحكم</div>
+    </a>
+  </li>
+
+  <!-- Apps & Pages -->
+  <li class="menu-header small">
+    <span class="menu-header-text" data-i18n="Apps & Pages">Apps &amp; Pages</span>
+  </li>
+
+  <li class="menu-item open" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-user"></i>
+      <div data-i18n="Users">إدارة المستخدمين</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/Roles" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-check-shield"></i>
+      <div data-i18n="الصلاحيات والادوار">الصلاحيات والأدوار</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/countries" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-globe"></i>
+      <div data-i18n="الدول">الدول</div>
+    </a>
+  </li>
+
+  <li class="menu-item"   routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/cities" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-map"></i>
+      <div data-i18n="المدن">المدن</div>
+    </a>
+  </li>
+ 
+  <li class="menu-item"  routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/universities" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base fa fa-university"></i>
+      <div data-i18n="الجامعات">الجامعات</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/faculties" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-buildings"></i>
+      <div data-i18n="الكليات">الكليات</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/specialities" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-category"></i>
+      <div data-i18n="التخصصات">التخصصات</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/AcademicDegrees" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-medal"></i>
+      <div data-i18n="الدرجات الأكاديمية">الدرجات الأكاديمية</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/PositionTypes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-id-card"></i>
+      <div data-i18n="المناصب الأكاديمية">المناصب الأكاديمية</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/Skills" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-brain"></i>
+      <div data-i18n="المهارات">المهارات</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/Expertises" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-briefcase-alt"></i>
+      <div data-i18n="الخبرات">الخبرات</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/MemberShips" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-group"></i>
+      <div data-i18n="العضويات الأحترافية">العضويات الاحترافية</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/CertificateTemplates" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-certification"></i>
+      <div data-i18n="قوالب الشهادات">قوالب الشهادات</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/CreditSystem" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-wallet"></i>
+      <div data-i18n="طلبات التسليف">طلبات التسليف</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/Donate" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-donate-heart"></i>
+      <div data-i18n="التبرعات">التبرعات</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/Partner" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base fa fa-handshake"></i>
+      <div data-i18n="شركاء الحوالات المالية">شركاء الحوالات المالية</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/Senders" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-send"></i>
+      <div data-i18n="المرسلين">المرسلين</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/EmailContents" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-envelope"></i>
+      <div data-i18n="EmailContents">EmailContents</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/EmailSendingLogs" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-archive-in"></i>
+      <div data-i18n="سجلات البريد الألكترونى">سجلات البريد الإلكتروني</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }" >
+    <a routerLink="/userPage/Badges" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-badge"></i>
+      <div data-i18n="قائمة الأوسمة">قائمة الأوسمة</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/UserBadges" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base fa fa-ribbon"></i>
+      <div data-i18n="طلبات الأوسمة">طلبات الأوسمة</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/Statements" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-bar-chart-alt"></i>
+      <div data-i18n="الحسابات المالية">الحسابات المالية</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/CrowdFunding" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-coin-stack"></i>
+      <div data-i18n="مشاريع التمويل الجماعى">مشاريع التمويل الجماعي</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/Messages/InboxMessages" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-message-square-dots"></i>
+      <div data-i18n="الرسائل">الرسائل</div>
+    </a>
+  </li>
+ 
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/CalendarEventCategorie" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-calendar-event"></i>
+      <div data-i18n="CalendarEventCategorie">CalendarEventCategorie</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/CalendarEvent" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-calendar"></i>
+      <div data-i18n="CalendarEvent">CalendarEvent</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/Addresses" routerLinkActive="active"
+     [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+      <i class="menu-icon icon-base bx bx-location-plus"></i>
+      <div data-i18n="العناوين">العناوين</div>
+    </a>
+  </li>
+
+  <li class="menu-item" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }">
+    <a routerLink="/userPage/LayoutAds" routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }" class="menu-link">
+       <i class="menu-icon icon-base fa-solid fa-bullhorn"></i>
+      <div data-i18n="الأعلانات">الإعلانات</div>
+    </a>
+  </li>
+</ul>
+
+</aside>

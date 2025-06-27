@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="accordion" id="collapsibleSection">
+        <form [formGroup]="ProfileLinkForm">
+         <div class="card accordion-item shadow-none">
+
+          <div
+            id="collapseDeliveryAddress"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingDeliveryAddress"
+            data-bs-parent="#collapsibleSection">
+            <h6 class="text-center pt-3"> تعديل</h6>
+            <div class="accordion-body">
+              <div class="row g-6 text-start">
+                
+                  <div class="col-md-12">
+                       <label class=" col-form-label text-sm-end" for="collapsible-state">نوع ملف السيرة الذاتية</label>
+                         <select id="collapsible-state" formControlName="profileType" class="select2 form-select" data-allow-clear="true">
+                          <option  value="" seleted disabled>اختر نوع ملف السيرة الذاتية</option>
+                          <option *ngFor="let ProfileType of ProfileTypes"  [value]="ProfileType.id">{{ProfileType.name}}</option>
+                        </select>
+                        <div *ngIf="ProfileLinkForm.get('profileType')?.invalid &&  ProfileLinkForm.get('profileType')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="ProfileLinkForm.get('profileType')?.errors?.['required']" class="text-danger">
+                       اختر نوع ملف السيرة الذاتية
+                     </small>
+                   
+                    </div>
+                  </div>
+                <div class="col-md-12">
+                     <label class=" col-form-label text-sm-end" for="collapsible-state">رابط الملف</label>
+                       <input type="text" formControlName="profileUrl" class="form-control"/>
+                      <div *ngIf="ProfileLinkForm.get('profileUrl')?.invalid &&  ProfileLinkForm.get('profileUrl')?.touched"
+                      class="error mt-2">
+                   <small *ngIf="ProfileLinkForm.get('profileUrl')?.errors?.['required']" class="text-danger">
+                     يرجى ادخال رابط الملف
+                   </small>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                      <label class=" col-form-label text-sm-end" for="collapsible-state">الظهور</label>
+                        <select id="collapsible-state" formControlName="accessType" class="select2 form-select" data-allow-clear="true">
+                          <option  value="" seleted disabled>اختر نوع الخصوصية</option>
+                          <option  [value]="0">عام</option>
+                          <option  [value]="1">خاص بى فقط</option>
+
+                        </select>
+                        <div *ngIf="ProfileLinkForm.get('accessType')?.invalid &&  ProfileLinkForm.get('accessType')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="ProfileLinkForm.get('accessType')?.errors?.['required']" class="text-danger">
+                       اختر نوع الخصوصية
+                     </small>
+                   </div>
+                      
+                  </div>
+
+                 <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                    <button mat-button (click)="Submit()" class="btn btn-success me-3 " cdkFocusInitial>حفظ</button>
+                    <button mat-button class="btn btn-secondary" (click)="onNoClick()">الغاء </button>
+                   </div>
+
+                
+              </div>
+            </div>
+          </div>
+        </div>
+       </form>
+        
+
+        </div>
+        </div>
+        </div>
+        
+</div>

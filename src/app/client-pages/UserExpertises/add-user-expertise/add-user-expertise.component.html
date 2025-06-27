@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row ">
+    <div class="col">
+      <div class="accordion" id="collapsibleSection">
+        <!-- Delivery Address -->
+       <form [formGroup]="UserExpertiseForm">
+
+        <div class="card accordion-item shadow-none">
+      
+          <div
+            id="collapseDeliveryAddress"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingDeliveryAddress"
+            data-bs-parent="#collapsibleSection">
+            <h6 class=" me-5 py-2 text-center pt-3" >  اضافة </h6>
+
+            <div class="accordion-body">
+              <div class="row g-6 text-start">
+                <div class="col-md-12">
+                     <label class="col-form-label text-sm-end" for="collapsible-state"> التخصص</label>
+                      <select id="collapsible-state" formControlName="expertiseId" class="select2 form-select" data-allow-clear="true">
+                        <option value="" selected disabled> اختار التخصص </option>
+                        <option *ngFor="let Expertise of Expertises" [value]="Expertise.id">{{Expertise.name}}</option>
+                       </select>
+                      <div *ngIf="UserExpertiseForm.controls['expertiseId'].invalid && UserExpertiseForm.controls['expertiseId'].touched">
+                        <small *ngIf="UserExpertiseForm.controls['expertiseId'].errors?.['required']" class="text-danger">اختر الخبرة  مطلوبة</small>
+                       </div>
+                  
+                </div>
+               <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                    <button mat-button (click)="Submit()" class="btn btn-success me-3 " cdkFocusInitial>تأكيد</button>
+                    <button mat-button class="btn btn-secondary" (click)="onNoClick()">الغاء </button>
+                   </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+       </form>
+        
+
+        </div>
+        </div>
+        </div>
+        
+</div>

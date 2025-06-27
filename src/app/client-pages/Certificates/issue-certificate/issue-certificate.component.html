@@ -1,0 +1,94 @@
+ <div class="container" style="margin-top: 80px;">
+    <div class="row p-3 justify-content-center bg-white">
+        <div class="col-12 col-lg-6 col-md-6 ">
+            <h4 class="text-center">اصدار شهادة</h4>
+
+            <div class="accordion" id="collapsibleSection">
+                <div mat-dialog-content>
+                    <form [formGroup]="CertificateForm">
+                        <!-- {{CertificateForm.value|json}} -->
+                        <div class="row  text-start">
+                             <div class="col-md-12">
+                                <label class=" col-form-label text-sm-end" for="collapsible-state"> الأسم فى الشهادة</label>
+                                <input type="text" class="form-control" formControlName="certificateName">
+                                <div *ngIf="CertificateForm.get('certificateName')?.invalid &&  CertificateForm.get('certificateName')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="CertificateForm.get('certificateName')?.errors?.['required']"
+                                        class="text-danger">
+                                        ادخل اسم المستخدم
+                                    </small>
+
+                                      <small  *ngIf="CertificateForm.get('certificateName')?.errors?.['pattern'] && lang == 0"
+                                        class="text-danger">
+                                          ادخل اسم المستخدم باللغة العربية فقط
+                                    </small>
+                                    <small  *ngIf="CertificateForm.get('certificateName')?.errors?.['pattern'] && lang == 1"
+                                        class="text-danger">
+                                          ادخل اسم المستخدم باللغة الأنجليزية فقط
+                                    </small>
+                                </div>
+                                  </div>
+
+                                  <div class="col-md-12">
+                                <label class=" col-form-label text-sm-end" for="collapsible-state">عنوان المشاركة</label>
+                                <input type="text" class="form-control" formControlName="secondaryTitle">
+
+                                <div *ngIf="CertificateForm.get('secondaryTitle')?.invalid &&  CertificateForm.get('secondaryTitle')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="CertificateForm.get('secondaryTitle')?.errors?.['required']"
+                                        class="text-danger">
+                                        ادخل عنوان المشاركة
+                                    </small>
+
+                                      <small  *ngIf="CertificateForm.get('secondaryTitle')?.errors?.['pattern'] && lang == 0"
+                                        class="text-danger">
+                                          ادخل عنوان المشاركة باللغة العربية فقط
+                                    </small>
+                                    <small  *ngIf="CertificateForm.get('secondaryTitle')?.errors?.['pattern'] && lang == 1"
+                                        class="text-danger">
+                                          ادخل عنوان المشاركة باللغة الأنجليزية فقط
+                                    </small>
+                                </div>
+                                  </div>
+
+ <div class="col-md-12">
+                                <label class=" col-form-label text-sm-end" for="collapsible-state">الأسم الأولى فى الشهادة</label>
+                                <input type="text" class="form-control" formControlName="initialAssignedCertificateName">
+
+                                <div *ngIf="CertificateForm.get('initialAssignedCertificateName')?.invalid && CertificateForm.get('initialAssignedCertificateName')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="CertificateForm.get('initialAssignedCertificateName')?.errors?.['required']"
+                                        class="text-danger">
+                                        ادخل  الأسم الأولى فى الشهادة  
+                                    </small>
+ <small  *ngIf="CertificateForm.get('initialAssignedCertificateName')?.errors?.['pattern'] && lang == 0"
+                                        class="text-danger">
+                                          ادخل  الأسم الأولى فى الشهادة باللغة العربية فقط
+                                    </small>
+                                    <small  *ngIf="CertificateForm.get('initialAssignedCertificateName')?.errors?.['pattern'] && lang == 1"
+                                        class="text-danger">
+                                          ادخل  الأسم الأولى فى الشهادة باللغة الأنجليزية فقط
+                                    </small>
+                                     
+                                </div>
+                                  </div>
+
+                        </div>
+
+                    </form>
+
+                    <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                        <button mat-button (click)="Submit()" class="btn btn-success me-3 "
+                            cdkFocusInitial>تأكيد</button>
+                        <button mat-button class="btn btn-secondary" >الغاء </button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

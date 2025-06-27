@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row p-3">
+        <div class="col">
+            <div class="accordion" id="collapsibleSection">
+                <div mat-dialog-content>
+                    <h5>تفاصيل المنصب الأكاديمى</h5>
+                     <div class="row  text-start">
+                        <div class="col-3">
+                            <h6>نوع المنصب :</h6>
+                            <h6> الكلية :</h6>
+                            <h6> الجامعة :</h6>
+                            <h6> المكان :</h6>
+                            <h6> الوصف :</h6>
+                            <h6> المدة :</h6>
+
+                        </div>
+                        <div class="col-8">
+                            <p>{{AcademicPosition.positionTypeName}}</p>
+                            <p>{{AcademicPosition.facultyName}}</p>
+                            <p>{{AcademicPosition.universityName}}</p>
+                            <p>{{AcademicPosition.countryName}} <span [hidden]="AcademicPosition.cityName == null"> - {{AcademicPosition.cityName}}</span></p>
+                             <p class="text-wrap">{{AcademicPosition.arDescription}}</p>
+                              <p>{{AcademicPosition.fromYear}} <span [hidden]="AcademicPosition.isCurrent == false"> - حاليا</span> <span [hidden]="AcademicPosition.toYear == null"> - {{AcademicPosition.toYear}}</span></p>
+                        </div>
+
+
+
+                    </div>
+
+                    <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                        <button mat-button class="btn btn-secondary" (click)="onNoClick()">اغلاق </button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

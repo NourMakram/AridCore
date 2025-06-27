@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row p-3">
+        <div class="col">
+            <div class="accordion" id="collapsibleSection">
+                <div mat-dialog-content>
+                    <h5>تفاصيل النشر العلمي</h5>
+                    <div class="row  text-start">
+                        <div class="col-4">
+     
+                                <h6> العتوان بالعربى:</h6>
+                            <h6> العنوان بالأنجليزية :</h6>
+                                                        <h6>  المؤلفون :</h6>
+                            <h6>  الناشر :</h6>
+                            <h6> نوع النشر :</h6>
+                            <h6> عدد الصفحات :</h6>
+                                                        <h6> تاريخ النشر:</h6>
+
+                            <h6> رابط الملف :</h6>
+
+ 
+
+                        </div>  
+                        <div class="col-8">
+                            <p>{{Publication.arTitle}}</p>
+                            <p>{{Publication.enTitle}}</p>
+                            <p>{{Publication.arAuthors}}</p>
+                            <p>{{Publication.publisher}}</p>
+                            <p>{{Publication.publicationType}}</p>
+                            <p>{{Publication.pages}}</p>
+                                <p>{{Publication.publicationDate}} </p>
+
+                            <p><a [href]="Publication.fileLinkPath">{{Publication.fileLinkPath}}</a></p>
+                            
+
+ 
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                        <button mat-button class="btn btn-secondary" (click)="onNoClick()">اغلاق </button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

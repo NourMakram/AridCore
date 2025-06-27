@@ -1,0 +1,30 @@
+ <div class="card-header align-items-center">
+          <h5 class="card-action-title mb-0">
+            <i class="icon-base bx bx-bar-chart-alt-2 icon-lg text-body me-4"></i> الأنشطة الأكاديمية
+          </h5>
+        </div>
+        <div class="card-body pt-3" >
+          <ul class="timeline mb-0">
+            <li class="timeline-item timeline-item-transparent" *ngFor="let AcadmicActivity of AcadmicActivitys">
+              <span class="timeline-point timeline-point-primary"></span>
+              <div class="timeline-event text-start">
+                <div class="timeline-header mb-3">
+                  <h6 class="mb-0">{{AcadmicActivity.arTitle}}</h6>
+                  <small class="text-body-secondary"><a class="btn btn-primary text-white" (click)="openDetailsDialog(AcadmicActivity.id)">تفاصيل</a></small>
+                </div>
+                <p class="mb-2 "> {{AcadmicActivity.activityType}} </p>
+ 
+                <div class="d-flex align-items-center mb-2">
+                  <div class="badge bg-lighter rounded d-flex align-items-center">
+                     <span class="h6 mb-0 text-body">{{AcadmicActivity.country}}  -  {{AcadmicActivity.activityDate}}</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+           
+            
+          </ul>
+        </div>
+
+
+ 

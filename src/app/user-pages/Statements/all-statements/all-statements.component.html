@@ -1,0 +1,70 @@
+<div class="container-xxl flex-grow-1 container-p-y justify-content-start p-0">
+
+    <div class="card shadow-none">
+            <a class="btn btn-primary m-3 text-white" (click)="openAddDialog()" style="width: 200px;">اضافة </a>
+
+
+
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>العضو</th>
+                        <th>تاريخ الأضافة</th>
+                        <th>المبلغ</th>
+                        <th>من / الى</th>
+                        <th>التفاصيل</th>
+                        <th>العمليات</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let Statement of Statements;let i = index">
+                        <td>
+                            <span>{{i+1}}</span>
+                        </td>
+                        <td>{{Statement.applicationUserName}}</td>
+
+                        <td>{{Statement.recordDate}}</td>
+                        <td>{{Statement.amount}}</td>
+
+                        <td>{{Statement.destination}}</td>
+                        <td class="text-wrap">{{Statement.details}}</td>
+
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
+                                    <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <!--<a class="dropdown-item" (click)="openEditDialog(Skill.id)"
+                      ><i class="icon-base bx bx-edit-alt me-1 text-warning"></i> تعديل</a
+                    > -->
+                                    <a class="dropdown-item" (click)="Delete(Statement.id)"><i
+                                            class="icon-base bx bx-trash me-1 text-danger"></i> حذف</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr [hidden]="Statements.length > 0">
+                        <td colspan="6" class="text-center">لا توجد بيانات</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="paginator-container text-center d-flex justify-content-center">
+                <mat-paginator [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5,25,50,100]"
+                    (page)="onPageChange($event)">
+                </mat-paginator>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="content-backdrop fade"></div>
+<!-- Content wrapper -->

@@ -1,0 +1,29 @@
+ <div class="card card-action ">
+                        <div class="card-header align-items-center">
+                          <h5 class="card-action-title mb-0" >الأوسمة</h5>
+                         </div>
+                        <div class="card-body" style="max-height: 300px; overflow-y:scroll;">
+                          <ul class="list-unstyled mb-0">
+                            <li class="mb-4" *ngFor="let userbadge of UserBadges" >
+                              <div class="d-flex align-items-center">
+                                <div class="d-flex align-items-center">
+                                  <div class="avatar me-2">
+                                    <img [src]="userbadge.badgeImage" alt="Avatar" class="rounded-circle" />
+                                  </div>
+                                  <p>{{userbadge.badgeName}}</p>
+                                </div>
+                               
+                              </div>
+                            </li>
+                            <li class="mb-4" [hidden]="UserBadges.length > 0">
+                              <p>لا يوجد أوسمه</p>
+                            </li>
+                        
+                          </ul>
+                          <div class="m-auto text-center">
+                            <button type="button" (click)="Close()" class="btn btn-label-primary" >اغلاق</button>
+
+                          </div>
+
+                        </div>
+                      </div>

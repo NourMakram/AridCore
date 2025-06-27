@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row p-3">
+        <div class="col">
+            <!-- <h4 class="text-center">اضافة اسهام جديد</h4> -->
+            <div class="accordion" id="collapsibleSection">
+                <div mat-dialog-content>
+                    <form [formGroup]="statementForm">
+                         <div class="row  text-start">
+                            <div class="col-md-12 mb-2">
+                                <mat-form-field appearance="fill" style="width:100%">
+                                    <mat-label>ابحث عن مستخدم</mat-label>
+                                    <input type="text" matInput [matAutocomplete]="auto" (change)="FilterUsers($event)"
+                                        [placeholder]="'اكتب اسم المستخدم...'">
+
+                                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onUserSelected($event)"
+                                        [displayWith]="displayUser">
+
+                                        <mat-option *ngFor="let user of filteredUsers" [value]="user">
+                                            {{ user.name }}
+                                        </mat-option>
+                                        <mat-option *ngIf="filteredUsers.length == 0">
+                                            لا توجد نتائج
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                    <div *ngIf="statementForm.get('applicationUserId')?.invalid &&
+                                statementForm.get('applicationUserId')?.touched" class="error mt-2">
+                                        <small *ngIf="statementForm.get('applicationUserId')?.errors?.['required']"
+                                            class="text-danger">
+                                            ادخل اسم المستخدم
+                                        </small>
+
+                                    </div>
+                                </mat-form-field>
+
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="form-label">المبلغ</label>
+                                <input type="number" class="form-control" formControlName="amount" />
+                                <div *ngIf="statementForm.get('amount')?.invalid &&  statementForm.get('amount')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="statementForm.get('amount')?.errors?.['required']"
+                                        class="text-danger">
+                                        ادخل المبلغ المطلوب
+                                    </small>
+                                    <small *ngIf="statementForm.get('amount')?.errors?.['min']" class="text-danger">
+                                        المبلغ يجب ان يكون اكبر من الصفر
+                                    </small>
+                                </div>
+                            </div>
+                                       
+                             <div class="col-12 mb-2">
+                                <label class="form-label">تفاصيل</label>
+                                <textarea rows="3" class="form-control" formControlName="details"></textarea>
+                                <div *ngIf="statementForm.get('details')?.invalid &&  statementForm.get('details')?.touched"
+                                    class="error mt-2">
+                                    <small *ngIf="statementForm.get('details')?.errors?.['required']"
+                                        class="text-danger">
+                                        ادخل تفاصيل التحويل
+                                    </small>
+
+                                </div>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <input type="checkbox" formControlName="destination" /> من / الى
+
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                        <button mat-button (click)="Submit()" class="btn btn-success me-3 "
+                            cdkFocusInitial>تأكيد</button>
+                        <button mat-button class="btn btn-secondary" (click)="onNoClick()">الغاء </button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

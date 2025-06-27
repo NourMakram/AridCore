@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row ">
+    <div class="col">
+       <div class="accordion" id="collapsibleSection">
+        <!-- Delivery Address -->
+         <!-- {{UserSkillForm.value|json}} -->
+       <form [formGroup]="UserSkillForm">
+
+        <div class="card accordion-item shadow-none">
+      
+          <div
+            id="collapseDeliveryAddress"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingDeliveryAddress"
+            data-bs-parent="#collapsibleSection">
+            <h6 class="my-3 py-2 me-5 text-center" > إضافة مهارة جديدة</h6>
+            <div class="accordion-body">
+              <div class="row g-6 text-start" >
+                <div class="col-md-12">
+                     <label class=" col-form-label text-sm-end" for="collapsible-state">المهارة</label>
+                       <select id="collapsible-state" formControlName="skillId" class="select2 form-select" data-allow-clear="true">
+                        <option value="" selected disabled> اختر المهارة</option>
+                        <option *ngFor="let Skill of Skills" [value]="Skill.id">{{Skill.name}}</option>
+                       </select>
+                      <div *ngIf="UserSkillForm.controls['skillId'].invalid && UserSkillForm.controls['skillId'].touched">
+                        <small *ngIf="UserSkillForm.controls['skillId'].errors?.['required']" class="text-danger">اختر المهارة  مطلوبة</small>
+                       </div>
+                 </div>
+                 <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                    <button mat-button (click)="Submit()" class="btn btn-success me-3 " cdkFocusInitial>تأكيد</button>
+                    <button mat-button class="btn btn-secondary" (click)="onNoClick()">الغاء </button>
+                   </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+       </form>
+        
+
+        </div>
+        </div>
+        </div>
+        
+</div>

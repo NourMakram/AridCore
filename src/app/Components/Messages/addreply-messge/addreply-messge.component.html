@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="my-1">
+    <h5 class="text-left">ارسال رد على الرسالة</h5>
+  </div>
+   <form  [formGroup]="MessageForm">
+        
+          <div class="email-compose-message">
+            <label for="email-subject" class="fw-medium text-body-secondary mb-2">الرسالة:</label>
+            <textarea rows="5" class="form-control" formControlName="message" placeholder="ادخل نص الرسالة"></textarea>
+          </div>
+          
+          <hr class="mx-n6 my-1 mb-2" />
+          <div>
+            <label for="attach-file" class="btn btn-sm btn-icon ms-4">
+              <i class="icon-base bx bx-paperclip cursor-pointer icon-20px"></i> المرفقات</label>
+            <input type="file" (change)="OnchangeFile($event)" name="file-input" class="form-control" id="attach-file" />
+          </div>
+          <div class="email-compose-actions d-flex justify-content-between align-items-center my-4">
+            <div class="d-flex align-items-center">
+              <div class="btn-group">
+                <button type="button" (click)="Submit()" class="btn btn-primary email-send-btn"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="icon-base bx bx-paper-plane icon-sm scaleX-n1-rtl ms-2"></i> ارسال
+                </button>
+
+                <button type="button" class="btn btn-secondary ms-3" (click)="onNoClick()" aria-expanded="false">
+                  الغاء
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </form>
+</div>

@@ -1,0 +1,25 @@
+ <div class="card-header align-items-center">
+            <h5 class="card-action-title mb-0">
+              <i class="icon-base bx bx-bar-chart-alt-2 icon-lg text-body me-4"></i>الخبرات التدريسية
+            </h5>
+          </div>
+          <div class="card-body pt-3" >
+            <ul class="timeline mb-0">
+              <li class="timeline-item timeline-item-transparent" *ngFor="let TeachingExperience of TeachingExperiences">
+                <span class="timeline-point timeline-point-warning"></span>
+                <div class="timeline-event text-start">
+                  <div class="timeline-header mb-3">
+                    <h6 class="mb-0">{{TeachingExperience.arTitle}}</h6>
+                    <small class="text-body-secondary"><a class="btn btn-primary text-white" (click)="openDetailsDialog(TeachingExperience.id)">تفاصيل</a></small>
+                  </div>
+                  <div class="d-flex align-items-center mb-2">
+                    <div class="badge bg-lighter rounded d-flex align-items-center">
+                       <span class="h6 mb-0 text-body">{{TeachingExperience.fromYear}} - {{TeachingExperience.toYear}}</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              
+               
+            </ul>
+          </div>

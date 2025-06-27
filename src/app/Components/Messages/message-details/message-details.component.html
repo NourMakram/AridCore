@@ -1,0 +1,219 @@
+<!-- Email View -->
+<div class="col app-email-view flex-grow-0 bg-lighter" id="app-email-view">
+  <div class="card shadow-none border-0 rounded-0 app-email-view-header p-5 pt-md-4 py-2">
+    <!-- Email View : Title  bar-->
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center overflow-hidden">
+        <span class="ms-sm-2 me-4">
+         <a (click)="GoBack()"> <i class="icon-base bx bx-chevron-left icon-md cursor-pointer scaleX-n1-rtl"
+            data-bs-toggle="sidebar" data-target="#app-email-view"></i></a>
+          </span>
+        <h6 class="text-truncate mb-0 me-2 fw-normal">تفاصيل الرسالة</h6>
+        <!-- <span class="badge bg-label-warning">Important</span> -->
+      </div>
+      <!-- Email View : Action bar-->
+      <!-- <div class="d-flex align-items-center">
+        <span class="btn btn-icon p-0 me-2 text-body-secondary">
+          <i class="icon-base bx bx-chevron-left icon-md scaleX-n1-rtl"></i>
+        </span>
+        <span class="btn btn-icon p-0">
+          <i class="icon-base bx bx-chevron-right icon-md scaleX-n1-rtl"></i>
+        </span>
+      </div> -->
+    </div>
+    <hr class="app-email-view-hr mx-n5 mb-2" />
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <span class="btn btn-icon me-1"><i class="icon-base bx bx-trash icon-md cursor-pointer"></i></span>
+        <span class="btn btn-icon me-1"><i class="icon-base bx bx-envelope-open icon-md cursor-pointer"
+            data-bs-toggle="sidebar" data-target="#app-email-view"></i></span>
+        <div class="dropdown">
+          <button class="btn btn-icon p-0 me-1" type="button" id="dropdownMenuFolderTwo" data-bs-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="icon-base bx bx-folder icon-md"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuFolderTwo">
+            <a class="dropdown-item" href="javascript:void(0)">
+              <i class="icon-base bx bx-error-alt me-1"></i>
+              <span class="align-middle">Spam</span>
+            </a>
+            <a class="dropdown-item" href="javascript:void(0)">
+              <i class="icon-base bx bx-pencil me-1"></i>
+              <span class="align-middle">Draft</span>
+            </a>
+            <a class="dropdown-item" href="javascript:void(0)">
+              <i class="icon-base bx bx-trash me-1"></i>
+              <span class="align-middle">Trash</span>
+            </a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-icon p-0" type="button" id="dropdownLabelTwo" data-bs-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="icon-base bx bx-label icon-md"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLabelTwo">
+            <a class="dropdown-item" href="javascript:void(0)">
+              <i class="badge badge-dot bg-success me-1"></i>
+              <span class="align-middle">Workshop</span>
+            </a>
+            <a class="dropdown-item" href="javascript:void(0)">
+              <i class="badge badge-dot bg-primary me-1"></i>
+              <span class="align-middle">Company</span>
+            </a>
+            <a class="dropdown-item" href="javascript:void(0)">
+              <i class="badge badge-dot bg-info me-1"></i>
+              <span class="align-middle">Important</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex align-items-center">
+        <span class="btn btn-icon p-0">
+          <i class="icon-base bx bx-star icon-md"></i>
+        </span>
+         <div class="d-flex align-items-center">
+        <span class="btn btn-icon p-0 me-2 text-body-secondary">
+          <i class="icon-base bx bx-chevron-left icon-md scaleX-n1-rtl"></i>
+        </span>
+        <span class="btn btn-icon p-0">
+          <i class="icon-base  bx bx-chevron-right icon-md scaleX-n1-rtl"></i>
+        </span>
+      </div>
+        <!-- <div class="dropdown ms-1">
+          <button class="btn btn-icon p-0" type="button" id="dropdownMoreOptions" data-bs-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="icon-base bx bx-dots-vertical-rounded icon-md"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMoreOptions">
+            <a class="dropdown-item" href="javascript:void(0)">
+              <i class="icon-base bx bx-envelope me-1"></i>
+              <span class="align-middle">Mark as unread</span>
+            </a>
+            <a class="dropdown-item" href="javascript:void(0)">
+              <i class="icon-base bx bx-envelope-open me-1"></i>
+              <span class="align-middle">Mark as read</span>
+            </a>
+            <a class="dropdown-item" href="javascript:void(0)">
+              <i class="icon-base bx bx-star me-1"></i>
+              <span class="align-middle">Add star</span>
+            </a>
+            <a class="dropdown-item" href="javascript:void(0)">
+              <i class="icon-base bx bx-calendar me-1"></i>
+              <span class="align-middle">Create Event</span>
+            </a>
+            <a class="dropdown-item" href="javascript:void(0)">
+              <i class="icon-base bx bx-volume-mute me-1"></i>
+              <span class="align-middle">Mute</span>
+            </a>
+            <a class="dropdown-item d-sm-none d-block" href="javascript:void(0)">
+              <i class="icon-base bx bx-printer me-1"></i>
+              <span class="align-middle">Print</span>
+            </a>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <hr class="m-0" />
+  <!-- Email View : Content-->
+  <div class="app-email-view-content py-4" style="height: 370px;overflow-y: scroll;">
+    <div class="card email-card-last mx-sm-6 mx-3 mt-4 mb-3">
+      <div class="card-header d-flex justify-content-between align-items-center flex-wrap border-bottom">
+        <div class="d-flex align-items-center mb-sm-0 mb-3">
+          <img [src]="MessageDetails.fromUserImage" alt="user-avatar" class="flex-shrink-0 rounded-circle me-4"
+            height="38" width="38" />
+          <div class="flex-grow-1 ms-1">
+            <h6 class="m-0 fw-normal">{{MessageDetails.fromUserName}}</h6>
+            <!-- <small class="text-body">iAmAhootemail.com</small> -->
+          </div>
+        </div>
+        <div class="d-flex align-items-center">
+          <p class="mb-0 me-4 text-body-secondary">{{MessageDetails.dateOfRecord}}</p>
+          <span class="btn btn-icon"><i class="icon-base bx bx-paperclip icon-md cursor-pointer"></i></span>
+          <span class="btn btn-icon"><i
+              class="email-list-item-bookmark icon-base bx bx-star icon-md cursor-pointer"></i></span>
+          <div class="dropdown">
+            <button class="btn btn-icon dropdown-toggle hide-arrow" id="dropdownEmailTwo" data-bs-toggle="dropdown"
+              aria-expanded="true">
+              <i class="icon-base bx bx-dots-vertical-rounded icon-md"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownEmailTwo">
+              <a  (click)="OpenAddDialog(MessageDetails.id)" class="dropdown-item scroll-to-reply" href="javascript:void(0)">
+                <i class="icon-base bx bx-share me-1"></i>
+                <span class="align-middle">رد</span>
+              </a>
+              <!-- <a class="dropdown-item" href="javascript:void(0)">
+                                  <i class="icon-base bx bx-share me-1"></i>
+                                  <span class="align-middle">Forward</span>
+                                </a>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                  <i class="icon-base bx bx-info-circle me-1"></i>
+                                  <span class="align-middle">Report</span>
+                                </a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body pt-6">
+        <p class="fw-medium">{{MessageDetails.subject}}</p>
+        <p>
+          {{MessageDetails.message}}
+        </p>
+
+        <!-- <p class="mb-0"></p> -->
+        <!-- <p class="fw-medium mb-0">Envato Design Team</p> -->
+         <div [hidden]="MessageDetails.filePath == null">
+             <hr />
+        <p class="text-body-secondary mb-2" [hidden]="MessageDetails.filePath == null">المرفقات</p>
+        <div class="cursor-pointer">
+          <i class="icon-base bx bx-file"></i>
+          <a [href]="MessageDetails.filePath" target="_blank"> <span class="align-middle ms-1"> {{ MessageDetails.filePath.split('/').pop() }}</span></a>
+        </div>
+         </div>
+       
+      </div>
+    </div>
+    
+    <div class="card email-card-prev mx-sm-6 mx-3 mb-2" *ngFor="let Reply of MessagesReplies">
+      <p class="fw-medium mb-0 ps-5 py-3">الردود الخاصة بالرسالة </p>
+      <hr />
+      <div class="card-header d-flex justify-content-between align-items-center flex-wrap ">
+        <div class="d-flex align-items-center mb-sm-0 mb-3">
+          <img [src]="Reply.fromUserImage" alt="user-avatar" class="flex-shrink-0 rounded-circle me-4" height="38"
+            width="38" />
+          <div class="flex-grow-1 ms-1">
+            <h6 class="m-0 fw-normal">{{Reply.fromUserName}}</h6>
+            <!-- <small class="text-body">rossGelleremail.com</small> -->
+          </div>
+        </div>
+        <div class="d-flex align-items-center">
+          <p class="mb-0 me-4 text-body-secondary">{{Reply.dateOfRecord}}</p>
+          <!-- <span class="btn btn-icon"><i class="icon-base bx bx-paperclip icon-md cursor-pointer"></i></span>
+          <span class="btn btn-icon"><i
+              class="email-list-item-bookmark icon-base bx bx-star icon-md cursor-pointer"></i></span> -->
+
+        </div>
+      </div>
+      <div class="card-body">
+        <!-- <p class="fw-medium">{{Reply.subject}}</p> -->
+        <p>
+          {{Reply.message}}
+        </p>
+         <div [hidden]="Reply.filePath == null">
+             <hr />
+        <p class="text-body-secondary mb-2" [hidden]="Reply.filePath == null">المرفقات</p>
+        <div class="cursor-pointer">
+          <i class="icon-base bx bx-file"></i>
+          <a [href]="Reply.filePath" target="_blank"> <span class="align-middle ms-1"> {{ Reply.filePath.split('/').pop() }}</span>
+          </a>
+        </div>
+         </div>
+      </div>
+    </div>
+<div class="card email-card-prev mx-sm-6 mx-3 mb-2" [hidden]="MessagesReplies.length > 0">
+      <p class="fw-medium mb-0 ps-5 py-3">لا يوجد رد</p>
+    
+      </div>
+  </div>
+</div>

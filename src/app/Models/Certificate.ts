@@ -1,0 +1,23 @@
+export interface Certificate {
+id: number,
+  certificateName: string,
+  initialAssignedCertificateName: string,
+  isEditable: boolean,
+  isPaid: boolean,
+  bdfFees: number,
+  secondaryTitle: string,
+  language: string,
+  mainTitle: string,
+  username: string,
+  issuseDate: string,
+  isPrinted: boolean,
+  isCourier: boolean,
+  courierId: number,
+  courierTrackNumber: string,
+  isReceived: boolean,
+  isPDFdownloaded: boolean,
+  certificateDownloadDate: string,
+  downloadTimes: number,
+  certificateTemplateFolder: number,
+  isPdf: boolean
+}

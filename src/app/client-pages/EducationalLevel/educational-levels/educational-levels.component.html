@@ -1,0 +1,75 @@
+ 
+<div class="container-xxl flex-grow-1 container-p-y justify-content-start" style="margin-top: 60px;">
+
+    <div class="card">
+      <!-- <h5 class="card-header">Table Caption</h5> -->
+      <a class="btn btn-primary m-3 text-white" routerLink="/clientPage/EducationalLevel/Add" 
+      style="width: 200px;" >مؤهل أكاديمي جديد  </a>
+  
+  
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+          <!-- <caption class="ms-6">
+            قائمة   والصلاحيات
+          </caption> -->
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>الشهادة باللغة العربية</th>
+              <th>الشهادة باللغة الأنجليزية</th>
+              <th>الدرجة الأكاديمية</th>
+              <th>التخصص</th>
+              <th>الوصف العربية</th>
+              <th>الوصف الإنجليزي</th>
+              <th>الكلية</th>
+              <th>الجامعة</th>
+              <th> الدولة</th>
+               <th> من </th>
+              <th>الى</th>
+              <th>العمليات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let EducationalLevel of EducationalLevels;let i = index">
+              <td>
+                <i class="icon-base fab fa-angular icon-md text-danger me-4"></i> <span>{{i+1}}</span>
+              </td>
+              <td>{{EducationalLevel.arCertificateName}}</td>
+              <td>{{EducationalLevel.enCertificateName}}</td>
+              <td>{{EducationalLevel.academicDegree}}</td>
+              <td>{{EducationalLevel.specialityName}}</td>
+              <td>{{EducationalLevel.arDescription}}</td>
+              <td>{{EducationalLevel.enDescription}}</td>
+              <td>{{EducationalLevel.facultyName}}</td>
+              <td>{{EducationalLevel.universityName}}</td>
+              <td>{{EducationalLevel.countryName}}</td>
+              <td>{{EducationalLevel.fromYear}}</td>
+              <td>{{EducationalLevel.toYear}}</td>
+                <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" [routerLink]="['/clientPage/EducationalLevel/Edit',EducationalLevel.id]"
+                      ><i class="icon-base bx bx-edit-alt me-1 text-warning"></i> تعديل</a
+                    >
+                    <a class="dropdown-item" (click)="Delete(EducationalLevel.id)"
+                      ><i class="icon-base bx bx-trash me-1 text-danger"></i> حذف</a
+                    >
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+  <div class="content-backdrop fade"></div>
+  <!-- Content wrapper -->
+  
+  

@@ -1,0 +1,56 @@
+<div class="container-xxl flex-grow-1 container-p-y justify-content-start">
+
+    <div class="card">
+      <!-- <h5 class="card-header">Table Caption</h5> -->
+      <a class="btn btn-primary m-3 text-white" routerLink="/userPage/EmailContents/Add" style="width: 200px;">اضافة  </a>
+
+
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+           
+          <thead>
+            <tr>
+              <th>#</th>
+             <th>الموضوع</th>
+             <!-- <th>المحتوى</th> -->
+             <th>المرسل</th>
+              <th>العمليات</th>
+
+            </tr>
+          </thead>
+          <tbody>
+             <tr *ngFor="let EmailContent of  EmailContents;let i= index">
+              <!-- <td>
+                <i class="icon-base fab fa-angular icon-md text-danger me-4"></i> <span>{{i+1}}</span>
+              </td> -->
+              <td>{{EmailContent.uniqueName}}</td>
+
+              <td>{{EmailContent.arSubject}}</td>
+              <!-- <td>{{EmailContent.arContent}}</td> -->
+              <td>{{EmailContent.senderName}}</td>
+              <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" [routerLink]="['/userPage/EmailContents/Edit',EmailContent.id]"
+                      ><i class="icon-base bx bx-edit-alt me-1 text-warning"></i> تعديل</a
+                    >
+                    <a class="dropdown-item" (click)="Delete(EmailContent.id)"
+                      ><i class="icon-base bx bx-trash me-1 text-danger"></i> حذف</a
+                    >
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+ </div>
+  
+
+ <div class="content-backdrop fade"></div>
+ <!-- Content wrapper -->

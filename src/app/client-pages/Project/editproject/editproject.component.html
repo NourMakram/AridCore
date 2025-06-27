@@ -1,0 +1,284 @@
+<div class="row my-6">
+    <div class="col" style="margin-top: 60px;">
+      <div class="accordion" id="collapsibleSection">
+
+       <form [formGroup]="ProjectForm">
+
+        <div class="card accordion-item">
+
+          <div
+            id="collapseDeliveryAddress"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingDeliveryAddress"
+            data-bs-parent="#collapsibleSection">
+            <h6 class="my-3 py-2 me-5 text-center" style="color: white;
+            background-color: #696cff;
+            border-radius: 5px;"> تعديل مشروع اكاديمى  </h6>
+
+            <div class="accordion-body">
+              <div class="row g-6 text-start">
+                
+                <div class="col-md-6">
+                  <div class="row">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الأسم باللغة العربية</label>
+                    <div class="col-sm-9">
+                       <input type="text" class="form-control" formControlName="arProjectName">
+                      <div *ngIf="ProjectForm.controls['arProjectName'].invalid && ProjectForm.controls['arProjectName'].touched">
+                        <small class="text-danger" *ngIf="ProjectForm.controls['arProjectName'].errors?.['required']">
+                          هذا الحقل مطلوب.
+                        </small>
+                        <small class="text-danger" *ngIf="ProjectForm.controls['arProjectName'].errors?.['pattern']">
+                          الرجاء إدخال الاسم باللغة العربية فقط.
+                        </small>
+                        <small class="text-danger" *ngIf="ProjectForm.controls['arProjectName'].errors?.['minlength']">
+                          يجب أن لا يقل الاسم عن 6 أحرف.
+                        </small>
+                        <small class="text-danger" *ngIf="ProjectForm.controls['arProjectName'].errors?.['maxlength']">
+                          يجب أن لا يزيد الاسم عن 100 حرف.
+                        </small>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الأسم باللغة الأنجليزية</label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" formControlName="enProjectName">
+                          <div *ngIf="ProjectForm.controls['enProjectName'].invalid && ProjectForm.controls['enProjectName'].touched">
+                            <small class="text-danger" *ngIf="ProjectForm.controls['enProjectName'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                            <small class="text-danger" *ngIf="ProjectForm.controls['enProjectName'].errors?.['pattern']">
+                              الرجاء إدخال الاسم باللغة الأنجليزية فقط.
+                            </small>
+                            <small class="text-danger" *ngIf="ProjectForm.controls['enProjectName'].errors?.['minlength']">
+                              يجب أن لا يقل الاسم عن 6 أحرف.
+                            </small>
+                            <small class="text-danger" *ngIf="ProjectForm.controls['enProjectName'].errors?.['maxlength']">
+                              يجب أن لا يزيد الاسم عن 100 حرف.
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">حالة المشروع</label>
+                      <div class="col-sm-9">
+                        <select id="collapsible-state" formControlName="projectState" class="select2 form-select" data-allow-clear="true">
+                          <option  value="" seleted disabled>اختر حالة المشروع</option>
+                          <option *ngFor="let Stuats of ProjectStuats"  [value]="Stuats.id">{{Stuats.name}}</option>
+                        </select>
+                        <div *ngIf="ProjectForm.get('projectState')?.invalid &&  ProjectForm.get('projectState')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="ProjectForm.get('projectState')?.errors?.['required']" class="text-danger">
+                       اختر حالة المشروع
+                     </small>
+                   </div>
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الدولة</label>
+                    <div class="col-sm-9">
+                      <select id="collapsible-state" formControlName="countryId" class="select2 form-select" data-allow-clear="true">
+                        <option  value="" seleted disabled>اختر دولة المشروع</option>
+                        <option *ngFor="let country of Countries" [value]="country.id">{{country.arName}}</option>
+                   
+                      </select>
+                      <div *ngIf="ProjectForm.get('countryId')?.invalid &&  ProjectForm.get('countryId')?.touched"
+                      class="error mt-2">
+                   <small *ngIf="ProjectForm.get('countryId')?.errors?.['required']" class="text-danger">
+                     اختر الدولة
+                   </small>
+                 </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">من</label>
+                      <div class="col-sm-9">
+                    <input type="datetime-local" class="form-control"  formControlName="fromYear">
+                        <div *ngIf="ProjectForm.get('fromYear')?.invalid &&  ProjectForm.get('fromYear')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="ProjectForm.get('fromYear')?.errors?.['required']" class="text-danger">
+                       اختر بداية الفترة
+                     </small>
+                   </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الى</label>
+                      <div class="col-sm-9">
+                        <input type="datetime-local" class="form-control"  formControlName="toYear">
+                        <div *ngIf="ProjectForm.get('toYear')?.invalid &&  ProjectForm.get('toYear')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="ProjectForm.get('toYear')?.errors?.['required']" class="text-danger">
+                       اختر نهاية الفترة
+                     </small>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-4">
+                      <div class="row">
+                        <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                          > التفاصيل بالعربى</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            id="collapsible-pincode"
+                            class="form-control"
+                            formControlName="arDetails"
+                              />
+                              <div *ngIf="ProjectForm.controls['arDetails'].invalid && ProjectForm.controls['arDetails'].touched">
+                                  <!-- <small *ngIf="ProjectForm.controls['arDescription'].errors?.['required']" class="text-danger">وصف الشهادة مطلوب</small>
+                                  <small *ngIf="ProjectForm.controls['arDescription'].errors?.['pattern']" class="text-danger">وصف الشهادة باللغة العربية  </small>
+                              -->
+                                  <small class="text-danger" *ngIf="ProjectForm.controls['arDetails'].errors?.['required']"> 
+                                    هذا الحقل مطلوب.
+                                  </small>
+                                  <small class="text-danger" *ngIf="ProjectForm.controls['arDetails'].errors?.['pattern']">
+                                    يجب أن يحتوي النص على أحرف عربية فقط.
+                                  </small>
+                                  <small class="text-danger" *ngIf="ProjectForm.controls['arDetails'].errors?.['minlength']">
+                                    يجب ألا يقل الوصف عن 6 أحرف.
+                                  </small>
+                                  <small class="text-danger" *ngIf="ProjectForm.controls['arDetails'].errors?.['maxlength']">
+                                    يجب ألا يزيد الوصف عن 200 حرف.
+                                  </small>
+                                </div>
+                        </div>
+                      </div>
+                  </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-4">
+                      <div class="row">
+                        <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                          > التفاصيل بالأنجليزية</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            id="collapsible-pincode"
+                            class="form-control"
+                            formControlName="enDetails"
+                              />
+                              <div *ngIf="ProjectForm.controls['enDetails'].invalid && ProjectForm.controls['enDetails'].touched">
+                                  <!-- <small *ngIf="ProjectForm.controls['enDescription'].errors?.['required']" class="text-danger">وصف الشهادة  مطلوب</small>
+                                  <small *ngIf="ProjectForm.controls['enDescription'].errors?.['pattern']" class="text-danger">وصف الشهادة باللغة الأنجليزية  </small>
+                                   -->
+                                  <small class="text-danger" *ngIf="ProjectForm.controls['enDetails'].errors?.['required']"> 
+                                    هذا الحقل مطلوب.
+                                  </small>
+                                  <small class="text-danger" *ngIf="ProjectForm.controls['enDetails'].errors?.['pattern']">
+                                    يجب أن يحتوي النص على أحرف انجليزية فقط.
+                                  </small>
+                                  <small class="text-danger" *ngIf="ProjectForm.controls['enDetails'].errors?.['minlength']">
+                                    يجب ألا يقل الوصف عن 6 أحرف.
+                                  </small>
+                                  <small class="text-danger" *ngIf="ProjectForm.controls['enDetails'].errors?.['maxlength']">
+                                    يجب ألا يزيد الوصف عن 200 حرف.
+                                  </small>
+                                </div>
+                        </div>
+                      </div>
+                  </div>
+                  </div>
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                        > الوصف بالعربى</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          id="collapsible-pincode"
+                          class="form-control"
+                          formControlName="arDescription"
+                            />
+                            <div *ngIf="ProjectForm.controls['arDescription'].invalid && ProjectForm.controls['arDescription'].touched">
+                                <!-- <small *ngIf="ProjectForm.controls['arDescription'].errors?.['required']" class="text-danger">وصف الشهادة مطلوب</small>
+                                <small *ngIf="ProjectForm.controls['arDescription'].errors?.['pattern']" class="text-danger">وصف الشهادة باللغة العربية  </small>
+                            -->
+                                <small class="text-danger" *ngIf="ProjectForm.controls['arDescription'].errors?.['required']"> 
+                                  هذا الحقل مطلوب.
+                                </small>
+                                <small class="text-danger" *ngIf="ProjectForm.controls['arDescription'].errors?.['pattern']">
+                                  يجب أن يحتوي النص على أحرف عربية فقط.
+                                </small>
+                                <small class="text-danger" *ngIf="ProjectForm.controls['arDescription'].errors?.['minlength']">
+                                  يجب ألا يقل الوصف عن 6 أحرف.
+                                </small>
+                                <small class="text-danger" *ngIf="ProjectForm.controls['arDescription'].errors?.['maxlength']">
+                                  يجب ألا يزيد الوصف عن 200 حرف.
+                                </small>
+                              </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                        > الوصف بالأنجليزية</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          id="collapsible-pincode"
+                          class="form-control"
+                          formControlName="enDescription"
+                            />
+                            <div *ngIf="ProjectForm.controls['enDescription'].invalid && ProjectForm.controls['enDescription'].touched">
+                                <!-- <small *ngIf="ProjectForm.controls['enDescription'].errors?.['required']" class="text-danger">وصف الشهادة  مطلوب</small>
+                                <small *ngIf="ProjectForm.controls['enDescription'].errors?.['pattern']" class="text-danger">وصف الشهادة باللغة الأنجليزية  </small>
+                                 -->
+                                <small class="text-danger" *ngIf="ProjectForm.controls['enDescription'].errors?.['required']"> 
+                                  هذا الحقل مطلوب.
+                                </small>
+                                <small class="text-danger" *ngIf="ProjectForm.controls['enDescription'].errors?.['pattern']">
+                                  يجب أن يحتوي النص على أحرف انجليزية فقط.
+                                </small>
+                                <small class="text-danger" *ngIf="ProjectForm.controls['enDescription'].errors?.['minlength']">
+                                  يجب ألا يقل الوصف عن 6 أحرف.
+                                </small>
+                                <small class="text-danger" *ngIf="ProjectForm.controls['enDescription'].errors?.['maxlength']">
+                                  يجب ألا يزيد الوصف عن 200 حرف.
+                                </small>
+                              </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="row justify-content-end mt-4 text-center">
+                  <div class="col-sm-10">
+                    <button type="submit" (click)="Submit()" class="btn btn-primary">حفظ</button>
+                    <a routerLink="/clientPage/Project" class="btn btn-secondary mx-2">الرجوع الى القائمة</a>
+    
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+       </form>
+        
+
+        </div>
+        </div>
+        </div>
+        

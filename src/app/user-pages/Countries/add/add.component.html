@@ -1,0 +1,94 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+  <div class="row" dir="rtl">
+    <!-- Basic Layout -->
+    <div class="col-xxl">
+      <div class="card mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <h5 class="mb-0">اضافة دولة</h5>
+        </div>
+        <!--{{countryForm.value|json}}-->
+        <div class="card-body">
+          <form [formGroup]="countryForm">
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-name">اسم الدولة باللغة العربية </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="arCountryName" id="basic-default-name" placeholder="ادخل اسم الدولة باللغة العربية " />
+                
+                <div *ngIf="countryForm.controls['arCountryName'].invalid && countryForm.controls['arCountryName'].touched">
+                  <small *ngIf="countryForm.controls['arCountryName'].errors?.['required']" class="text-danger">اسم الدولة بالعربية مطلوب</small>
+                  <small *ngIf="countryForm.controls['arCountryName'].errors?.['pattern']" class="text-danger">يجب إدخال اسم الدولة باللغة العربية فقط</small>
+                </div>
+              </div>
+
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-company">اسم الدولة باالغة الأنجليزية</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="enCountryName" id="basic-default-name" placeholder="ادخل اسم الدولة باللغة الأنجليزية " />
+                <div *ngIf="countryForm.controls['enCountryName'].invalid && countryForm.controls['enCountryName'].touched">
+                  <small *ngIf="countryForm.controls['enCountryName'].errors?.['required']" class="text-danger">اسم الدولة بالإنجليزية مطلوب</small>
+                  <small *ngIf="countryForm.controls['enCountryName'].errors?.['pattern']" class="text-danger">يجب إدخال اسم الدولة باللغة الإنجليزية فقط</small>
+                </div>
+
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-email">كود الدولة</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" formControlName="countryCode" id="basic-default-name" placeholder="ادخل كود الدولة" />
+                <div *ngIf="countryForm.get('countryCode')?.invalid && countryForm.get('countryCode')?.touched"
+                     class="error mt-2">
+                  <small *ngIf="countryForm.get('countryCode')?.errors?.['required']" class="text-danger">
+                    يرجى ادخال كود الدولة
+                  </small>
+                  <small *ngIf="countryForm.get('countryCode')?.errors?.['max']" class="text-danger">
+                    كود الدولة يجب ان لايتجاوز 10 ارقام
+                  </small>
+                </div>
+
+              </div>
+
+              </div>
+             <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-phone">الأسم المختصر</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="shortName" id="basic-default-name" placeholder="ادخل الأسم المختصر " />
+                <div *ngIf="countryForm.get('shortName')?.invalid && countryForm.get('shortName')?.touched"
+                     class="error mt-2">
+                  <small *ngIf="countryForm.get('shortName')?.errors?.['required']" class="text-danger">
+                    يرجى ادخال الأسم المختصر للدولة
+                  </small>
+                </div>
+
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-phone">صورة العلم </label>
+              <div class="col-sm-10">
+                <input type="file" class="form-control" formControlName="formFile" (change)="OnchangeFile($event)" id="basic-default-name"
+                       placeholder="صورة العلم " />
+                <div *ngIf="countryForm.get('formFile')?.invalid && countryForm.get('formFile')?.touched"
+                     class="error mt-2">
+                  <small *ngIf="countryForm.get('formFile')?.errors?.['required']" class="text-danger">
+                    يرجى ارفاق صورة العلم للدولة
+                  </small>
+                </div>
+
+              </div>
+            </div>
+            <div class="row justify-content-end">
+              <div class="col-sm-10">
+                <button type="submit" (click)="Submit()" class="btn btn-primary">اضافة</button>
+                <button routerLink="/userPage/countries"  class="btn btn-secondary mx-2">الغاء</button>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

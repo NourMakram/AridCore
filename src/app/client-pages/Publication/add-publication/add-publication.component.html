@@ -1,0 +1,335 @@
+<div class="row my-6">
+    <div class="col" style="margin-top: 60px;">
+      <div class="accordion" id="collapsibleSection">
+
+       <form [formGroup]="PublicationForm">
+
+        <div class="card accordion-item">
+
+          <div
+            id="collapseDeliveryAddress"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingDeliveryAddress"
+            data-bs-parent="#collapsibleSection">
+            <h6 class="my-3 py-2 me-5 text-center" style="color: white;
+            background-color: #696cff;
+            border-radius: 5px;"> نشر علمي جديد </h6>
+
+            <div class="accordion-body">
+              <div class="row g-6 text-start">
+                
+                <div class="col-md-6">
+                  <div class="row">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">العنوان العربى</label>
+                    <div class="col-sm-9">
+                       <input type="text" class="form-control" formControlName="arTitle">
+                      <div *ngIf="PublicationForm.controls['arTitle'].invalid && PublicationForm.controls['arTitle'].touched">
+                        <small class="text-danger" *ngIf="PublicationForm.controls['arTitle'].errors?.['required']">
+                          هذا الحقل مطلوب.
+                        </small>
+                        <small class="text-danger" *ngIf="PublicationForm.controls['arTitle'].errors?.['pattern']">
+                          الرجاء إدخال العنوان باللغة العربية فقط.
+                        </small>
+                        <small class="text-danger" *ngIf="PublicationForm.controls['arTitle'].errors?.['minlength']">
+                          يجب أن لا يقل العنوان عن 6 أحرف.
+                        </small>
+                        <small class="text-danger" *ngIf="PublicationForm.controls['arTitle'].errors?.['maxlength']">
+                          يجب أن لا يزيد العنوان عن 100 حرف.
+                        </small>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">العنوان الإنجليزي</label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" formControlName="enTitle">
+                          <div *ngIf="PublicationForm.controls['enTitle'].invalid && PublicationForm.controls['enTitle'].touched">
+                            <small class="text-danger" *ngIf="PublicationForm.controls['enTitle'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                            <small class="text-danger" *ngIf="PublicationForm.controls['enTitle'].errors?.['pattern']">
+                              الرجاء إدخال العنوان باللغة الأنجليزية فقط.
+                            </small>
+                            <small class="text-danger" *ngIf="PublicationForm.controls['enTitle'].errors?.['minlength']">
+                              يجب أن لا يقل العنوان عن 6 أحرف.
+                            </small>
+                            <small class="text-danger" *ngIf="PublicationForm.controls['enTitle'].errors?.['maxlength']">
+                              يجب أن لا يزيد العنوان عن 100 حرف.
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">نوع النشر</label>
+                      <div class="col-sm-9">
+                        <select id="collapsible-state" class="select2 form-select" data-allow-clear="true" formControlName="publicationType">
+                          <option value="" seleted disabled>اختر نوع النشر</option>
+                          <option *ngFor="let PublicationType of PublicationTypes" [value]="PublicationType.id">{{PublicationType.name}}</option>
+                        </select>
+                        <div *ngIf="PublicationForm.controls['publicationType'].invalid && PublicationForm.controls['publicationType'].touched">
+                          <small *ngIf="PublicationForm.controls['publicationType'].errors?.['required']" class="text-danger">اختر نوع النشر</small>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+               
+                <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">المؤلفون  بالعربى</label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" formControlName="arAuthors">
+                          <div *ngIf="PublicationForm.controls['arAuthors'].invalid && PublicationForm.controls['arAuthors'].touched">
+                            <small class="text-danger" *ngIf="PublicationForm.controls['arAuthors'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                            <small class="text-danger" *ngIf="PublicationForm.controls['arAuthors'].errors?.['pattern']">
+                              الرجاء إدخال الأسم باللغة العربية فقط.
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">المؤلفون  بالأنجليزية</label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" formControlName="enAuthors">
+                          <div *ngIf="PublicationForm.controls['enAuthors'].invalid && PublicationForm.controls['enAuthors'].touched">
+                            <small class="text-danger" *ngIf="PublicationForm.controls['enAuthors'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                            <small class="text-danger" *ngIf="PublicationForm.controls['enAuthors'].errors?.['pattern']">
+                              الرجاء إدخال الأسم باللغة الأنجليزية فقط.
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">تاريخ النشر</label>
+                      <div class="col-sm-9">
+                          <input type="date" class="form-control" formControlName="publicationDate">
+                          <div *ngIf="PublicationForm.controls['publicationDate'].invalid && PublicationForm.controls['publicationDate'].touched">
+                            <small class="text-danger" *ngIf="PublicationForm.controls['publicationDate'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state"> الناشر</label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" formControlName="publisher">
+                          <div *ngIf="PublicationForm.controls['publisher'].invalid && PublicationForm.controls['publisher'].touched">
+                            <small class="text-danger" *ngIf="PublicationForm.controls['publisher'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الكلمات المفتاحية  
+                      </label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" formControlName="keywords">
+                          <div *ngIf="PublicationForm.controls['keywords'].invalid && PublicationForm.controls['keywords'].touched">
+                            <small class="text-danger" *ngIf="PublicationForm.controls['keywords'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state"> رقم المجلد</label>
+                      <div class="col-sm-9">
+                          <input type="number" class="form-control" formControlName="volumeNo">
+                          <div *ngIf="PublicationForm.controls['volumeNo'].invalid && PublicationForm.controls['volumeNo'].touched">
+                            <small class="text-danger" *ngIf="PublicationForm.controls['volumeNo'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state"> رقم العدد</label>
+                      <div class="col-sm-9">
+                          <input type="number" class="form-control" formControlName="issueNo">
+                          <div *ngIf="PublicationForm.controls['issueNo'].invalid && PublicationForm.controls['issueNo'].touched">
+                            <small class="text-danger" *ngIf="PublicationForm.controls['issueNo'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">ISSN/ISBN</label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" formControlName="issn">
+                          <div *ngIf="PublicationForm.controls['issn'].invalid && PublicationForm.controls['issn'].touched">
+                            <small class="text-danger" *ngIf="PublicationForm.controls['issn'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">رابط DOI
+                      </label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" formControlName="doi">
+                          <div *ngIf="PublicationForm.controls['doi'].invalid && PublicationForm.controls['doi'].touched">
+                            <small class="text-danger" *ngIf="PublicationForm.controls['doi'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الصفحات
+                      </label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" formControlName="pages">
+                          <div *ngIf="PublicationForm.controls['pages'].invalid && PublicationForm.controls['pages'].touched">
+                            <small class="text-danger" *ngIf="PublicationForm.controls['pages'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">رابط الملف
+                      </label>
+                      <div class="col-sm-9">
+                          <input type="file" class="form-control" formControlName="fileLink" (change)="OnchangeFile($event)">
+                          <div *ngIf="PublicationForm.controls['fileLink'].invalid && PublicationForm.controls['fileLink'].touched">
+                            <small class="text-danger" *ngIf="PublicationForm.controls['fileLink'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">رابط خارجي
+                      </label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" formControlName="externalLink">
+                          <div *ngIf="PublicationForm.controls['externalLink'].invalid && PublicationForm.controls['externalLink'].touched">
+                            <small class="text-danger" *ngIf="PublicationForm.controls['externalLink'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                            <small class="text-danger" *ngIf="PublicationForm.controls['externalLink'].errors?.['pattern']">
+                              الرجاء إدخال رابط صالح مثل: https://example.com
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                        > الملخص بالعربى</label
+                      >
+                      <div class="col-sm-9">
+                        <textarea  rows="3"
+                        id="collapsible-pincode"
+                        class="form-control"
+                        formControlName="arAbstract">
+                      </textarea>
+                         
+                            
+                            <div *ngIf="PublicationForm.controls['arAbstract'].invalid && PublicationForm.controls['arAbstract'].touched">
+                                
+                                <small class="text-danger" *ngIf="PublicationForm.controls['arAbstract'].errors?.['required']"> 
+                                  هذا الحقل مطلوب.
+                                </small>
+                                <small class="text-danger" *ngIf="PublicationForm.controls['arAbstract'].errors?.['pattern']">
+                                  يجب أن يحتوي النص على أحرف عربية فقط.
+                                </small>
+                                <small class="text-danger" *ngIf="PublicationForm.controls['arAbstract'].errors?.['minlength']">
+                                  يجب ألا يقل الوصف عن 6 أحرف.
+                                </small>
+                                <small class="text-danger" *ngIf="PublicationForm.controls['arAbstract'].errors?.['maxlength']">
+                                  يجب ألا يزيد الوصف عن 200 حرف.
+                                </small>
+                              </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                        > الملخص بالأنجليزية</label
+                      >
+                      <div class="col-sm-9">
+                        <textarea id="collapsible-pincode"
+                        rows="3"
+                        class="form-control"
+                        formControlName="enAbstract"></textarea>
+                            <div *ngIf="PublicationForm.controls['enAbstract'].invalid && PublicationForm.controls['enAbstract'].touched">
+                                
+                                <small class="text-danger" *ngIf="PublicationForm.controls['enAbstract'].errors?.['required']"> 
+                                  هذا الحقل مطلوب.
+                                </small>
+                                <small class="text-danger" *ngIf="PublicationForm.controls['enAbstract'].errors?.['pattern']">
+                                  يجب أن يحتوي النص على أحرف انجليزية فقط.
+                                </small>
+                                <small class="text-danger" *ngIf="PublicationForm.controls['enAbstract'].errors?.['minlength']">
+                                  يجب ألا يقل الوصف عن 6 أحرف.
+                                </small>
+                                <small class="text-danger" *ngIf="PublicationForm.controls['enAbstract'].errors?.['maxlength']">
+                                  يجب ألا يزيد الوصف عن 200 حرف.
+                                </small>
+                              </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="row justify-content-end mt-4 text-center">
+                  <div class="col-sm-10">
+                    <button type="submit" (click)="Submit()" class="btn btn-primary">اضافة</button>
+                    <a routerLink="/clientPage/Publication" class="btn btn-secondary mx-2">الرجوع الى القائمة</a>
+    
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+       </form>
+        
+
+        </div>
+        </div>
+        </div>
+        

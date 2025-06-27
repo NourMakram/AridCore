@@ -1,0 +1,67 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+  <div class="row" dir="rtl">
+    <!-- Basic Layout -->
+    <div class="col-xxl">
+      <div class="card mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+          <h5 class="mb-0">اضافة مدينة</h5>
+        </div>
+        <!--{{CityForm.value|json}}-->
+        <div class="card-body">
+          <form [formGroup]="CityForm">
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-name">اسم المدينة باللغة العربية </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="arCityName" id="basic-default-name" placeholder="ادخل اسم المدينة باللغة العربية" />
+
+                <div *ngIf="CityForm.controls['arCityName'].invalid && CityForm.controls['arCityName'].touched">
+                  <small *ngIf="CityForm.controls['arCityName'].errors?.['required']" class="text-danger">اسم المدينة بالعربية مطلوب</small>
+                  <small *ngIf="CityForm.controls['arCityName'].errors?.['pattern']" class="text-danger">يجب إدخال اسم المدينة باللغة العربية فقط</small>
+                </div>
+              </div>
+
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-company">اسم المدينة باالغة الأنجليزية</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="enCityName" id="basic-default-name" placeholder="ادخل اسم المدينة باللغة الأنجليزية" />
+                <div *ngIf="CityForm.controls['enCityName'].invalid && CityForm.controls['enCityName'].touched">
+                  <small *ngIf="CityForm.controls['enCityName'].errors?.['required']" class="text-danger">اسم المدينة بالإنجليزية مطلوب</small>
+                  <small *ngIf="CityForm.controls['enCityName'].errors?.['pattern']" class="text-danger">يجب إدخال اسم المدينة باللغة الإنجليزية فقط</small>
+                </div>
+
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label" for="basic-default-phone">  الدولة</label>
+              <div class="col-sm-10">
+                <select class="form-control" formControlName="countryId">
+                  <option seleted disabled>اختر الدولة</option>
+                  <option *ngFor="let country of Countries" [value]="country.id">{{country.arName}}</option>
+                </select>
+                <div *ngIf="CityForm.get('countryId')?.invalid &&  CityForm.get('countryId')?.touched"
+                     class="error mt-2">
+                  <small *ngIf="CityForm.get('countryId')?.errors?.['required']" class="text-danger">
+                    يرجى ادخال اسم  الدولة
+                  </small>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row justify-content-end">
+              <div class="col-sm-10">
+                <button type="submit" (click)="Submit()" class="btn btn-primary">حفظ</button>
+                <button routerLink="/userPage/cities" class="btn btn-secondary mx-2">الغاء</button>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

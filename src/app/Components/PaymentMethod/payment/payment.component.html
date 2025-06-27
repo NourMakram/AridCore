@@ -1,0 +1,147 @@
+<section class="section-py bg-white first-section-pt p-0">
+  <div class="container ">
+    <div class="">
+      <div class="row">
+        <div class="col-lg-12 card-body  p-md-8">
+          <h4 class="mb-2">طرق تعبئة الرصيد</h4>
+          <p class="mb-0 ">
+            اختر طريقة تعبئة الرصيد المناسب لكم
+          </p>
+
+          <div class="row g-5 py-8 border  ">
+
+            <!-- التعبئة عبر أعضاء أريد -->
+            <div class="col-md col-lg-12 col-xl-6">
+              <div class="form-check custom-option custom-option-basic checked">
+                <label
+                  class="form-check-label custom-option-content form-check-input-payment d-flex gap-4 align-items-center"
+                  for="customRadioAreed">
+                  <input name="customRadioTemp" class="form-check-input" type="radio" value="areed-members"
+                    id="customRadioAreed" routerLink="/clientPage/Pages/Partner" />
+                  <span class="custom-option-body">
+                    <!-- <img
+            src="../../assets/img/icons/payments/areed-logo.png"
+            alt="أريد"
+            width="58"
+            class="ms-5"
+          /> -->
+                    <span class="ms-4 fw-medium text-heading">التعبئة عبر أعضاء أريد</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- التعبئة عبر البطاقات الائتمانية -->
+            <div class="col-md col-lg-12 col-xl-6">
+              <div class="form-check custom-option custom-option-basic">
+                <label
+                  class="form-check-label custom-option-content form-check-input-payment d-flex gap-4 align-items-center"
+                  for="customRadioCredit">
+                  <input name="customRadioTemp" class="form-check-input" type="radio" value="credit-card"
+                    id="customRadioCredit" routerLink="/clientPage/Pages/Stripe" />
+                  <span class="custom-option-body">
+                    <!-- <img
+            src="../../assets/img/icons/payments/visa-light.png"
+            alt="بطاقة ائتمانية"
+            width="58"
+            class="ms-5"
+          /> -->
+                    <!-- <i class="fa-brands fa-cc-stripe"></i> -->
+                    <span class="ms-4 fw-medium text-heading">التعبئة عبر البطاقات الائتمانية</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- التعبئة عبر الباي بال -->
+            <div class="col-md col-lg-12 col-xl-6">
+              <div class="form-check custom-option custom-option-basic">
+                <label
+                  class="form-check-label custom-option-content form-check-input-payment d-flex gap-4 align-items-center"
+                  for="customRadioPaypal">
+                  <input name="customRadioTemp" class="form-check-input" type="radio" value="paypal"
+                    id="customRadioPaypal" routerLink="/clientPage/Pages/PayPal" />
+                  <span class="custom-option-body">
+                    <!-- <img
+            src="../../assets/img/icons/payments/paypal.png"
+            alt="PayPal"
+            width="58"
+            class="ms-5"
+          /> -->
+                    <span class="ms-4 fw-medium text-heading">التعبئة عبر الباي بال</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- التعبئة عبر شركاء الحوالات المالية -->
+            <div class="col-md col-lg-12 col-xl-6">
+              <div class="form-check custom-option custom-option-basic">
+                <label
+                  class="form-check-label custom-option-content form-check-input-payment d-flex gap-4 align-items-center"
+                  for="customRadioPartners">
+                  <input name="customRadioTemp" class="form-check-input" type="radio" value="partners"
+                    id="customRadioPartners" routerLink="/clientPage/Pages/Partner" />
+                  <span class="custom-option-body">
+                    <!-- <img
+            src="../../assets/img/icons/payments/partners.png"
+            alt="شركاء الحوالات"
+            width="58"
+            class="ms-5"
+          /> -->
+                    <span class="ms-4 fw-medium text-heading">التعبئة عبر شركاء الحوالات المالية</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- التعبئة عبر الويسترن يونيون -->
+            <div class="col-md col-lg-12 col-xl-6">
+              <div class="form-check custom-option custom-option-basic">
+                <label
+                  class="form-check-label custom-option-content form-check-input-payment d-flex gap-4 align-items-center"
+                  for="customRadioWestern">
+                  <input name="customRadioTemp" class="form-check-input" type="radio" value="western-union"
+                    id="customRadioWestern" routerLink="/clientPage/Pages/WesternUnion" />
+                  <span class="custom-option-body">
+                    <!-- <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUQDp7bh00k6Z52b7upQFxaIThJj08q4e7yZ-7UKtE3n-zvoZyxezClo8&s"
+            alt="Western Union"
+            width="58"
+            class="ms-5"
+          /> -->
+                    <span class="ms-4 fw-medium text-heading">التعبئة عبر الويسترن يونيون</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- التعبئة عبر نظام التسليف -->
+            <div class="col-md col-lg-12 col-xl-6">
+              <div class="form-check custom-option custom-option-basic">
+                <label
+                  class="form-check-label custom-option-content form-check-input-payment d-flex gap-4 align-items-center"
+                  for="customRadioLoan">
+                  <input name="customRadioTemp" class="form-check-input" type="radio" value="loan-system"
+                    id="customRadioLoan" routerLink="/clientPage/Pages/CreditSystem/Add" />
+                  <span class="custom-option-body">
+                    <!-- <img
+            src="../../assets/img/icons/payments/loan.png"
+            alt="نظام التسليف"
+            width="58"
+            class="ms-5"
+          /> -->
+                    <span class="ms-4 fw-medium text-heading">التعبئة عبر نظام التسليف</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

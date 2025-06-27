@@ -1,0 +1,95 @@
+<div class="container-xxl flex-grow-1 container-p-y justify-content-start" style="margin-top: 60px;">
+
+  <div class="card">
+        <div class="row p-3">
+        <div class="col-12 col-lg-8 col-md-8">
+            <div class="accordion" id="collapsibleSection">
+                <div mat-dialog-content>
+                    <h5>تفاصيل الشهادة رقم arid-{{Certificate.id}}</h5>
+                    <div class="row  text-start">
+                        <div class="col-4">
+                             <h5>العنوان الرئيسى</h5>
+                             <h5> اللغة</h5>
+                             <h5> تم طباعتها</h5>
+                             <h5> شحنت</h5>
+                              <h5> رسوم التحميل</h5>
+
+                             <h5> عدد مرات التحميل</h5>
+                             <h5 [hidden]="Certificate.isPDFdownloaded == false">تاريخ التحميل</h5>
+
+                             <h5>الأسم فى الشهادة</h5>
+                             <h5> تاريخ الأصدار</h5>
+                        </div>
+                        <div class="col-8">
+                            <p>{{Certificate.mainTitle}}</p> 
+                            <p>{{Certificate.language}}</p> 
+                           
+                            <p [hidden]="Certificate.isPrinted == true"><input type="checkbox" checked style="color:green;" />تم الطباعة</p> 
+                            <p [hidden]="Certificate.isPrinted == false"><input type="checkbox" checked style="color:gray;" />لم يتم الطباعة</p> 
+                           
+                             <p [hidden]="Certificate.isCourier == true"><input type="checkbox" checked style="color:green;" />تم  الشحن</p> 
+                            <p [hidden]="Certificate.isCourier == false"><input type="checkbox" checked style="color:gray;" />لم يتم الشحن</p> 
+                           
+                            <p [hidden]="Certificate.bdfFees == 0">{{Certificate.bdfFees}}</p> 
+                            <p [hidden]="Certificate.bdfFees != 0">مجانية</p> 
+
+                            <p [hidden]="Certificate.isPDFdownloaded == false">{{Certificate.downloadTimes}}</p> 
+                            <p [hidden]="Certificate.isPDFdownloaded == false">{{Certificate.certificateDownloadDate | date}}</p> 
+                            <p [hidden]="Certificate.isPDFdownloaded == true">0</p> 
+                            <p [hidden]="Certificate.isPDFdownloaded == true">0</p> 
+                            <p>{{Certificate.certificateName}}</p> 
+                            <p>{{Certificate.issuseDate }}</p> 
+
+
+                        </div>
+                    </div>
+             </div>
+              <div class="d-flex justify-content-betwwen">
+                <button 
+                *ngIf="(Certificate.isPaid == false && Certificate.bdfFees != 0)"
+
+                 class="btn btn-success ms-2" (click)="PayCertificate(Certificate.id)">تسديد الرسوم</button>
+
+             <!-- <button 
+             *ngIf="(Certificate.isPaid == true)"
+             class="btn btn-danger ms-2" (click)="downloadCertificate(Certificate.id)"> تحميل الشهادة</button> -->
+
+
+
+             <div *ngIf="(Certificate.isPaid == true && Certificate.isPdf == true && Certificate.bdfFees > 0) || (Certificate.bdfFees == 0)" >
+                
+                <div *ngIf="Certificate.language == 'Arabic'">
+ 
+                    <a [hidden]="Certificate.certificateTemplateFolder != 0 " class="btn btn-success active" (click)="PdfExportCertificate(Certificate.id)">تحميل الشهادة الالكترونية</a>
+                    
+                    <a class="btn btn-success active" [hidden]="Certificate.certificateTemplateFolder != 1 " (click)="PdfExportBadge(Certificate.id)">تحميل الشهادة الالكترونية</a>
+                    
+                    <a class="btn btn-success active" [hidden]="Certificate.certificateTemplateFolder != 3 "   (click)="PdfExportCertLandScap(Certificate.id)">تحميل الشهادة الالكترونية</a>
+                    
+                    <a class="btn btn-danger active"  [hidden]="Certificate.certificateTemplateFolder != 2 "   (click)="PdfExportLetter(Certificate.id)">تحميل خطاب التأييد</a>
+                    
+                </div>
+                <div *ngIf="Certificate.language == 'English'">
+ 
+                    <a [hidden]="Certificate.certificateTemplateFolder != 0 " class="btn btn-success active"  (click)="PdfExportCertificate(Certificate.id)">Download PDF Digital Certificate</a>
+                    
+                    <a class="btn btn-success active" [hidden]="Certificate.certificateTemplateFolder != 1 "  (click)="PdfExportBadge(Certificate.id)">Download PDF Digital Certificate</a>
+                    
+                    <a class="btn btn-success active" [hidden]="Certificate.certificateTemplateFolder != 3 "  (click)="PdfExportCertLandScap(Certificate.id)">Download PDF Digital Certificate </a>
+                    
+                    <a class="btn btn-danger active"  [hidden]="Certificate.certificateTemplateFolder != 2 " (click)="PdfExportLetter(Certificate.id)">Download Acknowledgement Letter</a>
+                    
+                </div>
+            
+            </div>
+
+
+                <button class="btn btn-secondary ms-2" routerLink="/clientPage/Certificates"> رجوع</button>
+
+             </div>
+        </div>
+    </div>
+
+
+
+</div>

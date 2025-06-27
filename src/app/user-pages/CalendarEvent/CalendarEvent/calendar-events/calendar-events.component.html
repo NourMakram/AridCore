@@ -1,0 +1,70 @@
+<div class="container-xxl flex-grow-1 container-p-y justify-content-start">
+
+    <div class="card">  
+
+      <div class="row px-2 justify-content-between" >
+        <div class="col-12 col-md-5 col-lg-5 d-flex">
+          <a class="btn btn-primary m-3 text-white" (click)="openAddDialog()" style="width: 200px;">اضافة حدث</a>
+ 
+
+        </div>
+
+      </div>
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+          <!-- <caption class="ms-6">
+            قائمة   والصلاحيات
+          </caption> -->
+          <thead>
+            <tr>
+              <th>#</th>
+              <th> عنوان الحدث</th>
+              <th>التصنيف</th>
+              <th>بداية الحدث</th>
+              <th>نهاية الحدث</th>
+
+              <th>العمليات</th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr *ngFor="let CalendarEvent of CalendarEvents;let i= index">
+              <td>
+                <span>{{i+1}}</span>
+              </td>
+              
+              <td>{{CalendarEvent.name}}</td>
+              <td>{{CalendarEvent.calenderEventCategoryNAme}}</td>
+              <!-- <td class="text-wrap">{{CalendarEvent.description}}</td> -->
+              <td>{{CalendarEvent.startingDate}}</td>
+              <td>{{CalendarEvent.endingDate}}</td>
+
+              <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" (click)="openEditDialog(CalendarEvent.id)"
+                      ><i class="icon-base bx bx-edit-alt me-1 text-warning"></i> تعديل</a
+                    >
+                     <a class="dropdown-item" (click)="openDetailsDialog(CalendarEvent.id)"
+                      ><i class="icon-base fs-5 fa fa-eye me-1 text-primary"></i> تفاصيل</a
+                    >
+                    
+                    <a class="dropdown-item" (click)="Delete(CalendarEvent.id)"
+                      ><i class="icon-base bx bx-trash me-1 text-danger"></i> حذف</a
+                    >
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+  <div class="content-backdrop fade"></div>
+  <!-- Content wrapper -->

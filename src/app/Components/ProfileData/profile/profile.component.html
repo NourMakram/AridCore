@@ -1,0 +1,184 @@
+<div class="row pt-5" style="margin-top: 60px;">
+  <!-- User Sidebar -->
+  <div class="col-xl-4 col-lg-5 order-1 order-md-0">
+    <!-- User Card -->
+    <div class="card mb-6">
+      <div class="card-body pt-12">
+        <div class="user-avatar-section">
+          <div class="d-flex align-items-center flex-column">
+            <img class="img-fluid rounded mb-4" [src]="User.profileImage" height="120" width="120" alt="User avatar" />
+            <div class="user-info text-center">
+              <h5>{{User.arName}}</h5>
+            </div>
+          </div>
+        </div>
+         <div class="d-flex justify-content-between flex-wrap my-6 gap-0 gap-md-3 gap-lg-4">
+          <a (click)="openFollowerDialog(User.id,1)">
+
+            <div class="d-flex align-items-center me-5 gap-4">
+              <div class="avatar">
+                <div class="avatar-initial bg-label-primary rounded w-px-40 h-px-40">
+                  <i class="fa fa-users"></i>
+                </div>
+              </div>
+              <div>
+                <h5 class="mb-0">{{User.followers}}</h5>
+                <span>عدد المتابعين</span>
+              </div>
+            </div>
+          </a>
+          
+          <a (click)="openBadgesDialog(User.id)">
+
+           <div class="d-flex align-items-center   gap-4">
+              <div class="avatar">
+                <div class="avatar-initial bg-label-primary rounded w-px-40 h-px-40">
+                  <i class="fa fa-star"></i>
+                </div>
+              </div>
+              <div>
+                <h5 class="mb-0" >{{User.badges}}</h5>
+                <span> عدد الأوسمة</span>
+              </div>
+            </div>
+          </a>
+              <a (click)="openFollowerDialog(User.id,2)">
+
+          <div class="d-flex align-items-center me-5 gap-4">
+            <div class="avatar">
+              <div class="avatar-initial bg-label-primary  rounded w-px-40 h-px-40">
+                <i class="fa fa-users"></i>
+              </div>
+            </div>
+            <div>
+                <h5 class="mb-0">{{User.following}}</h5>
+                <span>الذين تتابعهم</span>
+            </div>
+          </div>
+              </a>
+
+        </div>
+        <h5 class="pb-4 border-bottom mb-4">المعلومات الشخصية</h5>
+        <div class="info-container">
+          <ul class="list-unstyled mb-6">
+            <li class="mb-2">
+              <span class="h6">الأسم بااللغة العربية:</span>
+              <span>{{User.arName}}</span>
+            </li>
+            <li class="mb-2">
+              <span class="h6">الأسم بااللغة الأنجليزية:</span>
+              <span>{{User.enName}}</span>
+            </li>
+            <li class="mb-2">
+              <span class="h6">البريد الألكترونى:</span>
+              <span>{{User.email}}</span>
+            </li>
+            <li class="mb-2">
+              <span class="h6">تاريخ الأنضمام:</span>
+              <span>{{User.regDate}}</span>
+            </li>
+            <li class="mb-2" [hidden]="!(CurrentUserId == User.id)">
+              <span class="h6">DAL رقم:</span>
+              <span>{{User.dal}}</span>
+            </li>
+            <li class="mb-2">
+              <span class="h6">رقم الهاتف:</span>
+              <span [hidden]="User.phoneNumber != null">{{User.phoneNumber}}</span>
+                            <span [hidden]="User.phoneNumber == null">غير متوفر</span>
+
+            </li>
+            <li class="mb-2" [hidden]="!(CurrentUserId == User.id)">
+              <span class="h6">الرصيد الحالي:</span>
+              <span>$ {{User.balance}}</span>
+            </li>
+            <li class="mb-2" [hidden]="!(CurrentUserId == User.id)">
+              <span class="h6"> الرصيد المستلف:</span>
+              <span>$ {{User.creditBalance}}</span>
+            </li>
+            <li class="mb-2">
+              <span class="h6">الدولة:</span>
+              <span>{{User.countryName}}</span>
+            </li>
+          </ul>
+          <div class="d-flex justify-content-center">
+            <a href="javascript:;" [hidden]="!(CurrentUserId == User.id)" class="btn btn-warning me-4"
+            routerLink="/clientPage/Pages/Info"
+              data-bs-target="#editUser" data-bs-toggle="modal">تعديل
+              البيانات</a>
+
+            <a  (click)="Follow(User.id)" [hidden]="!(CurrentUserId != User.id && isFollow == false)" class="btn btn-primary text-white me-4"
+
+              data-bs-target="#editUser" data-bs-toggle="modal" >
+              متابعة</a>
+
+               <a  (click)="Unfollow(User.id)" [hidden]="!(CurrentUserId != User.id && isFollow == true)" class="btn  text-white btn-primary me-4"
+
+              data-bs-target="#editUser" data-bs-toggle="modal" >
+                              <span style="color:white" class="fa fa-check m-1 px-1">تم المتابعة </span>
+
+               </a>
+
+            <a href="javascript:;" [hidden]="!(CurrentUserId == User.id)"
+              (click)="DeleteAccount()"
+             class="btn btn-label-danger suspend-user">حذف
+              الحساب</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /User Card -->
+    
+    <!-- /Plan Card -->
+  </div>
+  <!--/ User Sidebar -->
+
+  <!-- User Content -->
+  <div class="col-xl-8 col-lg-7 order-0 order-md-1">
+    <!-- User Pills -->
+    <div class="nav-align-top">
+      <ul class="nav nav-pills flex-column flex-md-row mb-6 flex-wrap row-gap-2">
+        <li class="nav-item">
+          <a class="nav-link " routerLinkActive="active" [routerLink]="['/clientPage/Profile',User.id,'AcadamicPosition']"><i
+              class="icon-base bx bx-lock-alt me-1_5 icon-sm"></i>المناصب الأكاديمية</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/clientPage/Profile',User.id,'EducationLevel']"><i
+              class="icon-base bx bx-detail me-1_5 icon-sm"></i>المؤهلات الأكاديمية</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/clientPage/Profile',User.id,'AcadamicActivity']"><i
+              class="icon-base bx bx-bell me-1_5 icon-sm"></i>الأنشطة الأكاديمية</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/clientPage/Profile',User.id,'Publication']"><i
+              class="icon-base bx bx-link me-1_5 icon-sm"></i>النشر العلمى</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/clientPage/Profile',User.id,'TeachingExperience']"><i
+              class="icon-base bx bx-link me-1_5 icon-sm"></i>الخبرات التدريسية</a>
+        </li>
+      </ul>
+    </div>
+    <!--/ User Pills -->
+
+    <!-- Change Password -->
+    <div class="card mb-3">
+      <h5 class="card-header">نبذه مختصرة </h5>
+      <div class="card-body">
+        <p class="lh-base text-wrap">{{User.summary}}</p>
+      </div>
+    </div>
+
+    <div class="card mb-6">
+
+      <router-outlet></router-outlet>
+
+
+    </div>
+    <!--/ Change Password -->
+
+    
+    
+  </div>
+  <!--/ User Content -->
+</div>

@@ -1,0 +1,261 @@
+<div class="row my-6" >
+    <div class="col" style="margin-top: 60px;">
+       <div class="accordion" id="collapsibleSection">
+        <!-- Delivery Address -->
+         <!-- {{EducationalLevelForm.value|json}} -->
+       <form [formGroup]="EducationalLevelForm">
+
+        <div class="card accordion-item">
+          <div
+            id="collapseDeliveryAddress"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingDeliveryAddress"
+            data-bs-parent="#collapsibleSection">
+            <h6 class="my-3 me-5 py-2 text-center" style="color: white;
+            background-color: #696cff;
+            border-radius: 5px;">تعديل مؤهل أكاديمي   </h6>
+
+            <div class="accordion-body">
+              <div class="row g-6 text-start">
+                
+                <div class="col-md-6">
+                  <div class="row">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الشهادة باللغة العربية</label>
+                    <div class="col-sm-9">
+                       <input type="text" class="form-control" formControlName="arCertificateName">
+                      <div *ngIf="EducationalLevelForm.controls['arCertificateName'].invalid && EducationalLevelForm.controls['arCertificateName'].touched">
+                        <small class="text-danger" *ngIf="EducationalLevelForm.controls['arCertificateName'].errors?.['required']">
+                          هذا الحقل مطلوب.
+                        </small>
+                        <small class="text-danger" *ngIf="EducationalLevelForm.controls['arCertificateName'].errors?.['pattern']">
+                          الرجاء إدخال الاسم باللغة العربية فقط.
+                        </small>
+                        <small class="text-danger" *ngIf="EducationalLevelForm.controls['arCertificateName'].errors?.['minlength']">
+                          يجب أن لا يقل الاسم عن 6 أحرف.
+                        </small>
+                        <small class="text-danger" *ngIf="EducationalLevelForm.controls['arCertificateName'].errors?.['maxlength']">
+                          يجب أن لا يزيد الاسم عن 100 حرف.
+                        </small>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الشهادة باللغة الأنجليزية</label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" formControlName="enCertificateName">
+                          <div *ngIf="EducationalLevelForm.controls['enCertificateName'].invalid && EducationalLevelForm.controls['enCertificateName'].touched">
+                            <small class="text-danger" *ngIf="EducationalLevelForm.controls['enCertificateName'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                            <small class="text-danger" *ngIf="EducationalLevelForm.controls['enCertificateName'].errors?.['pattern']">
+                              الرجاء إدخال الاسم باللغة الأنجليزية فقط.
+                            </small>
+                            <small class="text-danger" *ngIf="EducationalLevelForm.controls['enCertificateName'].errors?.['minlength']">
+                              يجب أن لا يقل الاسم عن 6 أحرف.
+                            </small>
+                            <small class="text-danger" *ngIf="EducationalLevelForm.controls['enCertificateName'].errors?.['maxlength']">
+                              يجب أن لا يزيد الاسم عن 100 حرف.
+                            </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الدرجة الأكاديمية</label>
+                      <div class="col-sm-9">
+                        <select id="collapsible-state" class="select2 form-select" data-allow-clear="true" formControlName="academicDegreeId">
+                          <option value="" seleted disabled>اختر الدرجة الأكاديمية</option>
+                          <option *ngFor="let AcademicDegree of AcademicDegrees" [value]="AcademicDegree.id">{{AcademicDegree.arDegreeName}}</option>
+                        </select>
+                        <div *ngIf="EducationalLevelForm.controls['academicDegreeId'].invalid && EducationalLevelForm.controls['academicDegreeId'].touched">
+                          <small *ngIf="EducationalLevelForm.controls['academicDegreeId'].errors?.['required']" class="text-danger">اختر الدرجة الأكاديمية</small>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+               
+                <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الجامعة</label>
+                      <div class="col-sm-9">
+                        <select id="collapsible-state" formControlName="universityId"  class="select2 form-select" data-allow-clear="true">
+                          <option value="" selected disabled>اختر الجامعة</option>
+                          <option *ngFor="let university of Universities" [value]="university.id">{{university.arUniversityName}}</option>
+                        </select>
+                        <div *ngIf="EducationalLevelForm.controls['universityId'].invalid && EducationalLevelForm.controls['universityId'].touched">
+                          <small *ngIf="EducationalLevelForm.controls['universityId'].errors?.['required']" class="text-danger">اختر الجامعة</small>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الكلية</label>
+                      <div class="col-sm-9">
+                        <select id="collapsible-state" formControlName="facultyId"  class="select2 form-select" data-allow-clear="true">
+                          <option value="" selected disabled>اختر الكلية</option>
+                          <option *ngFor="let faculty of Faculties" [value]="faculty.id">{{faculty.arFacultyName}}</option>
+                        </select>
+                        <div *ngIf="EducationalLevelForm.controls['facultyId'].invalid && EducationalLevelForm.controls['facultyId'].touched">
+                          <small *ngIf="EducationalLevelForm.controls['facultyId'].errors?.['required']" class="text-danger">اختر الكلية</small>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الدولة</label>
+                    <div class="col-sm-9">
+                      <select id="collapsible-state" formControlName="countryId" class="select2 form-select" data-allow-clear="true">
+                        <option  value="" seleted disabled>اختر الدولة</option>
+                        <option *ngFor="let country of Countries" [value]="country.id">{{country.arName}}</option>
+                   
+                      </select>
+                      <div *ngIf="EducationalLevelForm.get('countryId')?.invalid &&  EducationalLevelForm.get('countryId')?.touched"
+                      class="error mt-2">
+                   <small *ngIf="EducationalLevelForm.get('countryId')?.errors?.['required']" class="text-danger">
+                     اختر الدولة
+                   </small>
+                 </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">التخصص</label>
+                    <div class="col-sm-9">
+                      <select class="form-control" formControlName="specialityId">
+                        <option seleted disabled>اختر التخصص</option>
+                        <option *ngFor="let Specialite of Specialites" [value]="Specialite.id">{{Specialite.name}}</option>
+                      </select>
+                       <div *ngIf="EducationalLevelForm.get('specialityId')?.invalid &&  EducationalLevelForm.get('specialityId')?.touched"
+                           class="error mt-2">
+                        <small *ngIf="EducationalLevelForm.get('specialityId')?.errors?.['required']" class="text-danger">
+                           يرجى اختيار  التخصص   
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">من</label>
+                      <div class="col-sm-9">
+                    <input type="datetime-local" class="form-control"  formControlName="fromYear">
+                        <div *ngIf="EducationalLevelForm.get('fromYear')?.invalid &&  EducationalLevelForm.get('fromYear')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="EducationalLevelForm.get('fromYear')?.errors?.['required']" class="text-danger">
+                       اختر بداية الفترة
+                     </small>
+                   </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الى</label>
+                      <div class="col-sm-9">
+                        <input type="datetime-local" class="form-control"  formControlName="toYear">
+                        <div *ngIf="EducationalLevelForm.get('toYear')?.invalid &&  EducationalLevelForm.get('toYear')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="EducationalLevelForm.get('toYear')?.errors?.['required']" class="text-danger">
+                       اختر نهاية الفترة
+                     </small>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="col-md-6">
+                    <div class="mb-4">
+                      <div class="row">
+                        <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                          > الوصف بالعربى</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            id="collapsible-pincode"
+                            class="form-control"
+                            formControlName="arDescription"
+                              />
+                              <div *ngIf="EducationalLevelForm.controls['arDescription'].invalid && EducationalLevelForm.controls['arDescription'].touched">
+                                  <!-- <small *ngIf="EducationalLevelForm.controls['arDescription'].errors?.['required']" class="text-danger">وصف الشهادة مطلوب</small>
+                                  <small *ngIf="EducationalLevelForm.controls['arDescription'].errors?.['pattern']" class="text-danger">وصف الشهادة باللغة العربية  </small>
+                              -->
+                                  <small class="text-danger" *ngIf="EducationalLevelForm.controls['arDescription'].errors?.['required']"> 
+                                    هذا الحقل مطلوب.
+                                  </small>
+                                  <small class="text-danger" *ngIf="EducationalLevelForm.controls['arDescription'].errors?.['pattern']">
+                                    يجب أن يحتوي النص على أحرف عربية فقط.
+                                  </small>
+                                  <small class="text-danger" *ngIf="EducationalLevelForm.controls['arDescription'].errors?.['minlength']">
+                                    يجب ألا يقل الوصف عن 6 أحرف.
+                                  </small>
+                                  <small class="text-danger" *ngIf="EducationalLevelForm.controls['arDescription'].errors?.['maxlength']">
+                                    يجب ألا يزيد الوصف عن 200 حرف.
+                                  </small>
+                                </div>
+                        </div>
+                      </div>
+                  </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-4">
+                      <div class="row">
+                        <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                          > الوصف بالأنجليزية</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            id="collapsible-pincode"
+                            class="form-control"
+                            formControlName="enDescription"
+                              />
+                              <div *ngIf="EducationalLevelForm.controls['enDescription'].invalid && EducationalLevelForm.controls['enDescription'].touched">
+                                  <!-- <small *ngIf="EducationalLevelForm.controls['enDescription'].errors?.['required']" class="text-danger">وصف الشهادة  مطلوب</small>
+                                  <small *ngIf="EducationalLevelForm.controls['enDescription'].errors?.['pattern']" class="text-danger">وصف الشهادة باللغة الأنجليزية  </small>
+                                   -->
+                                  <small class="text-danger" *ngIf="EducationalLevelForm.controls['enDescription'].errors?.['required']"> 
+                                    هذا الحقل مطلوب.
+                                  </small>
+                                  <small class="text-danger" *ngIf="EducationalLevelForm.controls['enDescription'].errors?.['pattern']">
+                                    يجب أن يحتوي النص على أحرف انجليزية فقط.
+                                  </small>
+                                  <small class="text-danger" *ngIf="EducationalLevelForm.controls['enDescription'].errors?.['minlength']">
+                                    يجب ألا يقل الوصف عن 6 أحرف.
+                                  </small>
+                                  <small class="text-danger" *ngIf="EducationalLevelForm.controls['enDescription'].errors?.['maxlength']">
+                                    يجب ألا يزيد الوصف عن 200 حرف.
+                                  </small>
+                                </div>
+                        </div>
+                      </div>
+                  </div>
+                  </div>
+  
+
+                <div class="row justify-content-end mt-4">
+                  <div class="col-sm-10">
+                    <button type="submit" (click)="Submit()" class="btn btn-primary">حفظ</button>
+                    <a routerLink="/clientPage/EducationalLevel" class="btn btn-secondary mx-2">الرجوع الى القائمة</a>
+    
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+       </form>
+        
+
+        </div>
+        </div>
+        </div>
+        

@@ -1,0 +1,58 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="row" dir="rtl">
+      <!-- Basic Layout -->
+      <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">تعديل مهارة  </h5>
+          </div>
+          <!-- {{SkillsForm.value|json}} -->
+          <div class="card-body">
+            <form [formGroup]="SkillsForm">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name"> المهارة باللغة العربية </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" formControlName="name" id="basic-default-name" placeholder="ادخل المهارة باللغة العربية" />
+  
+                  <div *ngIf="SkillsForm.controls['name'].invalid && SkillsForm.controls['name'].touched">
+                    <small *ngIf="SkillsForm.controls['name'].errors?.['required']" class="text-danger"> المهارة بالعربية مطلوب</small>
+                    <small *ngIf="SkillsForm.controls['name'].errors?.['pattern']" class="text-danger">يجب إدخال المهارة باللغة العربية فقط</small>
+                  </div>
+                </div>
+  
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone"> الفئة</label>
+                <div class="col-sm-10">
+                  <select class="form-control" formControlName="skillCategoryType">
+                    <option seleted disabled>اختر الفئة</option>
+                    <option *ngFor="let skillCategoryType of skillCategoryTypes" [value]="skillCategoryType.id">{{skillCategoryType.name}}</option>
+                  </select>
+                   <div *ngIf="SkillsForm.get('skillCategoryType')?.invalid &&  SkillsForm.get('skillCategoryType')?.touched"
+                       class="error mt-2">
+                    <small *ngIf="SkillsForm.get('skillCategoryType')?.errors?.['required']" class="text-danger">
+                       يرجى اختيار  الفئة   
+                    </small>
+                  </div>
+  
+                </div>
+              </div>
+               
+               
+              <div class="row justify-content-end">
+                <div class="col-sm-10">
+                  <button type="submit" (click)="Submit()" class="btn btn-primary">حفظ</button>
+                  <button routerLink="/userPage/Skills" class="btn btn-secondary mx-2">الغاء</button>
+  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  

@@ -1,0 +1,194 @@
+                    <div class="card shadow-none border-0 rounded-0" >
+                      <div class="card-body emails-list-header p-3 py-2">
+                        <!-- Email List: Search -->
+                        <div class="d-flex justify-content-between align-items-center px-3 mt-2">
+                          <div class="d-flex align-items-center w-100">
+                            <i
+                              class="icon-base bx bx-menu icon-lg cursor-pointer d-block d-lg-none me-4 mb-4"
+                              data-bs-toggle="sidebar"
+                              data-target="#app-email-sidebar"
+                              data-overlay></i>
+                            <div class="mb-4 w-100">
+                              <div class="input-group input-group-merge shadow-none">
+                                <span class="input-group-text border-0 p-0 pe-4" id="email-search">
+                                  <i class="icon-base bx bx-search icon-md text-body"></i>
+                                </span>
+                                <input
+                                  type="text"
+                                  class="form-control email-search-input border-0 py-0"
+                                  placeholder="Search mail"
+                                  aria-label="Search mail"
+                                  aria-describedby="email-search" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr class="mx-n3 emails-list-header-hr mb-2" />
+                        <!-- Email List: Actions -->
+                        <div class="d-flex justify-content-between align-items-center ps-1">
+                          <div class="d-flex align-items-center">
+                            <div class="form-check mb-0 ms-2">
+                              <input class="form-check-input" type="checkbox" id="email-select-all" />
+                              <label class="form-check-label" for="email-select-all"></label>
+                            </div>
+                            <div class="btn btn-icon me-1">
+                              <i class="icon-base bx bx-trash icon-md email-list-delete cursor-pointer"></i>
+                            </div>
+                            <div class="btn btn-icon me-1">
+                              <i class="icon-base bx bx-envelope-open icon-md email-list-read cursor-pointer"></i>
+                            </div>
+                            <div class="dropdown me-1">
+                              <button
+                                class="btn btn-icon p-0"
+                                type="button"
+                                id="dropdownMenuFolderOne"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="icon-base bx bx-folder icon-md"></i>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuFolderOne">
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                  <i class="icon-base bx bx-error-alt icon-sm me-1"></i>
+                                  <span class="align-middle">Spam</span>
+                                </a>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                  <i class="icon-base bx bx-edit icon-sm me-1"></i>
+                                  <span class="align-middle">Draft</span>
+                                </a>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                  <i class="icon-base bx bx-trash icon-sm me-1"></i>
+                                  <span class="align-middle">Trash</span>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="dropdown mx-1">
+                              <button
+                                class="btn btn-icon dropdown-toggle hide-arrow"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="true"
+                                id="dropdownLabelOne">
+                                <i class="icon-base bx bx-label icon-md"></i>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLabelOne">
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                  <i class="badge badge-dot bg-success me-1"></i>
+                                  <span class="align-middle">Workshop</span>
+                                </a>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                  <i class="badge badge-dot bg-primary me-1"></i>
+                                  <span class="align-middle">Company</span>
+                                </a>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                  <i class="badge badge-dot bg-warning me-1"></i>
+                                  <span class="align-middle">Important</span>
+                                </a>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                  <i class="badge badge-dot bg-danger me-1"></i>
+                                  <span class="align-middle">Private</span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- <div class="d-flex align-items-center">
+                            <span class="btn btn-icon me-1">
+                              <i class="icon-base bx bx-refresh icon-md scaleX-n1-rtl cursor-pointer email-refresh"></i>
+                            </span>
+                            <div class="dropdown">
+                              <button
+                                class="btn btn-icon p-0"
+                                type="button"
+                                id="emailsActions"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="icon-base bx bx-dots-vertical-rounded icon-md"></i>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="emailsActions">
+                                <a class="dropdown-item" href="javascript:void(0)">Mark as read</a>
+                                <a class="dropdown-item" href="javascript:void(0)">Mark as unread</a>
+                                <a class="dropdown-item" href="javascript:void(0)">Delete</a>
+                                <a class="dropdown-item" href="javascript:void(0)">Archive</a>
+                              </div>
+                            </div>
+                          </div> -->
+                        <div class="d-flex align-items-center">
+                          <button style="outline: none;border: none;" class="me-2" (click)="GetPrevPage()"  [disabled]="!hasPrev">
+                            <span class="btn btn-icon p-0 me-2 " [class.text-body-secondary]="!hasPrev">
+                            <i class="icon-base bx bx-chevron-left icon-md scaleX-n1-rtl"></i>
+                          </span>
+                        </button>
+                        
+                          <button style="outline: none;border: none;"  (click)="GetNextPage()" [disabled]="!hasnext"  >
+                            <span class="btn btn-icon p-0 " [class.text-body-secondary]="!hasnext" >
+                            <i class="icon-base bx bx-chevron-right icon-md scaleX-n1-rtl"></i>
+                          </span>
+                          </button>
+                        </div>
+                        </div>
+                      </div>
+                      <hr class="container-m-nx m-0" />
+                      <!-- Email List: Items -->
+                      <div class="email-list pt-0" >
+                        <ul class="list-unstyled m-0" style="height: 370px;overflow-y: scroll;">
+                          <li
+                          [class.email-marked-read]="!(Message.isRead)"
+                            class="email-list-item  d-flex align-items-center"
+                            data-starred="true"
+                            data-bs-toggle="sidebar"
+                            data-target="#app-email-view" *ngFor="let Message of Messages">
+                            <div class="d-flex align-items-center w-100">
+                              
+                              <span class="ms-sm-3 me-4 d-sm-inline-block d-none"
+                                ><i
+                                  class="email-list-item-bookmark icon-base bx bx-star icon-md cursor-pointer ms-1"></i
+                              ></span>
+                              <img
+                                [src]="Message.toUserImage"
+                                alt="user-avatar"
+                                class="d-block flex-shrink-0 rounded-circle me-sm-2 me-0"
+                                height="32"
+                                width="32" />
+                              <div class="email-list-item-content ms-2 ms-sm-0 me-2">
+                                <span class="email-list-item-username me-2 text-heading">{{Message.toUserName}}</span>
+                                <small class="email-list-item-subject d-xl-inline-block d-block">
+                                {{Message.subject}}
+                                </small>
+
+                              </div>
+                              <div class="email-list-item-meta ms-auto d-flex align-items-center">
+                                <span
+                                  class="email-list-item-label badge badge-dot bg-danger d-none d-md-inline-block me-2"
+                                  data-label="private"></span>
+                                <small class="email-list-item-time text-body-secondary">{{Message.dateOfRecord}}</small>
+                                <ul class="list-inline email-list-item-actions" style="margin-right: 200px;">
+                                  <li class="list-inline-item email-delete btn btn-icon" (click)="Delete(Message.id)" title="حذف">
+                                    <i class="icon-base bx bx-trash icon-md"></i>
+                                  </li>
+                                  <li [hidden]="(Message.isRead)" (click)="ReadMessge(Message.id)" class="list-inline-item email-unread btn btn-icon" title="غير مقروءة">
+                                    <i class="icon-base bx bx-envelope icon-md"></i>
+                                  </li>
+                                    <li [hidden]="!(Message.isRead)" class="list-inline-item email-read btn btn-icon" title=" مقروءة">
+                                    <i class="icon-base bx bx-envelope-open icon-md"></i>
+                                  </li>
+                                  <li class="list-inline-item btn btn-icon" title="الردود">
+                                    <a [routerLink]="['/clientPage/Messages/Details',Message.id]">
+                                      <i class="icon-base bx bx-info-circle icon-md"></i>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </li>
+                         
+                         
+                         
+                        
+                        </ul>
+                        <ul class="list-unstyled m-0" [hidden]="Messages.length > 0">
+                          <li class="email-list-empty text-center ">لا توجد رسائل</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="app-overlay"></div>
+ 

@@ -1,0 +1,64 @@
+
+<div class="container-xxl flex-grow-1 container-p-y justify-content-start">
+
+    <div class="card">  
+<div class="row px-2 justify-content-center py-3" >
+        <h5 class=" text-center"> المستخدمين المشاركين فى مشروع <span class="text-primary">{{CrowdFunding.title}}</span></h5>
+        
+      </div>
+      <div class="row px-2 justify-content-between" >
+        <div class="col-12 col-md-5 col-lg-5 d-flex">
+          <a class="btn btn-primary m-3 text-white" (click)="openAddDialog()" style="width: 200px;">اضافة</a>
+
+        </div>
+        
+      </div>
+      <div class="table-responsive text-nowrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>العضو</th>
+              <th>العمليات</th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr *ngFor="let CrowdFundingUser of CrowdFundingUsers;let i= index">
+              <td>
+                 <span>{{i+1}}</span>
+              </td>
+              
+              <td>{{CrowdFundingUser.applicationName}}</td>
+              <td>
+                <!-- <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="icon-base bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" (click)="openEditDialog(CrowdFundingUser.id)"
+                      ><i class="icon-base bx bx-edit-alt me-1 text-warning"></i> تعديل</a
+                    > -->
+                     <a class="dropdown-item " style="cursor:pointer" (click)="Delete(CrowdFundingUser.id)"
+                      ><i class="icon-base bx bx-trash me-1 text-danger"></i> </a
+                    >
+                  <!-- </div>
+                </div> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+         <div class="paginator-container text-center d-flex justify-content-center">
+            <mat-paginator [length]="total" [pageSize]="pageSize" [pageSizeOptions]="[5,25,50,100]"
+                (page)="onPageChange($event)">
+            </mat-paginator>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+  
+  <div class="content-backdrop fade"></div>
+  <!-- Content wrapper -->

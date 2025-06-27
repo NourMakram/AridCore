@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row p-3">
+        <div class="col">
+            <div class="accordion" id="collapsibleSection">
+                <div mat-dialog-content>
+                     <h5>تفاصيل المؤهل الأكاديمى</h5>
+                    <div class="row  text-start">
+                        <div class="col-4">
+                            <h6> الشهادة بالعربى:</h6>
+                            <h6> الشهادة بالأنجليزية :</h6>
+                            <h6>التخصص :</h6>
+                            <h6> الدرجة الأكاديمية :</h6>
+                            <h6> الكلية :</h6>
+                            <h6> الجامعة :</h6>
+
+                            <h6> الدولة :</h6>
+
+                            <h6> المدة:</h6>
+                            <h6> الوصف :</h6>
+
+
+                        </div>  
+                        <div class="col-8">
+                            <p>{{EducationalLevel.arCertificateName}}</p>
+                            <p>{{EducationalLevel.enCertificateName}}</p>
+                            <p>{{EducationalLevel.specialityName}}</p>
+                            <p>{{EducationalLevel.academicDegree}}</p>
+                            <p>{{EducationalLevel.facultyName}} </p>
+                            <p>{{EducationalLevel.universityName}} </p>
+                            <p>{{EducationalLevel.countryName}} </p>
+                              <p>{{EducationalLevel.fromYear}} <span [hidden]="EducationalLevel.isCurrent == false"> - حاليا</span> <span [hidden]="EducationalLevel.toYear == null"> - {{EducationalLevel.toYear}}</span></p>
+
+                            <p class="text-wrap">{{EducationalLevel.arDescription}}</p>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div mat-dialog-actions class="my-3 d-flex justify-content-center ">
+                        <button mat-button class="btn btn-secondary" (click)="onNoClick()">اغلاق </button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

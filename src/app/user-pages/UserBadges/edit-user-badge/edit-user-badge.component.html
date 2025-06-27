@@ -1,0 +1,84 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="row" dir="rtl">
+       <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <!-- <h5 class="mb-0">اضافة </h5> -->
+          </div>
+          <!-- {{UserBadgesForm.value|json}} -->
+           <div class="card-body">
+            <form [formGroup]="UserBadgesForm">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-phone"> المستخدم</label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="userId">
+                        <option selected value="" disabled>اختر المستخدم</option>
+                        <option *ngFor="let User of Users" [value]="User.id">{{User.name}}</option>
+                      </select>  
+                  <div *ngIf="UserBadgesForm.controls['userId'].invalid && UserBadgesForm.controls['userId'].touched">
+                    <small *ngIf="UserBadgesForm.controls['userId'].errors?.['required']" class="text-danger">اختر المستخدم</small>
+                   </div>
+                </div>
+
+               </div>
+              
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company"> الوسام</label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="badgeId">
+                        <option selected value="" disabled>اختر الوسام</option>
+                        <option *ngFor="let  Badge of Badges" [value]="Badge.id">{{Badge.arBadgeName}}</option>
+
+                      </select>  
+                  <div *ngIf="UserBadgesForm.controls['badgeId'].invalid && UserBadgesForm.controls['badgeId'].touched">
+                    <small *ngIf="UserBadgesForm.controls['badgeId'].errors?.['required']" class="text-danger">اختر الوسام </small>
+                   </div>
+  
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company"> تفاصيل</label>
+                <div class="col-sm-10">
+                  <textarea rows="6" class="form-control" formControlName="rejectReason" ></textarea>
+
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company">  </label>
+                <div class="col-sm-10 d-flex">
+                   <input type="checkbox" formControlName="isGranted" class="form-check"/> ممنوح
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company"> </label>
+                <div class="col-sm-10 d-flex">
+                    <input type="checkbox" formControlName="disabled" class="form-check"/> معطل
+                 </div>
+              </div>
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company"> </label>
+                <div class="col-sm-10 d-flex">
+                    <input type="checkbox" formControlName="isRejected" class="form-check"/> مرفوض
+                 </div>
+              </div>
+              
+              <div class="row justify-content-end">
+                <div class="col-sm-10">
+                  <button type="submit" (click)="Submit()" class="btn btn-primary">حفظ</button>
+                  <button routerLink="/userPage/UserBadges" class="btn btn-secondary mx-2">الغاء</button>
+  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  

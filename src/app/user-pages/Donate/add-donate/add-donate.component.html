@@ -1,0 +1,64 @@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="row" dir="rtl">
+       <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">تبرع الأن</h5>
+          </div>
+           <div class="card-body">
+            <form [formGroup]="DonateForm">
+              <!-- <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">اسم المستخدم</label>
+                <div class="col-sm-10">
+                    <select class="form-control" formControlName="applicationUserId">
+                        <option selected value="" disabled>اختر المستخدم</option>
+                        <option *ngFor="let User of Users" [value]="User.id">{{User.name}}</option>
+                      </select>  
+                  <div *ngIf="DonateForm.controls['applicationUserId'].invalid && DonateForm.controls['applicationUserId'].touched">
+                    <small *ngIf="DonateForm.controls['applicationUserId'].errors?.['required']" class="text-danger">اختر المستخدم</small>
+                   </div>
+                </div>
+  
+              </div> -->
+                <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">المبلغ</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" formControlName="amount" placeholder="ادخل المبلغ"/>
+                  <div *ngIf="DonateForm.controls['amount'].invalid && DonateForm.controls['amount'].touched">
+                   <small *ngIf="DonateForm.controls['amount'].errors?.['required']" class="text-danger">ادخل المبلغ</small>
+                    <small *ngIf="DonateForm.controls['amount'].errors?.['min']" class="text-danger">المبلغ يجب ان يكون اكبر من الصفر</small>
+
+                </div>
+                </div>
+  
+              </div>
+                 <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-name">تفاصيل</label>
+                <div class="col-sm-10">
+                     <textarea rows="4" class="form-control" formControlName="description" placeholder="هل لديك ملاحظات ؟ "></textarea>
+                  <div *ngIf="DonateForm.controls['description'].invalid && DonateForm.controls['description'].touched">
+                    <small *ngIf="DonateForm.controls['description'].errors?.['required']" class="text-danger">ادخل ملاحظاتك</small>
+                   </div>
+                </div>
+  
+              </div>
+              
+           
+              
+              <div class="row justify-content-end">
+                <div class="col-sm-10">
+                  <button type="submit" (click)="CheckBalance()" class="btn btn-primary">اضافة</button>
+                  <button routerLink="/clientPage/Donate" class="btn btn-secondary mx-2">الغاء</button>
+  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+  

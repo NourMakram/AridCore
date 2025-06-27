@@ -1,0 +1,140 @@
+<div class="container-xxl">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-5 col-md-5">
+            <div class="authentication-wrapper authentication-basic container-p-y">
+                <div class="authentication-inner">
+                  <!-- Register Card -->
+                  <div class="card">
+                    <div class="card-body">
+                      <!-- Logo -->
+                      <div class="app-brand justify-content-center">
+                        <img src="https://arid.my/images/logo.png" class="img-fluid">
+                        
+                      </div>
+                      <!-- /Logo -->
+                      <h4 class="mb-2">مرحبا بك فى  منصة اريد العلمية</h4>
+
+           <!-- {{RegisterForm.value|json}} -->
+                      <form id="formAuthentication" [formGroup]="RegisterForm" class="mb-3" action="index.html" method="POST">
+                        <div class="mb-3 text-start">
+                          <label for="username" class="form-label">الأسم باللغة العربية</label>
+                          <input
+                            type="text"
+                            class="form-control "
+                            id="ArName"
+                            formControlName="arName"
+                            name="username"
+                            placeholder="ادخل الأسم باللغة العربية"
+                            autofocus
+                          />
+                          <div *ngIf="RegisterForm.controls['arName'].invalid && RegisterForm.controls['arName'].touched">
+                              <small *ngIf="RegisterForm.controls['arName'].errors?.['required']" class="text-danger">ادخل الأسم بالعربية مطلوب</small>
+                              <small *ngIf="RegisterForm.controls['arName'].errors?.['pattern']" class="text-danger">يجب إدخال الأسم  باللغة العربية فقط</small>
+                            </div>
+                        </div>
+          
+                        <div class="mb-3 text-start">
+                          <label for="username" class="form-label">الأسم باللغة الأنجليزية</label>
+                          <input
+                            type="text"
+                            class="form-control "
+                            id="EnName"
+                            formControlName="enName"
+                            name="username"
+                            placeholder="ادخل الأسم باللغة الأنجليزية"
+                            autofocus
+                          />
+                          <div *ngIf="RegisterForm.controls['enName'].invalid && RegisterForm.controls['enName'].touched">
+                              <small *ngIf="RegisterForm.controls['enName'].errors?.['required']" class="text-danger">ادخل الأسم بالأنجليزية مطلوب</small>
+                              <small *ngIf="RegisterForm.controls['enName'].errors?.['pattern']" class="text-danger">يجب إدخال الأسم  باللغة الأنجليزية فقط</small>
+                            </div>
+                        </div>
+                        <div class="mb-3 text-start">
+                          <label for="email" class="form-label">البريد الألكترونى</label>
+                          <input type="email" class="form-control " formControlName="email"  id="email" name="email" placeholder="ادخل البريد الألكترونى" />
+                          <div *ngIf="RegisterForm.controls['email'].invalid && RegisterForm.controls['email'].touched">
+                            <small *ngIf="RegisterForm.controls['email'].errors?.['required']" class="text-danger">ادخل البريد الألكترونى</small>
+                            <small *ngIf="RegisterForm.controls['email'].errors?.['email']" class="text-danger">البريد الألكترونى غير صحيح</small>
+                        </div>
+                          <small *ngIf="ErrorMessage!=null" class="text-danger">{{ErrorMessage}}</small>
+                      </div>
+                      <div class="mb-3 text-start">
+                          <label class="form-label" for="basic-default-phone"> الدولة</label>
+                             <select class="form-control " formControlName="countryId">
+                              <option seleted disabled>اختر الدولة</option>
+                              <option *ngFor="let country of Countries" [value]="country.id">{{country.arName}}</option>
+                            </select>
+                            <div *ngIf="RegisterForm.get('countryId')?.invalid &&  RegisterForm.get('countryId')?.touched"
+                                 class="error mt-2">
+                              <small *ngIf="RegisterForm.get('countryId')?.errors?.['required']" class="text-danger">
+                                يرجى ادخال اسم  الدولة
+                              </small>
+                            </div>
+            
+                         </div>
+                        <div class="mb-3 form-password-toggle text-start">
+                          <label class="form-label" for="password">كلمة المرور</label>
+                          <div class="input-group input-group-merge">
+                            <input
+                              type="password"
+                              id="password1" 
+                              formControlName="password"
+                              class="form-control "
+                              name="password"
+                              placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                              aria-describedby="password"
+                            />
+                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                          </div>
+                          <div *ngIf="RegisterForm.controls['password'].invalid && RegisterForm.controls['password'].touched">
+                              <small *ngIf="RegisterForm.controls['password'].errors?.['required']" class="text-danger">ادخل كلمة المرور</small>
+                              <small *ngIf="RegisterForm.controls['password'].errors?.['min']" class="text-danger">كلمة المرور يجب ان لا تقل عن 6 احرف </small>
+                          </div>
+                        </div>
+                        <div class="mb-3 form-password-toggle text-start">
+                          <label class="form-label" for="password">تأكيد كلمة المرور</label>
+                          <div class="input-group input-group-merge">
+                            <input
+                              type="password2"
+                              id="password" 
+                              formControlName="ConfirmPassword"
+                              class="form-control  "
+                              name="password"
+                              placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                              aria-describedby="password"
+                            />
+                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                          </div>
+                          <div *ngIf="RegisterForm.controls['ConfirmPassword'].invalid && RegisterForm.controls['ConfirmPassword'].touched">
+                              <small *ngIf="RegisterForm.controls['ConfirmPassword'].errors?.['required']" class="text-danger">ادخل كلمة المرور</small>
+                              <small *ngIf="RegisterForm.controls['ConfirmPassword'].errors?.['NotMatched']" class="text-danger">كلمات المرور غير متطابقة</small>
+                          </div>
+                        </div>
+                        <div class="mb-3 text-start">
+                          <div class="form-check  d-flex " style="flex-direction: row-reverse;
+    justify-content: flex-end;">
+                            <label class="form-check-label " for="terms-conditions">
+                              أوافق على 
+                              <a href="javascript:void(0);">الشروط والأحكام</a>
+                            </label>
+                            <input class="form-check-input  mx-2" formControlName="termsconditions" type="checkbox" id="terms-conditions" name="terms" />
+
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary d-grid w-100" (click)="Submit()">انشاء</button>
+                      </form>
+          
+                      <p class="text-center">
+                        <span>هل لديك حساب بالفعل ؟</span>
+                        <a routerLink="/Login">
+                          <span>تسجيل دخول</span>
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                  <!-- Register Card -->
+                </div>
+              </div>
+        </div>
+    </div>
+  </div>

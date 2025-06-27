@@ -1,0 +1,179 @@
+<div class="row my-6">
+    <div class="col" style="margin-top: 60px;">
+      <div class="accordion" id="collapsibleSection">
+
+       <form [formGroup]="TeachingExperienceForm">
+
+        <div class="card accordion-item">
+
+          <div
+            id="collapseDeliveryAddress"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingDeliveryAddress"
+            data-bs-parent="#collapsibleSection">
+            <h6 class="my-3 py-2 me-5 text-center" style="color: white;
+            background-color: #696cff;
+            border-radius: 5px;">تعديل خبرة تدريسية</h6>
+
+            <div class="accordion-body">
+              <div class="row g-6 text-start">
+                
+                <div class="col-md-6">
+                  <div class="row">
+                    <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">العنوان باللغة العربية</label>
+                    <div class="col-sm-9">
+                       <input type="text" class="form-control" formControlName="arTitle">
+                      <div *ngIf="TeachingExperienceForm.controls['arTitle'].invalid && TeachingExperienceForm.controls['arTitle'].touched">
+                        <small class="text-danger" *ngIf="TeachingExperienceForm.controls['arTitle'].errors?.['required']">
+                          هذا الحقل مطلوب.
+                        </small>
+                        <small class="text-danger" *ngIf="TeachingExperienceForm.controls['arTitle'].errors?.['pattern']">
+                          الرجاء إدخال العنوان باللغة العربية فقط.
+                        </small>
+                        <small class="text-danger" *ngIf="TeachingExperienceForm.controls['arTitle'].errors?.['minlength']">
+                          يجب أن لا يقل العنوان عن 6 أحرف.
+                        </small>
+                       
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">العنوان باللغة الأنجليزية</label>
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" formControlName="enTitle">
+                          <div *ngIf="TeachingExperienceForm.controls['enTitle'].invalid && TeachingExperienceForm.controls['enTitle'].touched">
+                            <small class="text-danger" *ngIf="TeachingExperienceForm.controls['enTitle'].errors?.['required']">
+                              هذا الحقل مطلوب.
+                            </small>
+                            <small class="text-danger" *ngIf="TeachingExperienceForm.controls['enTitle'].errors?.['pattern']">
+                              الرجاء إدخال العنوان باللغة الأنجليزية فقط.
+                            </small>
+                            <small class="text-danger" *ngIf="TeachingExperienceForm.controls['enTitle'].errors?.['minlength']">
+                              يجب أن لا يقل العنوان عن 6 أحرف.
+                            </small>
+                            
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">من</label>
+                      <div class="col-sm-9">
+                    <input type="datetime-local" class="form-control"  formControlName="fromYear">
+                        <div *ngIf="TeachingExperienceForm.get('fromYear')?.invalid &&  TeachingExperienceForm.get('fromYear')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="TeachingExperienceForm.get('fromYear')?.errors?.['required']" class="text-danger">
+                       اختر بداية الفترة
+                     </small>
+                   </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-state">الى</label>
+                      <div class="col-sm-9">
+                        <input type="datetime-local" class="form-control"  formControlName="toYear">
+                        <div *ngIf="TeachingExperienceForm.get('toYear')?.invalid &&  TeachingExperienceForm.get('toYear')?.touched"
+                        class="error mt-2">
+                     <small *ngIf="TeachingExperienceForm.get('toYear')?.errors?.['required']" class="text-danger">
+                       اختر نهاية الفترة
+                     </small>
+                         </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                        > الوصف بالعربى</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          id="collapsible-pincode"
+                          class="form-control"
+                          formControlName="arDescription"
+                            />
+                            <div *ngIf="TeachingExperienceForm.controls['arDescription'].invalid && TeachingExperienceForm.controls['arDescription'].touched">
+                                <!-- <small *ngIf="TeachingExperienceForm.controls['arDescription'].errors?.['required']" class="text-danger">وصف الشهادة مطلوب</small>
+                                <small *ngIf="TeachingExperienceForm.controls['arDescription'].errors?.['pattern']" class="text-danger">وصف الشهادة باللغة العربية  </small>
+                            -->
+                                <small class="text-danger" *ngIf="TeachingExperienceForm.controls['arDescription'].errors?.['required']"> 
+                                  هذا الحقل مطلوب.
+                                </small>
+                                <small class="text-danger" *ngIf="TeachingExperienceForm.controls['arDescription'].errors?.['pattern']">
+                                  يجب أن يحتوي النص على أحرف عربية فقط.
+                                </small>
+                                <small class="text-danger" *ngIf="TeachingExperienceForm.controls['arDescription'].errors?.['minlength']">
+                                  يجب ألا يقل الوصف عن 6 أحرف.
+                                </small>
+                                <small class="text-danger" *ngIf="TeachingExperienceForm.controls['arDescription'].errors?.['maxlength']">
+                                  يجب ألا يزيد الوصف عن 200 حرف.
+                                </small>
+                              </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-4">
+                    <div class="row">
+                      <label class="col-sm-3 col-form-label text-sm-end" for="collapsible-pincode"
+                        > الوصف بالأنجليزية</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          id="collapsible-pincode"
+                          class="form-control"
+                          formControlName="enDescription"
+                            />
+                            <div *ngIf="TeachingExperienceForm.controls['enDescription'].invalid && TeachingExperienceForm.controls['enDescription'].touched">
+                                <!-- <small *ngIf="TeachingExperienceForm.controls['enDescription'].errors?.['required']" class="text-danger">وصف الشهادة  مطلوب</small>
+                                <small *ngIf="TeachingExperienceForm.controls['enDescription'].errors?.['pattern']" class="text-danger">وصف الشهادة باللغة الأنجليزية  </small>
+                                 -->
+                                <small class="text-danger" *ngIf="TeachingExperienceForm.controls['arDescription'].errors?.['required']"> 
+                                  هذا الحقل مطلوب.
+                                </small>
+                                <small class="text-danger" *ngIf="TeachingExperienceForm.controls['enDescription'].errors?.['pattern']">
+                                  يجب أن يحتوي النص على أحرف انجليزية فقط.
+                                </small>
+                                <small class="text-danger" *ngIf="TeachingExperienceForm.controls['enDescription'].errors?.['minlength']">
+                                  يجب ألا يقل الوصف عن 6 أحرف.
+                                </small>
+                                <small class="text-danger" *ngIf="TeachingExperienceForm.controls['enDescription'].errors?.['maxlength']">
+                                  يجب ألا يزيد الوصف عن 200 حرف.
+                                </small>
+                              </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+
+
+
+                <div class="row justify-content-end mt-4 text-center">
+                  <div class="col-sm-10">
+                    <button type="submit" (click)="Submit()" class="btn btn-primary">حفظ</button>
+                    <a routerLink="/clientPage/TeachingExperience" class="btn btn-secondary mx-2">الرجوع الى القائمة</a>
+    
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+       </form>
+        
+
+        </div>
+        </div>
+        </div>
+        
